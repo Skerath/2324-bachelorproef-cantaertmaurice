@@ -4,50 +4,47 @@
 \label{sec:introductie}
 
 Augmented reality, of kortweg AR, omvat een samensmelting van de virtuele wereld met de echte wereld door middel van een overlay.
-Met haar eerste iteratie in de vorm van een head-mounted display ontwikkeld door \textcite{Sutherland1968} , kende deze technologie een opmerkelijke voorsprong op de hedendaagse smartphone.
-Toch kent deze vorm van AR niet dezelfde aanneming door het algemene publiek en is tot recentelijk enkel een vorm van mobiele AR (gebruikmakend van smartphones) aanwezig op de markt.
+Deze technologie bestaat voornamelijk in twee vormen: mobiele AR, die inmiddels al een wijde aanneming kent volgens een onderzoek van \textcite{Berggren2023}, en head-mounted AR.
+Voor de voorgaande vorm biedt Tropos AR een out of the box user interface (UI) aan via haar Troposphere software-development kit.
+Mobiele AR-ontwikkelaars hoeven hierdoor niet langer de focus te leggen op interacties van gebruikers met de AR-wereld, waardoor ontwikkelingstijd aanzienlijk verkleind kan worden.
 
-Head-mounted AR had vooral te lijden aan grotere technologische obstakels waaronder de displays van het apparaat zelf. \autocite{YunHan2018}
-Hierdoor was het aan koplopers zoals Meta en Varjo om aanzienlijke budgetten te besteden om deze obstakels te kunnen overbruggen en de fundamenten van deze markt tot stand te krijgen.
-Eerst kwamen zakelijke modellen zoals de Meta Quest Pro en Varjo XR-1, gevolgd door een influx aan consument-gerichte versies waaronder de Meta Quest 3 en de opkomende Apple VisionPro.
+Head-mounted Augmented Reality daarentegen kende meer technischere obstakels waardoor er tot recentelijk geen consument-gerichte modellen op de markt waren.
+2023 kende echter een opkomst van dit soort modellen, onder de vorm van de Meta Quest 3 en de aankondiging van de Apple VisionPro.
+Met de influx van deze head-mounted devices komt ook het ontstaan van een nieuwe markt waar Tropos AR op wilt inspelen.
 
-Tropos AR biedt een out of the box user interface (UI) aan voor mobiele AR-ontwikkelaars via haar Troposphere software-development kit.
-Ontwikkelaars hoeven hierdoor niet langer te focussen op de UI, een groot onderdeel van wat mobiele AR maakt wat het is, waardoor ontwikkelingstijd aanzienlijk verkleind kan worden.
-Echter, met de komst van steeds vaker gekochte consument-gerichte AR-apparaten ontstaat een nieuwe markt voor AR-ontwikkelaars.
 Hoewel Tropos AR reeds knowhow opgebouwd heeft van bestaande UI-technieken binnen AR op smartphones, kunnen deze niet altijd even goed vertaald worden naar head-mounted AR.
-
-Concreet is Tropos AR op zoek naar een nieuwe, meer intu\"{\i}tieve manier van interageren met de virtuele objecten die via AR in de echte wereld geprojecteerd worden.
+Concreet is Tropos AR op zoek naar een manier om bestaande mobiele AR-ervaringen te vertalen naar deze nieuwe, opkomende vorm.
 Ook is er vraag naar de verschillende manieren om een menu af te beelden en hierbinnen te navigeren.
-Uit dit onderzoek zal een rapport met aanbevelingen ontstaan voor Tropos AR.
-
+Deze thesis probeert hier antwoorden voor te voorzien aan de hand van een rapport met aanbevelingen.
 
 %---------- Stand van zaken ---------------------------------------------------
 
-\section{State-of-the-art}%
+\section{Literatuurstudie}%
 \label{sec:state-of-the-art}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+\subsection{Het ontstaan van (mobiele) AR}
+\label{subsec:wat-is-ar}
+Met haar eerste iteratie in de vorm van een head-mounted display ontwikkeld door \textcite{Sutherland1968} , kende Augmented Reality een opmerkelijke voorsprong op de hedendaagse smartphone.
+Toch kent deze vorm van AR niet dezelfde aanneming door het algemene publiek en is tot recentelijk enkel een vorm van mobiele AR (gebruikmakend van smartphones) aanwezig op de markt.
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+Head-mounted AR had vooral te lijden aan grotere technologische obstakels zoals de displays waarop een samensmelting van de virtuele met de echte wereld geprojecteerd wordt \autocite{YunHan2018} .
+Hierdoor was het aan koplopers zoals Meta en Varjo om aanzienlijke budgetten te besteden om deze obstakels te kunnen overbruggen en de fundamenten van deze markt tot stand te krijgen. % TODO miss bron?
+Intussen zagen smartphonemakers zoals Samsung en Apple een opportuniteit om deze technologie toch in de handen te zien krijgen bij consumenten, dit in de vorm van mobiele AR.
+Zo bepalen hedendaagse smartphones met behulp van camera's en sensoren de plaats van digitale entiteiten en tonen ze deze vervolgens op hun scherm.
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Sutherland1968}! Denk zeker goed na welke werken je refereert en waarom.
+\subsection{Head-mounted AR en gebaren}
+\label{subsec:head-mounted-ar}
+Head-mounted AR is een radicaal andere ervaring van de samensmelting van virtueel met fysiek: in tegenstelling tot mobiele AR neemt deze vorm van AR heel het gezichtsveld in beslag.
+Hierdoor verdwijnt echter ook de on-screen navigatie die men vandaag de dag gewend is aan smartphones en wordt deze vervangen met gebaren.
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
-
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
-
-% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
-% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
-%   geen onderdeel is van de zin.
-% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
-%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
-%   ...'')
-
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
+Een mogelijk alternatief hiervoor is om via gebaren te interageren met virtuele objecten, een alternatief waar Apple vooral op zal steunen met haar Vision Pro model.
+De werking hiervan wordt bepaald door middel van camera's die de posities van de gebruikers' handen bepaalt en vertaalt naar interacties met menu's \textcite{Shrestha2018} .
+Uit onderzoek van \textcite{Datcu2013} blijkt dat deze manier van virtuele objecten en menu's te besturen de voorkeur kent bij gebruikers.
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
+
 
 Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
 

@@ -5,7 +5,7 @@
 
 Augmented reality, of kortweg AR, omvat een samensmelting van de virtuele wereld met de echte wereld door middel van een overlay.
 Deze technologie bestaat voornamelijk in twee vormen: mobiele AR, die inmiddels al een wijde aanneming kent volgens een onderzoek van \textcite{Berggren2023}, en head-mounted AR.
-Voor de voorgaande vorm biedt Tropos AR een out of the box user interface (UI) aan via haar Troposphere software-development kit.
+Voor de voorgaande vorm biedt Tropos AR een out of the box user interface (UI) aan via haar Troposphere software-development kit (SDK).
 Mobiele AR-ontwikkelaars hoeven hierdoor niet langer de focus te leggen op interacties van gebruikers met de AR-wereld, waardoor ontwikkelingstijd aanzienlijk verkleind kan worden.
 
 Head-mounted Augmented Reality daarentegen kende meer technischere obstakels waardoor er tot recentelijk geen consument-gerichte modellen op de markt waren.
@@ -43,26 +43,44 @@ Uit onderzoek van \textcite{Datcu2013} blijkt dat deze manier van virtuele objec
 
 \subsection{Het voordeel van head-mounted devices}
 \label{subsec:benefits-hmd}
-Head-mounted devices maken het mogelijk voor de gebruiker om direct aan de slag te gaan met de virtuele wereld zonder hierbij een smartphone vast te houden.
+Head-mounted devices maken het mogelijk voor de gebruiker om direct aan de slag te gaan met de virtuele wereld zonder hierbij een telefoon vast te houden.
 Het gevoel van kijken door een soort venster verdwijnt doordat de samensmeltende werelden direct geprojecteerd worden in de ogen van gebruikers.
-Deze toepassing kent ook vandaag al een meerwaarde in onder andere de medische sector bij het opleiden van chirurgen \autocite{Waisberg2023} .
+Deze categorie van AR-apparaten krijgt daardoor vaak de term \("\)Immersive AR\("\) en kent ook vandaag al een meerwaarde in onder andere de medische sector tijdens het opleiden van chirurgen~\autocite{Waisberg2023} .
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
+\subsection{Voorafgaande literatuurstudie}
+\label{subsec:literature-study}
+In de eerste fase vindt zich een voorafgaande literatuurstudie over het onderwerp plaats. % 2 weken
+Het praktische doel hiervan is om een verdere inzicht te krijgen op de werking van gesture-gebaseerde navigatie binnen head-mounted devices.
+De nadruk ligt hierbij op de evolutie van deze werking en het verschil van hedendaagse mobiele AR-besturing.
+Tijdens deze fase komen de gelijkenissen en verschillen tussen de twee werkwijzes om tijdens de derde fase met elkaar te kunnen verzoenen naar voren.
 
+\subsection{Requirements-analyse}
+\label{subsec:requirements-analysis}
+Vervolgens vindt er zich een requirements-analyse plaats bij Tropos AR over de gewenste interactiemogelijkheden binnen head-mounted AR. % 3 weken
+Ook klanten van de Tropos AR SDK zullen participeren aan een bevraging, met als richtlijn waarom ze specifiek gekozen hebben voor de Tropos framework.
+Uit deze bevraging blijkt een lijst van gewenste resultaten waar een proof-of-concept zich op zal richten, deze wordt opgesteld aan de hand van de MoSCoW-methode.
+Deze lijst bevat enerzijds de visie van Tropos AR voor interacties met virtuele objecten.
+Anderzijds bevat deze lijst een blik op bestaande mobiele AR-applicaties en hoe de ontwikkelaars hun functionaliteiten wensen gebruikt te zien worden door consumenten.
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+\subsection{Proof-of-concept}
+\label{subsec:poc}
+Gedurende de derde fase wordt een applicatie gebouwd op de Troposhere SDK geselecteerd. % 5 weken
+Belangrijk hierbij is dat deze applicatie voldoende verschillende interactiemogelijkheden bevat die tijdens de requirements-analyse aan het licht kwamen.
+Subsequent worden de user interface-elementen van de interacties vertaald naar gesture-geoptimaliseerde versies in de vorm van een proof-of-concept.
+Gezien Troposphere (en dus ook haar toepassingen) beschikbaar is op Android en gebruik maakt van de Unity game-engine, lijkt de Meta Quest 3 voor de hand liggend als platform voor de proof-of-concept.
+Dit AR-apparaat is de eerste toegankelijke versie van een AR head-mounted device voor het algemeen publiek en maakt tevens ook gebruik van deze technologie\"en.
+Hierdoor kan de originele code van de applicatie bewaard blijven en hoeven enkel de functionaliteiten van de SDK vertaald te worden.
+De proof-of-concept toetst de mogelijke antwoorden die tijdens de literatuurstudie aan bod kwamen op de requirements af.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
-
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
-
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
-
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
-
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+\subsection{Rapport met aanbevelingen}
+\label{subsec:result-of-poc}
+Na het opzetten van de proof-of-concept komen enkele gebruikerstests aan bod. % 3 weken
+Hierbij worden het gebruikspatroon en de tijdsduur en foutenpercentage voor het uitvoeren van taken vastgelegd.
+Een analyse van deze cijfers zal de bruikbaarheid van de voorgestelde oplossingen aantonen.
+Daaropvolgend wordt een rapport met aanbevelingen opgesteld voor Tropos AR.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%

@@ -1,8 +1,8 @@
 %---------- Inleiding ---------------------------------------------------------
 
-\section{Introductie}%
+\section{Introductie}
 \label{sec:introductie}
-Vandaag de dag kent sport een prominente rol bij vele Vlamingen, dat kunnen we duidelijk aflezen uit statistieken van \textcite{StatistiekVlaanderen2023} .
+Vandaag de dag kent sport een prominente rol bij vele Vlamingen, dat kunnen we duidelijk aflezen uit statistieken van~\textcite{StatistiekVlaanderen2023}.
 Hoewel sporten centraal staat voor gemiddeld \'e\'en op de vijf Vlamingen, kampt de sportsector met een sterk trainerstekort. \autocite{SportVlaanderen2023}
 Met de toenemende groei van de artifici\"ele intelligentiesector ontstaat de mogelijkheid voor bijkomende hulpmiddelen om de werkdruk van trainers te verlichten.
 Hierbij kunnen machine learning en objectdetectie bijdragen tot het personaliseren van een trainingsschema voor een gebruiker.
@@ -17,37 +17,45 @@ Trainers kunnen makkelijk hier op voortbouwen en het trainingsschema aanvullen e
 
 %---------- Stand van zaken ---------------------------------------------------
 
-\section{Literatuurstudie}%
+\section{Literatuurstudie}
 \label{sec:state-of-the-art}
 
-\subsection{Het ontstaan van (mobiele) AR}
-\label{subsec:wat-is-ar}
-Met haar eerste iteratie in de vorm van een head-mounted display ontwikkeld door \textcite{Sutherland1968} , kende Augmented Reality een opmerkelijke voorsprong op de hedendaagse smartphone.
-Toch kent deze vorm van AR niet dezelfde aanneming door het algemene publiek en is tot recentelijk enkel een vorm van mobiele AR (gebruikmakend van smartphones) aanwezig op de markt.
+\subsection{Artificiële intelligentie}
+\label{subsec:artificiele-intelligentie}
+Hedendaagse artifici\"ele algemene intelligenties komen voornamelijk voort uit vooraf getrainde taalmodellen.
+Aan de hand van natuurlijke taalverwerking (NLP) krijgt de intelligentie een inzicht in wat ervan verwacht en hoe het hoort te reageren op interactie van de gebruiker.
+De verwerkte gegevens bestaan uit een brede dekking aan informatie afkomstig van bronnen die kunnen vari\"eren van nieuws artikelen tot taalexamens, aldus~\textcite{Liu2019}.
 
-Head-mounted AR had vooral te lijden aan grotere technologische obstakels zoals de displays waarop een samensmelting van de virtuele met de echte wereld geprojecteerd wordt \autocite{YunHan2019} .
-Hierdoor was het aan koplopers zoals Meta en Varjo om aanzienlijke budgetten te besteden om deze obstakels te kunnen overbruggen en de fundamenten van deze markt tot stand te krijgen. % TODO miss bron?
-Intussen zagen smartphonemakers zoals Samsung en Apple een opportuniteit om deze technologie toch in de handen te zien krijgen bij consumenten, dit in de vorm van mobiele AR.
-Zo bepalen hedendaagse smartphones met behulp van camera's en sensoren de plaats van digitale entiteiten en tonen ze deze vervolgens op hun scherm.
+2022 kende een explosie in de waar te nemen mogelijkheden van kunstmatige intelligentie gestuurd door deze natuurlijke taalverwerkingsmodellen.
+OpenAI bracht haar derde generatie Generative Pre-trained Transformer (GPT) model uit en markeerde hiermee de nieuwe standaard van deep learning modellen.
+Het naar het model genoemde GPT-3 platform toonde belovende eerste resultaten bij het experimenteren rond het literaire aspect~\autocite{Elkins2020}, zo kon het model kwaliteitsvollere filosofische essays genereren dan bestaande geschreven essays.
+Ondanks deze resultaten bleek het model volgens~\textcite{Floridi2020} geen dieper begrip te kennen van het gegenereerde resultaat.
 
-\subsection{Head-mounted AR en gebaren}
-\label{subsec:ar-gestures}
-Head-mounted AR is een radicaal andere ervaring van de samensmelting van virtueel met fysiek: in tegenstelling tot mobiele AR neemt deze vorm van AR heel het gezichtsveld in beslag.
-Hierdoor verdwijnt echter ook de on-screen navigatie die men vandaag de dag gewend is aan smartphones en wordt deze vervangen met gebaren.
+Slechts een jaar later, in maart 2023, kwam de volgende generatie uit van OpenAI's Generative Pre-trained Transformer (GPT) model.
+Het GPT-4 platform is in elk opzicht beter dan het GPT-3 platform volgens de resultaten van~\textcite{Katz2023}, en in een opmerkelijk opzicht, ook beter dan de gemiddelde persoon in vijf van de zeven deelgebieden in het Multistate Essay Exam (MEE), een gedeeltelijk toelatingsexamen om rechter te worden in de Verenigde Staten.
 
-Een mogelijk alternatief hiervoor is om via gebaren te interageren met virtuele objecten, een alternatief waar Apple vooral op zal steunen met haar Vision Pro model.
-De werking hiervan wordt bepaald door middel van camera's die de posities van de gebruikers' handen bepaalt en vertaalt naar interacties met menu's \textcite{Shrestha2018} .
-Uit onderzoek van \textcite{Datcu2013} blijkt dat deze manier van virtuele objecten en menu's te besturen de voorkeur kent bij gebruikers.
+\subsection{De technologische vooruitgang van objectdetectie in de cloud}
+\label{subsec:effect-objectdetectie-cloud}
+Met de komst van het GPT-4 platform ontstond de mogelijkheid om naast tekst ook bestanden, waaronder foto's, in te voeren.
+Als reactie op het succes van OpenAI's (Chat)GPT kwam Google met haar eigen AI-platform, genaamd Bard (nu Gemini).
+Gemini kent nu ook al een integratie in Google's Cloud Vertex AI, wat de nauwkeurigheid en bruikbaarheid van object detectie in foto's sterk bevordert.~\autocite{GoogleCloud2024}
+Hiermee wordt het steeds interessanter om gebruik te maken van Google Cloud om gebruik te maken van machine learning.
 
-\subsection{Het voordeel van head-mounted devices}
+\subsection{Lokale machine learning}
 \label{subsec:benefits-hmd}
-Head-mounted devices maken het mogelijk voor de gebruiker om direct aan de slag te gaan met de virtuele wereld zonder hierbij een telefoon vast te houden.
-Het gevoel van kijken door een soort venster verdwijnt doordat de samensmeltende werelden direct geprojecteerd worden in de ogen van gebruikers.
-Deze categorie van AR-apparaten krijgt daardoor vaak de term \("\)Immersive AR\("\) en kent ook vandaag al een meerwaarde in onder andere de medische sector tijdens het opleiden van chirurgen~\autocite{Waisberg2023} .
+Echter zijn er ook nadelen bij clouddiensten zoals Google Cloud: niet elke organisatie is groot genoeg om het gebruik van clouddiensten te kunnen verantwoorden.
+Een alternatief hiervoor is het lokaal draaien van machine learning.
+Mogelijke opties hiervoor zijn PyTorch en TensorFlow.
+Hoewel deze tools ongetwijfeld sneller zullen draaien op servers in de cloud, is het ook mogelijk om hier gebruik van te maken op een lokale computer.
+Een moderne videokaart (hetzij de workstation Quadro-lijn of de consumenten-gerichte GeForce-lijn) van NVidia, of zelfs moderne videokaarten van AMD via het ROCm platform.~\autocite{AMD2024}
+De nauwkeurigheid en snelheid zal lager liggen dan datasets gegenereerd door middel van cloudservices, maar aan een fractie van de kost.
+Het vergelijken van een cloudoplossing met een lokale machine tijdens de proof-of-concept fase van deze thesis kan hierbij interessant zijn.
 
 %---------- Methodologie ------------------------------------------------------
-\section{Methodologie}%
+\section{Methodologie}
 \label{sec:methodologie}
+\includegraphics[width=0.5\textwidth]{ganttChart}
+
 \subsection{Voorafgaande literatuurstudie}
 \label{subsec:literature-study}
 In de eerste fase vindt zich een voorafgaande literatuurstudie over het onderwerp plaats. % 3 weken
@@ -68,7 +76,7 @@ Ook zal hiermee de mogelijkheid ontstaan voor gebruikers om een gepersonaliseerd
 \label{subsec:poc}
 Gedurende de derde fase wordt een proof-of-concept applicatie gebouwd voor Android-apparaten. % 4 weken
 Hiervoor worden er eerst datasets gegenereerd voor de objectdetectie functionaliteit.
-Deze datasets zullen enerzijds gebruik kunnen maken van de machine learning capaciteiten van Google Cloud (Vertex AI) of anderzijds gegenereerd worden op een lokale computer gebruikmakend van het Tensorflow framework.
+Deze datasets zullen enerzijds gebruik kunnen maken van de machine learning capaciteiten van Google Cloud (Vertex AI) of anderzijds gegenereerd worden op een lokale computer gebruikmakend van het TensorFlow framework.
 Hiermee kunnen we het verschil in kwaliteit testen om vervolgens de waarde van de platformen af te toetsen tegenover de kostprijs.
 De proof-of-concept toetst de mogelijke antwoorden die tijdens de literatuurstudie aan bod kwamen op de requirements af.
 
@@ -79,8 +87,6 @@ Hierbij worden het gebruikspatroon, de tijdsduur en foutenpercentage van objectd
 Een analyse van deze cijfers zal de bruikbaarheid van het gebruiken van objectdetectie en genereren van gepersonaliseerde trainingsschema's aantonen.
 Daaropvolgend wordt een rapport met aanbevelingen opgesteld voor ontwikkelaars die soortgelijke functies willen implementeren.
 Belangrijk hierbij is dat ontwikkelaars dit rapport kunnen gebruiken om te kunnen kiezen tussen een lokaal gegenereerde dataset of gebruikmakend van clouddiensten zoals Google Cloud.
-
-\includegraphics[width=0.5\textwidth]{ganttChart}
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaten en conclusie}

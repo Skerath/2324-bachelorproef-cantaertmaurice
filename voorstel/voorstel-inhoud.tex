@@ -50,48 +50,43 @@ Deze categorie van AR-apparaten krijgt daardoor vaak de term \("\)Immersive AR\(
 \label{sec:methodologie}
 \subsection{Voorafgaande literatuurstudie}
 \label{subsec:literature-study}
-In de eerste fase vindt zich een voorafgaande literatuurstudie over het onderwerp plaats. % 2 weken
-Het praktische doel hiervan is om een verdere inzicht te krijgen op de werking van gesture-gebaseerde navigatie in head-mounted devices.
-De nadruk ligt hierbij op de evolutie van deze werking en het verschil van hedendaagse mobiele AR-besturing.
-Tijdens deze fase komen de gelijkenissen en verschillen tussen de twee werkwijzes om tijdens de derde fase met elkaar te kunnen verzoenen naar voren.
+In de eerste fase vindt zich een voorafgaande literatuurstudie over het onderwerp plaats. % 3 weken
+Het praktische doel hiervan is om een verdere inzicht te krijgen op de werking van machine learning en haar rol bij object detectie op foto's.
+De nadruk ligt hierbij op de evolutie van deze werking en de verschillen tussen lokale machine learning applicaties en die van cloudproviders zoals Amazon en Google.
+Tijdens deze fase komen de gelijkenissen en verschillen tussen de twee varianten aan bod om tijdens de derde fase te kunnen vergelijken aan de hand van een proof-of-concept.
 
-\subsection{Requirements-analyse}
-\label{subsec:requirements-analysis}
-Vervolgens vindt er zich een requirements-analyse plaats bij Tropos AR over de gewenste interactiemogelijkheden binnen Immersive AR. % 3 weken
-Ook klanten van de Tropos AR SDK zullen participeren aan een bevraging, met als richtlijn waarom ze specifiek gekozen hebben voor de Tropos framework.
-Uit deze bevraging blijkt een lijst van gewenste resultaten waar een proof-of-concept zich op zal richten, deze wordt opgesteld aan de hand van de MoSCoW-methode.
-Deze lijst bevat enerzijds de visie van Tropos AR voor interacties met virtuele objecten.
-Anderzijds bevat deze een blik op bestaande mobiele AR-applicaties en hoe de ontwikkelaars hun functionaliteiten wensen gebruikt te zien worden door consumenten.
+\subsection{Dataverzameling}
+\label{subsec:dataverzameling}
+Vervolgens vindt er zich een requirements-analyse plaats om af te toetsen waar de focus moet liggen bij objectdetectie. % 3 weken
+Gebruikers die een app gebruikmakend van deze tool wensen te gebruiken tijdens het sporten horen eender welke gerelateerde apparatuur in te kunnen scannen.
+Om dit te realiseren moet de dataset getraind worden op gepaste en gevarieerde fitnessapparatuur in verschillende fitnessclubs.
+Hiervoor wordt data in de vorm van foto's en beschrijvingen verzameld, gepaard met de gebruiksmogelijkheden en eventuele advies van trainers.
+Dit wordt vervolgens gegoten in bruikbare datasets in de derde fase.
+Ook zal hiermee de mogelijkheid ontstaan voor gebruikers om een gepersonaliseerd fitnessschema aan te bieden, deels vooropgesteld door trainers.
 
 \subsection{Proof-of-concept}
 \label{subsec:poc}
-Gedurende de derde fase wordt een applicatie gebouwd op de Troposhere SDK geselecteerd. % 5 weken
-Belangrijk hierbij is dat deze applicatie voldoende verschillende interactiemogelijkheden bevat die tijdens de requirements-analyse aan het licht kwamen.
-Subsequent worden de user interface-elementen van de interacties vertaald naar gesture-geoptimaliseerde versies in de vorm van een proof-of-concept.
-Gezien Troposphere (en dus ook haar toepassingen) beschikbaar is op Android en gebruik maakt van de Unity game-engine, lijkt de Meta Quest 3 voor de hand liggend als platform voor de proof-of-concept.
-Dit AR-apparaat is de eerste toegankelijke versie van een AR head-mounted device voor het algemeen publiek en maakt tevens ook gebruik van deze technologie\"en.
-Hierdoor kan de originele code van de applicatie bewaard blijven en hoeven enkel de functionaliteiten van de SDK vertaald te worden.
+Gedurende de derde fase wordt een proof-of-concept applicatie gebouwd voor Android-apparaten. % 4 weken
+Hiervoor worden er eerst datasets gegenereerd voor de objectdetectie functionaliteit.
+Deze datasets zullen enerzijds gebruik kunnen maken van de machine learning capaciteiten van Google Cloud (Vertex AI) of anderzijds gegenereerd worden op een lokale computer gebruikmakend van het Tensorflow framework.
+Hiermee kunnen we het verschil in kwaliteit testen om vervolgens de waarde van de platformen af te toetsen tegenover de kostprijs.
 De proof-of-concept toetst de mogelijke antwoorden die tijdens de literatuurstudie aan bod kwamen op de requirements af.
 
 \subsection{Rapport met aanbevelingen}
 \label{subsec:result-of-poc}
 Na het opzetten van de proof-of-concept komen enkele gebruikerstests aan bod. % 3 weken
-Hierbij worden het gebruikspatroon en de tijdsduur en foutenpercentage voor het uitvoeren van taken vastgelegd.
-Een analyse van deze cijfers zal de bruikbaarheid van de voorgestelde oplossingen aantonen.
-Daaropvolgend wordt een rapport met aanbevelingen opgesteld voor Tropos AR.
+Hierbij worden het gebruikspatroon, de tijdsduur en foutenpercentage van objectdetectie vastgelegd.
+Een analyse van deze cijfers zal de bruikbaarheid van het gebruiken van objectdetectie en genereren van gepersonaliseerde trainingsschema's aantonen.
+Daaropvolgend wordt een rapport met aanbevelingen opgesteld voor ontwikkelaars die soortgelijke functies willen implementeren.
+Belangrijk hierbij is dat ontwikkelaars dit rapport kunnen gebruiken om te kunnen kiezen tussen een lokaal gegenereerde dataset of gebruikmakend van clouddiensten zoals Google Cloud.
 
 \includegraphics[width=0.5\textwidth]{ganttChart}
 
 %---------- Verwachte resultaten ----------------------------------------------
-\section{Verwacht resultaat}%
-\label{sec:verwachte_resultaten}
-Er wordt verwacht dat de resultaten uit de proof-of-concept zal leiden tot een bruikbaar rapport van aanbevelingen.
-Deze aanbevelingen zullen concreet gesture-gebaseerde handelingen ter vervanging van de bestaande UI-gestuurde acties omvatten.
-Voor elke aanbeveling zal er tevens ook een analyse op de gebruikservaringen tijdens het testen van de proof-of-concept aanwezig zijn.
-De hypothese stelt dat het interageren met de digitale wereld met de getoetste gebruikersacties zal leiden tot een kortere tijdsduur dan bestaande UI-gestuurde ervaringen.
-
-\section{Conclusie}%
-\label{sec:conclusie}
-Immersive AR en mobiele Augmented Reality hebben beiden hetzelfde doel: het toonbaar maken van digitale objecten op een weerspiegeling van de fysieke omgeving.
-Toch maakt deze gelijkenis het niet voor de hand liggend om interacties met deze virtuele entiteiten op soortgelijke wijze te realiseren.
-Dit rapport zal Tropos AR mogelijks kunnen helpen om haar bestaande klassieke user interface voor mobiele AR te kunnen vertalen naar haar Immersive tegenhanger met intu\"{\i}tieve gebaren.
+\section{Verwacht resultaten en conclusie}
+\label{sec:verwacht-resultaten-en-conclusie}
+Er wordt verwacht dat de resultaten uit de proof-of-concept zal leiden tot een bruikbare tool die de drempel tot het starten van sport verlagen.
+Deze tool zal concreet de mogelijkheid bieden om fitness apparatuur in te scannen en detecteren door middel van machine learning.
+Hiermee kunnen ontwikkelaars die werken voor fitnessketens snel aan de slag voor gepersonaliseerde applicaties.
+De hypothese stelt dat de drempel om te starten in een fitnessclub zal verlaagd worden en dat coaches meer kunnen focussen op langetermijnschema's.
+Aan de hand van het aanbevelingsrapport kunnen ontwikkelaars ervoor kiezen om gebruik te maken van Google Cloud voor nauwkeurigere oplossingen of voor een lokale machine voor een lagere kostprijs.

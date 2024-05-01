@@ -7,10 +7,12 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-\section{Fotografische objectdetectie}\label{sec:ls-object-detectie}
+
+%---------- Objectherkenning -----------------------------------------------------------
+\section{De werking van objectherkenning}\label{sec:ls-object-detectie}
 Gezien objectdetectie de kern van dit onderzoek vormt, is het belangrijk om eerst een basis begrip te vormen van wat het juist inhoud.
 Om dit te bereiken wordt eerst computer visie aangehaald, het vakdomein waarbinnen objectdetectie toebehoort.
-Met een gepast begrip van objectherkenning wordt het mogelijk om enkele toepassingen van bestaande algoritmen te analyseren.
+Met een gepast begrip van objectherkenning en de manier waarop beeldfragmenten bijgehouden worden wordt het mogelijk om enkele toepassingen van bestaande algoritmen te analyseren.
 Het volgende hoofdstuk binnen deze literatuurstudie bouwt hierop verder en legt de link met large language models (LLM), een ander vakgebied binnen de artifici\"ele intelligentie.
 
 \subsection{Computer visie}\label{subsec:de-kern-van-objectdetectie}
@@ -19,25 +21,40 @@ Met de komst van dit vakgebied ontstaat een grote waaier van mogelijkheden voor 
 Hiermee beschrijven~\textcite{Tasnim2023} dat objectdetectie een fundamentele taak omvat binnen dit vakgebied waarmee het identificeren en lokaliseren van objecten mogelijk wordt op (bewegende) beelden.
 De ontwikkelingen in dit vakgebied worden vandaag steeds meer gebruikt in allerlei sectoren waaronder landbouw, zoals vermeld door~\textcite{Anand2024}, en gezondheidszorg~\autocite{Germanese2023}.
 
-\subsection{Bestaande algoritmen}\label{subsec:bestaande-algoritmen}
-Uitleg welke algoritmes zijn er.
+\subsection{Beeldfragmenten als data}\label{subsec:beeldfragmenten-als-data}
+Concreet worden beelden digitaal opgeslagen in tweedimensionale tabellen van pixels, waarbij elke pixel kleurdata bevat.
+De resolutie, of scherpheid, van een beeldfragment wordt vaak hierin uitgedrukt.
+Zo kent een standaard Full HD (FHD)-computerscherm volgens de specificaties van~\textcite{VESA2013} een resolutie van 1920 pixels bij 1080 pixels.
+Deze resolutie wordt volgens statistieken van~\textcite{ValveCorporation2024} gebruikt door meer dan de helft van haar gebruikers.
+% TODO: foto van hardware resoluties
+Hierbij kan de meeteenheid megapixels (MP) gebruikt worden om de kwaliteit van een beeldfragment te beschrijven, waarbij \'e\'en megapixel \'e\'en miljoen pixels voorstelt en kan de voorafgaande specificatie uitgedrukt worden in 2,1 megapixels.
+Moderne smartphones zoals de Galaxy S24 nemen volgens~\textcite{Samsung2024} foto's aan een kwaliteit van 50 megapixels en bieden daarmee ongeveer 24 keer hogere kwaliteit dan een Full HD-computerscherm kan weergeven.
 
+\subsection{Het verwerken van data uit multimedia}\label{subsec:het-verwerken-van-data}
+In hoofdstuk 2 van zijn onderzoek beschrijft~\textcite{Olaoye2024} het proces van beeldverwerking in enkele cruciale stappen:
+% TODO
 
+\subsection{Bestaande objectherkenningsalgoritmen}\label{subsec:bestaande-algoritmen}
+Na het verwerken van beeldfragmenten komt het toepassen van objectherkenning aan bod, waarvoor vele iteraties aan algoritmes geschreven zijn.
+Belangrijk hierbij is om te onthouden dat elk algoritme eerst een dataset nodig heeft om te weten hoe een bepaald object eruit ziet.
+Dit komt aan bod in het hoofdstuk~\nameref{sec:datasets}.
+Hieronder volgen de meestgebruikte traditionele algoritmes om aan objectherkenning te doen.
+Daarnaast worden enkele actuele toepassingen opgesomd en de effici\"entie van de algoritmes.
+
+\subsubsection{Algoritme A}
+Algoritme A wordt uitgelegd.
+
+%---------- De werking van AI ----------------------------------------------------------
 \section{Artificiële intelligentie}
 \label{sec:ls-artificiele-intelligentie}
-Om dieper in te gaan op computer vision
-// ai maakt het zelf trainen van een dataset onnodig en zelfs afgeraden
+In het vorig hoofdstuk kwam computer visie aan bod als vakdomein binnen de artifici\"ele intelligentie.
+Een ander, en met hedendaagse coverage in het nieuws wellicht bekendere, domein hierin is de toepassing van large language models (LLM).
+Voorbeelden hiervan zijn GPT en haar toepassing ChatGPT. % TODO: hier op verder gaan & kijken naar voorstel of daar niets uit genomen kan worden.
 
-
-Naast traditionele algoritmen van object detectie
-Hedendaagse artifici\"ele algemene intelligenties komen voornamelijk voort uit vooraf getrainde taalmodellen.
-Aan de hand van natuurlijke taalverwerking (NLP) krijgt de intelligentie een inzicht in wat ervan verwacht en hoe het hoort te reageren op interactie van de gebruiker.
-De verwerkte gegevens bestaan uit een brede dekking aan informatie afkomstig van bronnen die kunnen vari\"eren van nieuws artikelen tot taalexamens, aldus~\textcite{Liu2019}.
-
-2022 kende een explosie in de waar te nemen mogelijkheden van kunstmatige intelligentie gestuurd door deze natuurlijke taalverwerkingsmodellen.
-OpenAI bracht haar derde generatie Generative Pre-trained Transformer (GPT) model uit en markeerde hiermee de nieuwe standaard van deep learning modellen.
-Het naar het model genoemde GPT-3 platform toonde belovende eerste resultaten bij het experimenteren rond het literaire aspect~\autocite{Elkins2020}, zo kon het model kwaliteitsvollere filosofische essays genereren dan bestaande geschreven essays.
-Ondanks deze resultaten bleek het model volgens~\textcite{Floridi2020} geen dieper begrip te kennen van het gegenereerde resultaat.
-
-Slechts een jaar later, in maart 2023, kwam de volgende generatie uit van OpenAI's Generative Pre-trained Transformer (GPT) model.
-Het GPT-4 platform is in elk opzicht beter dan het GPT-3 platform volgens de resultaten van~\textcite{Katz2023}, en in een opmerkelijk opzicht, ook beter dan de gemiddelde persoon in vijf van de zeven deelgebieden in het Multistate Essay Exam (MEE), een gedeeltelijk toelatingsexamen om rechter te worden in de Verenigde Staten.
+%---------- Datasets generereren ------------------------------------------------------
+\section{Datasets}\label{sec:datasets}
+Uitleg hier over: % TODO
+- hoe wordt bepaald wat een geldig beeld is om mee te trainen
+- hoe worden datasets getraind
+- misschien statistieken van hoe nauwkeurig
+- bestaande datasets gebruiken zoals Google Gemini Vertex

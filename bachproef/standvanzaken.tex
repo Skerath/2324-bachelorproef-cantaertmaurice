@@ -1,4 +1,4 @@
-\chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}%
+\chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}
 \label{ch:stand-van-zaken}
 
 % Tip: Begin elk hoofdstuk met een paragraaf inleiding die beschrijft hoe
@@ -7,12 +7,37 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+\section{Fotografische objectdetectie}\label{sec:ls-object-detectie}
+Gezien objectdetectie de kern van dit onderzoek vormt, is het belangrijk om eerst een basis begrip te vormen van wat het juist inhoud.
+Om dit te bereiken wordt eerst computer visie aangehaald, het vakdomein waarbinnen objectdetectie toebehoort.
+Met een gepast begrip van objectherkenning wordt het mogelijk om enkele toepassingen van bestaande algoritmen te analyseren.
+Het volgende hoofdstuk binnen deze literatuurstudie bouwt hierop verder en legt de link met large language models (LLM), een ander vakgebied binnen de artifici\"ele intelligentie.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+\subsection{Computer visie}\label{subsec:de-kern-van-objectdetectie}
+Computer visie is een van de vele vakgebieden binnen de kunstmatige intelligentie en richt zich op het interpreteren van multimedia~\autocite{Moin2023}.
+Met de komst van dit vakgebied ontstaat een grote waaier van mogelijkheden voor computers om bij te staan bij complexere taken zoals gezichts- en emotieherkenning, sc\`eneanalyse en objectherkenning.
+Hiermee beschrijven~\textcite{Tasnim2023} dat objectdetectie een fundamentele taak omvat binnen dit vakgebied waarmee het identificeren en lokaliseren van objecten mogelijk wordt op (bewegende) beelden.
+De ontwikkelingen in dit vakgebied worden vandaag steeds meer gebruikt in allerlei sectoren waaronder landbouw, zoals vermeld door~\textcite{Anand2024}, en gezondheidszorg~\autocite{Germanese2023}.
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+\subsection{Bestaande algoritmen}\label{subsec:bestaande-algoritmen}
+Uitleg welke algoritmes zijn er.
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
 
-\lipsum[7-20]
+\section{Artificiële intelligentie}
+\label{sec:ls-artificiele-intelligentie}
+Om dieper in te gaan op computer vision
+// ai maakt het zelf trainen van een dataset onnodig en zelfs afgeraden
+
+
+Naast traditionele algoritmen van object detectie
+Hedendaagse artifici\"ele algemene intelligenties komen voornamelijk voort uit vooraf getrainde taalmodellen.
+Aan de hand van natuurlijke taalverwerking (NLP) krijgt de intelligentie een inzicht in wat ervan verwacht en hoe het hoort te reageren op interactie van de gebruiker.
+De verwerkte gegevens bestaan uit een brede dekking aan informatie afkomstig van bronnen die kunnen vari\"eren van nieuws artikelen tot taalexamens, aldus~\textcite{Liu2019}.
+
+2022 kende een explosie in de waar te nemen mogelijkheden van kunstmatige intelligentie gestuurd door deze natuurlijke taalverwerkingsmodellen.
+OpenAI bracht haar derde generatie Generative Pre-trained Transformer (GPT) model uit en markeerde hiermee de nieuwe standaard van deep learning modellen.
+Het naar het model genoemde GPT-3 platform toonde belovende eerste resultaten bij het experimenteren rond het literaire aspect~\autocite{Elkins2020}, zo kon het model kwaliteitsvollere filosofische essays genereren dan bestaande geschreven essays.
+Ondanks deze resultaten bleek het model volgens~\textcite{Floridi2020} geen dieper begrip te kennen van het gegenereerde resultaat.
+
+Slechts een jaar later, in maart 2023, kwam de volgende generatie uit van OpenAI's Generative Pre-trained Transformer (GPT) model.
+Het GPT-4 platform is in elk opzicht beter dan het GPT-3 platform volgens de resultaten van~\textcite{Katz2023}, en in een opmerkelijk opzicht, ook beter dan de gemiddelde persoon in vijf van de zeven deelgebieden in het Multistate Essay Exam (MEE), een gedeeltelijk toelatingsexamen om rechter te worden in de Verenigde Staten.

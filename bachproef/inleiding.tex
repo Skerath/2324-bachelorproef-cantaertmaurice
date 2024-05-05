@@ -2,49 +2,66 @@
 %% Inleiding
 %%=============================================================================
 
-\chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}%
+% context, achtergrond
+% afbakenen van het onderwerp
+% verantwoording van het onderwerp, methodologie
+% probleemstelling
+% onderzoeksdoelstelling
+% onderzoeksvraag
+
+\chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}
 \label{ch:inleiding}
+Sport kent een prominente rol in de levensstijl van Vlamingen, zo blijkt uit het jaarverslag van~\autocite{SportVlaanderen2023}.
+Hoewel participate van Vlamingen hoog staat in sportactiviteiten zoals atletiek en aquatische sport, gemiddeld een op vijf Vlamingen participeert in sport, kan hetzelfde niet gezegd worden over de beschikbaarheid van trainers.
+In hetzelfde jaarverslag komt naar voren dat 26 procent van de trainers jonger dan 30 jaar afhaken, waardoor de verhouding van \'e\'en trainer op twintig sporters geen positieve evolutie kent.
 
-De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding
+Het is duidelijk dat er niet alleen werk gemaakt moet worden om meer coaches op te leiden, maar ook om tewerkgestelde trainers bij te staan in hun takenpakket.
+Met de voortdurende verbeteringen binnen de artifici\"ele intelligentiesector en de toename in capaciteiten van generatieve AI ontstaan mogelijkheden om de werkdruk van trainers te verlichten.
+Deze paper richt zich erop een proof-of-concept Android-app te ontwikkelen om sporters op weg te helpen met behulp van generatieve AI en objectherkenning.
+Trainers kunnen vervolgens bijsturen waar nodig, waarmee de werkdruk om startende sporters bij te staan verkleind kan worden.
 
+%%---------- Probleemstelling -------------------------------------------------
+\section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}
+\label{sec:probleemstelling}
+Jordi Van Bossuyt is een jonge zelfstandige personal trainer en geeft momenteel training aan jonge cadetten in de Koninklijke Atletiekclub Eendracht Aalst.
+Met een interesse voor een meer gestroomlijnde manier om startende sporters bij te staan komt het idee van een mobiele app aan bod.
+Concreet is het doel om een app te ontwikkelen waarbij er minimale frictie moet zijn om aan de slag te gaan met sportmateriaal.
+Gebruikers horen de mogelijkheid te krijgen om sportgerelateerde objecten en omgevingen zoals fitnessinstrumenten of looppistes in te scannen met de camera van de telefoon en hiervoor suggesties te krijgen.
+Met een proof-of-concept moet aangetoond kunnen worden dat dit mogelijk is door middel van een vooraf-getrainde dataset en bestaande generatieve AI-modellen om zelf suggestieve trainingsschema's te genereren.
+
+%%---------- Onderzoeksvragen -------------------------------------------------
+\section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}
+\label{sec:onderzoeksvraag}
+Hoe kan een bestaande kunstmatige intelligentieplatform gebruikt worden om aan objectherkenning te doen?
+Kan het platform vervolgens suggesties van activiteiten voorstellen aan de gebruiker, met input van de trainer?
+Op welke manier kan de trainer inspelen op het gebruik van de app?
+
+%%---------- Onderzoeksdoelstellingen -----------------------------------------
+\section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}
+\label{sec:onderzoeksdoelstelling}
+Deze bachelorproef zal zich eerst richten op het onderzoeken van de manier waarop aan objectherkenning en het suggereren van oefeningen kan gedaan worden in de vorm van een literatuurstudie.
+Hierin komt tevens ook het trainen van eigen datasets aan bod om een beter begrip te krijgen op de manier waarop kunstmatige intelligentiemodellen getraind worden.
+Met dit basis begrip zal een proof-of-concept uitgewerkt worden om de haalbaarheid van een mobiele app ter ondersteuning van trainers ontwikkeld kan worden.
+
+De proof-of-concept moet hierbij voldoen aan enkele criteria van de opdrachtgever:
 \begin{itemize}
-  \item context, achtergrond
-  \item afbakenen van het onderwerp
-  \item verantwoording van het onderwerp, methodologie
-  \item probleemstelling
-  \item onderzoeksdoelstelling
-  \item onderzoeksvraag
-  \item \ldots
+    \item De app hoort op een kosteneffici\"ente manier ontwikkeld te worden, waarbij er geen vereiste is om zelf datasets te trainen.
+    \item Dit moet op een beperkte, reproduceerbare, manier gebeuren voor \'e\'en fitnesstoestel.
+    \item Suggesties moeten gegenereerd kunnen worden zonder de input van trainers, maar met de mogelijkheid om deze suggesties te kunnen bijsturen.
+    \item Gebruikers horen zo weinig mogelijk frictie te ervaren bij het inzenden van foto's en het ontvangen van suggesties.
 \end{itemize}
 
-\section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
-\label{sec:probleemstelling}
-
-Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's'', systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
-
-\section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
-\label{sec:onderzoeksvraag}
-
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
-
-\section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
-\label{sec:onderzoeksdoelstelling}
-
-Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
-
-\section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
+%%---------- Opzet van de bachelorproef ---------------------------------------
+\section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}
 \label{sec:opzet-bachelorproef}
-
-% Het is gebruikelijk aan het einde van de inleiding een overzicht te
-% geven van de opbouw van de rest van de tekst. Deze sectie bevat al een aanzet
-% die je kan aanvullen/aanpassen in functie van je eigen tekst.
-
 De rest van deze bachelorproef is als volgt opgebouwd:
-
 In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand van zaken binnen het onderzoeksdomein, op basis van een literatuurstudie.
 
 In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
 
-% TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
+In Hoofdstuk~\ref{ch:shortlist} worden de gekozen technologi\"een en platformen toegelicht die gebruikt zullen worden bij het ontwikkelen van de proof-of-concept.
 
-In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.
+In Hoofdstuk~\ref{ch:proof-of-concept} wordt de uitwerking van de proof-of-concept uitgelegd samen met een demonstratie van hoe de app gebruikt kan worden.
+
+In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen.
+Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.

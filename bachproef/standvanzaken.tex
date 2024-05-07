@@ -91,9 +91,8 @@ Hiermee ontstaat de vaststelling dat de voorafgaande en meest gebruikte specific
 \subsubsection{Kwaliteit van hedendaags camera's}
 Moderne smartphones zoals de Galaxy S24 nemen volgens~\textcite{Samsung2024} foto's aan een kwaliteit van 50 megapixels en bieden daarmee ongeveer 24 keer hogere kwaliteit dan een Full HD-computerscherm kan weergeven.
 Het is hierbij belangrijk om op te merken dat het aantal megapixels niet de enige factor speelt in het bepalen van beeldkwaliteit.
-Deze meeteenheid bepaalt tevens enkel de totale grootte van de data dat een beeldfragment bevat.
-Ook ongewenste data, waaronder ruis en vervorming, worden hierin mee verrekend.
-Om dit probleem te mitigeren wordt in vele gevallen aan pixel binning gedaan, een proces waarbij pixels gegroepeerd worden tot zogenaamde superpixels~\autocite{Jin2012}.
+Deze meeteenheid bepaalt niet alleen de totale grootte van de data dat een beeldfragment bevat, maar ook ongewenste data zoals ruis of andere artefacten.
+Om het voorgenoemde fenomeen te mitigeren wordt in vele gevallen aan pixel binning gedaan, een proces waarbij pixels gegroepeerd worden tot zogenaamde superpixels~\autocite{Jin2012}.
 \begin{figure}
     \includegraphics[width=1\linewidth]{images/pixel-binning}
     \caption{Visualisatie van pixel binning~\autocite{Jin2012}}
@@ -108,31 +107,41 @@ Beeldfragmenten ondergaan hiervoor verschillende processen, waaronder het voorge
 
 \subsubsection{Pixel binning}
 Zoals eerder aangehaald kiezen moderne smartphones ervoor om pixels te groeperen in superpixels waarop vervolgens aan pixel binning gedaan wordt.
-Het effect hiervan is het verzachten van observeerbare ruis.
+Het effect hiervan is het verzachten van observeerbare ruis, zoals zichtbaar in~\ref{fig:pixel-binning}.
 Beelden die genomen zijn in donkere plekken kunnen daarmee een hogere waarneembare beeldkwaliteit krijgen.
 Een bijkomend effect van dit proces is de kleinere voetafdruk van de verwerkte beelden doordat er een kleiner aantal pixels overblijven.
 In het geval van smartphones wordt vaak gekozen om te binnen richting 12 megapixels, wat tussen de schermresoluties 4K Ultra HD (ongeveer 8 megapixels) en 8K Ultra HD (ongeveer 33 megapixels) ligt.
 Deze resoluties worden steeds vaker gebruikt in televisies~\autocite{Statista2024}.
 
-\subsubsection{}
-In hoofdstuk 2 van zijn onderzoek beschrijft~\textcite{Olaoye2024} het proces van beeldverwerking in enkele cruciale stappen:
-% TODO: uitwerken
-% beeldregistratie, filtering, segmentatie en kenmerkextractie.
+\subsubsection{Transformatie van beelden}
+Beeldfragmenten kunnen naast pixel binning op andere manieren bewerkt worden om meer specifieke informatie te benadrukken en op te slaan.
+Een voorbeeld hiervan is Fouriertransformatie, zoals beschreven in het onderzoek van~\textcite{Olaoye2024}.
+Door middel van deze techniek worden dominante ruimtelijke frequenties benadrukt wat het identificeren van patronen, randen en texturen van beelden mogelijk maakt.
+Beelden kunnen daarnaast ook geschaald of gedraaid worden voor geometrische correcties of ter uitlijning van afbeeldingen.
+Vervolgens kunnen beelden opgedeeld worden naar gelang de kleur, textuur of randen.
 
-\subsection{Bestaande objectherkenningsalgoritmen}\label{subsec:bestaande-algoritmen}
-Na het verwerken van beeldfragmenten komt het toepassen van objectherkenning aan bod, waarvoor vele iteraties aan algoritmes geschreven zijn.
-Belangrijk hierbij is om te onthouden dat elk algoritme eerst een dataset nodig heeft om te weten hoe een bepaald object eruit ziet.
-Dit komt aan bod in het hoofdstuk~\nameref{sec:datasets}.
-Hieronder volgen de meestgebruikte traditionele algoritmes om aan objectherkenning te doen.
-Daarnaast worden enkele actuele toepassingen opgesomd en de effici\"entie van de algoritmes.
+\subsection{Klassieke objectherkenningsalgoritmen}
+\label{subsec:klassieke-objectherkenningsalgoritmen}
+Na het verwerken van beeldfragmenten komt verdere segmentatie aan bod door middel van klassieke objectherkenningsalgoritmen.
+Het verschil tussen deze categorie van algoritmen en moderne objectherkenningstechnieken komt verder aan bod het hoofdstuk~\nameref{sec:datasets}.
 
-% TODO: algoritmes
-\subsubsection{Algoritme A}
-Algoritme A wordt uitgelegd.
+\subsubsection{Schaalinvariante kenmerkentransformatie)}
+\textcite{Tamara2022}~beschrijft Schaalinvariante kenmerkentransformatie (SIFT) als een algoritme voor het identificeren van lokale kenmerken in een afbeelding.
+\begin{figure}
+    \includegraphics[width=1\linewidth]{images/DoG}
+    \caption{Visualisatie van het verschil in Gaussianen~\autocite{Lowe2004}}
+    \label{fig:difference-of-gaussian}
+\end{figure}
+Het eerste deel van dit algoritme bestaat uit het berekenen van de minima en de maxima uit het verschil in Gaussianen (DoG) met verschillende standaardafwijkingen, zoals gevisualiseerd in~\ref{fig:difference-of-gaussian}.
+Daarna worden uitschieters weggefilterd door middel van een wiskundige Hessische matrix.
+Een normalisatie van het aantal kenmerken kan vervolgens behaald worden door een minimum contrast van de verschillende standaardafwijkingen te hanteren.
+Het toepassen van ori\"entatietoewijzing verzekert hierbij de eigenschap van rotatie-invariantie.
+Uit deze stappen ontstaan enkele SIFT-beschrijvingen die vergelijking met andere afbeeldingen mogelijk maken om te bepalen of ze tot dezelfde categorie horen.
+Dit gehele proces kent echter aanzienlijke verwerkingstijd waardoor het gebruik in real-time applicaties beperkt blijft.
 
+% en het opstellen van een Histogram van Geori\"enteerde Gradi\"enten (HOG) en Lokale Binaire Patronen (LBP).
 % TODO: uitdagingen en beperkingen van objectdetectie
 % variaties in verlichting, complexe achtergronden, schaalvariaties, vervormingen en occlusie.
-
 
 %---------- De werking van AI ----------------------------------------------------------
 \section{De werking van grote taalmodellen}

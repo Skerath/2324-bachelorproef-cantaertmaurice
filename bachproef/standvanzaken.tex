@@ -92,7 +92,7 @@ Hiermee ontstaat de vaststelling dat de voorafgaande en meest gebruikte specific
 Moderne smartphones zoals de Galaxy S24 nemen volgens~\textcite{Samsung2024} foto's aan een kwaliteit van 50 megapixels en bieden daarmee ongeveer 24 keer hogere kwaliteit dan een Full HD-computerscherm kan weergeven.
 Het is hierbij belangrijk om op te merken dat het aantal megapixels niet de enige factor speelt in het bepalen van beeldkwaliteit.
 Deze meeteenheid bepaalt tevens enkel de totale grootte van de data dat een beeldfragment bevat.
-Ook ongewenste data, waaronder ruis en vervorming, worden hierin meegeteld.
+Ook ongewenste data, waaronder ruis en vervorming, worden hierin mee verrekend.
 Om dit probleem te mitigeren wordt in vele gevallen aan pixel binning gedaan, een proces waarbij pixels gegroepeerd worden tot zogenaamde superpixels~\autocite{Jin2012}.
 \begin{figure}
     \includegraphics[width=1\linewidth]{images/pixel-binning}
@@ -100,13 +100,21 @@ Om dit probleem te mitigeren wordt in vele gevallen aan pixel binning gedaan, ee
     \label{fig:pixel-binning}
 \end{figure}
 
-Moderne smartphones kiezen ervoor om pixels samen te nemen in groepen van vier en daarmee het binningsproces uit te voeren.
-Ten gevolge van dit proces krijgen afbeeldingen een kleinere voetafdruk, wat resultaat in beelden van 12 megapixels.
-Een bijkomend effect is het verzachten van observeerbare ruis waardoor beelden die genomen zijn in donkere plekken een hogere beeldkwaliteit krijgen.
-De kwaliteit van beelden na het uitvoeren van dit proces liggen tussen die van de schermresoluties 4K Ultra HD (ongeveer 8 megapixels) en 8K Ultra HD (ongeveer 33 megapixels), resoluties die steeds vaker gebruikt worden in televisies~\autocite{Statista2024}.
-Bovendien maakt dit het makkelijker voor computer visie-algoritmen om de gemaakte multimedia te analyseren aan een hogere nauwkeurigheid doordat er meer bruikbare data is om mee te werken.
 
 \subsection{Het verwerken van data uit multimedia}\label{subsec:het-verwerken-van-data}
+Om de nauwkeurigheid en snelheid van objectherkenningsalgoritmen zo veel mogelijk te bevorderen worden eerst enkele stappen uitgevoerd ter voorbereiding.
+Deze algoritmen kennen immers een langere verwerkingstijd bij grotere bestanden.
+Beeldfragmenten ondergaan hiervoor verschillende processen, waaronder het voorgenoemde pixel binningsproces.
+
+\subsubsection{Pixel binning}
+Zoals eerder aangehaald kiezen moderne smartphones ervoor om pixels te groeperen in superpixels waarop vervolgens aan pixel binning gedaan wordt.
+Het effect hiervan is het verzachten van observeerbare ruis.
+Beelden die genomen zijn in donkere plekken kunnen daarmee een hogere waarneembare beeldkwaliteit krijgen.
+Een bijkomend effect van dit proces is de kleinere voetafdruk van de verwerkte beelden doordat er een kleiner aantal pixels overblijven.
+In het geval van smartphones wordt vaak gekozen om te binnen richting 12 megapixels, wat tussen de schermresoluties 4K Ultra HD (ongeveer 8 megapixels) en 8K Ultra HD (ongeveer 33 megapixels) ligt.
+Deze resoluties worden steeds vaker gebruikt in televisies~\autocite{Statista2024}.
+
+\subsubsection{}
 In hoofdstuk 2 van zijn onderzoek beschrijft~\textcite{Olaoye2024} het proces van beeldverwerking in enkele cruciale stappen:
 % TODO: uitwerken
 % beeldregistratie, filtering, segmentatie en kenmerkextractie.

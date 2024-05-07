@@ -32,6 +32,7 @@ Zoekmachines en publicatieplatformen zoals Google Scholar en ResearchGate maken 
 Artifici\"eele intelligentie kent een voortdurend proces van verbeteringen vergelijkbaar met het agile werken in de rest van de softwareontwikkelingsindustrie.
 Hierdoor is het belangrijk dat bronnen ge\"evalueerd worden volgens hun actualiteit.
 De focus ligt hierdoor op bronnen die de afgelopen 3 jaar gepubliceerd werden, tevens wordt gekeken of de inhoud nog actueel is aan recentere ontwikkelingen.
+Een uitzondering wordt gemaakt voor onderzoeken over lang bestaande onderwerpen waarvan de inhoud niet vaak zal veranderen, in het bijzonder klassieke objectherkenningsalgoritmen.
 Bronnen dienen eveneens relevant te zijn aan deze paper, daarvoor wordt gekozen voor bronnen waarvan het onderwerp overeenstemt met artifici\"ele intelligentie.
 
 \subsection{Selectiecriteria}
@@ -125,8 +126,14 @@ Vervolgens kunnen beelden opgedeeld worden naar gelang de kleur, textuur of rand
 Na het verwerken van beeldfragmenten komt verdere segmentatie aan bod door middel van klassieke objectherkenningsalgoritmen.
 Het verschil van deze algoritmen met moderne objectherkenningstechnieken komt verder aan bod in hoofdstuk~\ref{sec:datasets}.
 
-\subsubsection{Schaalinvariante kenmerkentransformatie)}
-\textcite{Tamara2022}~beschrijft Schaalinvariante kenmerkentransformatie (SIFT) als een algoritme voor het identificeren van lokale kenmerken in een afbeelding.
+
+\subsubsection{Histogram van Georiënteerde Gradiënten}
+Het Histogram van Geori\"enteerde Gradi\"enten (HOG) is een algoritme voor kenmerkbeschrijving van objecten op een afbeelding.
+% TODO verder uitwerken
+% Voor situaties waarin schaal- en rotatie-invariantie belangrijk zijn kan het beter zijn om gebruik te maken van SIFT.
+
+\subsubsection{Schaalinvariante kenmerkentransformatie}
+\textcite{Tamara2022}~beschrijft Schaalinvariante kenmerkentransformatie (SIFT) als een complexer techniek voor het identificeren van lokale kenmerken in een afbeelding.
 \begin{figure}
     \includegraphics[width=1\linewidth]{images/DoG}
     \caption{Visualisatie van het verschil in Gaussianen~\autocite{Lowe2004}}
@@ -139,7 +146,12 @@ Het toepassen van ori\"entatietoewijzing verzekert hierbij de eigenschap van rot
 Uit deze stappen ontstaan enkele SIFT-beschrijvingen die vergelijking met andere afbeeldingen mogelijk maken om te bepalen of ze tot dezelfde categorie horen.
 Dit gehele proces kent echter aanzienlijke verwerkingstijd waardoor het gebruik in real-time applicaties beperkt blijft.
 
-% en het opstellen van een Histogram van Geori\"enteerde Gradi\"enten (HOG) en Lokale Binaire Patronen (LBP).
+\subsubsection{Versnelde robuuste functies}
+Een alternatief voor SIFT zijn Versnelde robuuste functies (SURF), een eenvoudiger algoritme met een focus op snelheid over het bereiken van de hoogste nauwkeurigheid~\autocite{Wu2013}.
+Het concept van SURF is vergelijkbaar met dat van SIFT, echter maakt SURF gebruik van een andere methode om kenmerkbeschrijvingen te genereren.
+In dit algoritme wordt bewust niet gekozen voor DoG en wordt enkel gebruik gemaakt van een Hessische matrix voor de detectie van kenmerken.
+Daarnaast maakt het SURF-algoritme gebruik van een eenvoudigere Haar-waveletberekening met de x- en y-richtingen van elk gebied binnen een afbeelding.
+
 % TODO: uitdagingen en beperkingen van objectdetectie
 % variaties in verlichting, complexe achtergronden, schaalvariaties, vervormingen en occlusie.
 
@@ -158,3 +170,4 @@ Uitleg hier over: % TODO
 - misschien statistieken van hoe nauwkeurig
 - bestaande datasets gebruiken zoals Google Gemini Vertex
 %  populaire datasets, zoals COCO (Common Objects in Context), Pascal VOC (Visual Object Classes), en ImageNet, worden vaak gebruikt voor het trainen en evalueren van objectherkenningsalgoritmen.
+% Convolutional Neural Networks

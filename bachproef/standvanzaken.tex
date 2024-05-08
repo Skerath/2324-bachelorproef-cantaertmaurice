@@ -49,9 +49,8 @@ Omdat objectdetectie de kern van de proof-of-concept zal vormen, is het van esse
 In dit hoofdstuk zal eerst computer visie aan bod komen, een van de gebieden van hedendaagse artifici\"ele intelligentie, waarbinnen objectherkenning zich plaats vindt.
 Dit zal verduidelijkt worden aan de hand van enkele praktische toepassingen die vandaag al in gebruik genomen worden met behulp van computer visie en objectherkenning.
 Daarna volgt een uitleg van de processen waarop beelden opgeslagen en verwerkt worden ter voorbereiding op het toepassen van objectherkenning.
-Tot slot worden enkele traditionele objectdetectie algoritmen besproken die de verwerkte data kunnen interpreteren.
-Met een begrip voor de verschillende stappen van computer visie en objectherkenning kan vervolgens gekeken worden naar de volgende stap die toegepast zal worden in de proof-of-concept.
-Het volgende hoofdstuk in deze literatuurstudie gaat hierop verder met meer informatie rond grote taalmodellen (LLM), een ander domein binnen kunstmatige intelligentie.
+Vervolgens worden enkele traditionele objectdetectie algoritmen besproken die de verwerkte data kunnen interpreteren.
+Tot slot komen enkele uitdagingen en limitaties van klassieke algoritmen aan bod, waar het volgende hoofdstuk een mogelijk antwoord op kan bieden.
 
 \subsection{Computer visie}\label{subsec:de-kern-van-objectdetectie}
 Computer visie is een van de vele vakgebieden binnen de kunstmatige intelligentie en richt zich op het interpreteren van multimedia~\autocite{Moin2023}.
@@ -123,16 +122,19 @@ Vervolgens kunnen beelden opgedeeld worden naar gelang de kleur, textuur of rand
 
 \subsection{Klassieke objectherkenningsalgoritmen}
 \label{subsec:klassieke-objectherkenningsalgoritmen}
-Na het verwerken van beeldfragmenten komt verdere segmentatie aan bod door middel van klassieke objectherkenningsalgoritmen.
-Het verschil van deze algoritmen met moderne objectherkenningstechnieken komt verder aan bod in hoofdstuk~\ref{sec:datasets}.
-
+Na het verwerken van beeldfragmenten komt verdere segmentatie aan bod door middel van klassieke objectherkenningsalgoritmen, wat in vakliteratuur vaak als \textit{feature extraction} vernoemd wordt.
+Met behulp van deze algoritmen kunnen we kenmerken van objecten detecteren om vervolgens te classificeren en vergelijken met andere data.
+Het verschil van deze algoritmen met moderne objectherkenningstechnieken is het gebrek aan gebruik van machine learning, wat verder aan bod komt in hoofdstuk~\ref{sec:datasets}.
 
 \subsubsection{Histogram van Georiënteerde Gradiënten}
-Het Histogram van Geori\"enteerde Gradi\"enten (HOG) is een algoritme voor kenmerkbeschrijving van objecten op een afbeelding.
-% TODO verder uitwerken
-% Voor situaties waarin schaal- en rotatie-invariantie belangrijk zijn kan het beter zijn om gebruik te maken van SIFT.
+Histogram van Geori\"enteerde Gradi\"enten (HOG) is een simpel algoritme voor kenmerkbeschrijving van objecten voor feature extraction, met als doel om lokale vorm- en textuurinformatie vast te leggen~\autocite{Saher2023}.
+Allereerst filtert het HOG-algoritme de kleuren uit de afbeelding zodat enkel de grijswaarden overblijft.
+Vervolgens splitst het algoritmede beelden op in kleine overlappende cellen en berekent het de gradi\"enten van elke cel in zowel de horizontale als de verticale richting.
+Eveneens legt het de verandering in pixelintensiteit en diens orientatie vast.
+Op basis van deze berekeningen kan een histogram van celori\"entaties gegenereerd worden om de lokale gradi\"entverdeling met informatie over randen en textuur weer te geven.
 
 \subsubsection{Schaalinvariante kenmerkentransformatie}
+Voor situaties waarin schaal- en rotatie-invariantie belangrijk zijn kan het beter zijn om gebruik te maken van SIFT\@.
 \textcite{Tamara2022}~beschrijft Schaalinvariante kenmerkentransformatie (SIFT) als een complexer techniek voor het identificeren van lokale kenmerken in een afbeelding.
 \begin{figure}
     \includegraphics[width=1\linewidth]{images/DoG}
@@ -152,18 +154,21 @@ Het concept van SURF is vergelijkbaar met dat van SIFT, echter maakt SURF gebrui
 In dit algoritme wordt bewust niet gekozen voor DoG en wordt enkel gebruik gemaakt van een Hessische matrix voor de detectie van kenmerken.
 Daarnaast maakt het SURF-algoritme gebruik van een eenvoudigere Haar-waveletberekening met de x- en y-richtingen van elk gebied binnen een afbeelding.
 
+\subsection{Uitdagingen en beperkingen}
+\label{subsec:uitdagingen-en-beperkingen}
 % TODO: uitdagingen en beperkingen van objectdetectie
-% variaties in verlichting, complexe achtergronden, schaalvariaties, vervormingen en occlusie.
+TODO: uitdagingen en beperkingen van objectdetectie
 
-%---------- De werking van AI ----------------------------------------------------------
-\section{De werking van grote taalmodellen}
-\label{sec:ls-artificiele-intelligentie}
-In het vorig hoofdstuk kwam computer visie aan bod als vakdomein binnen de artifici\"ele intelligentie.
-Een ander, en met hedendaagse coverage in het nieuws wellicht bekendere, domein hierin is de toepassing van large language models (LLM).
-Voorbeelden hiervan zijn GPT en haar toepassing ChatGPT. % TODO: hier op verder gaan & kijken naar voorstel of daar niets uit genomen kan worden.
+% https://www.researchgate.net/publication/378435794_The_Role_of_Deep_Learning_in_Computer_Vision
+% TODO: dit als segway naar datasets / machine learning, en dan daarna pas generatieve AI
+% ??? variaties in verlichting, complexe achtergronden, schaalvariaties, vervormingen en occlusie.
 
 %---------- Datasets generereren ------------------------------------------------------
-\section{Het trainen van datasets voor objectherkenning}\label{sec:datasets}
+\section{Objectherkenning met machine learning}\label{sec:datasets}
+%TODO: Intro voor machine OH met ML
+Met een begrip voor de verschillende stappen van computer visie en objectherkenning kan vervolgens gekeken worden naar de volgende stap die toegepast zal worden in de proof-of-concept.
+Het volgende hoofdstuk in deze literatuurstudie gaat hierop verder met meer informatie rond grote taalmodellen (LLM), een ander domein binnen kunstmatige intelligentie.
+
 Uitleg hier over: % TODO
 - hoe wordt bepaald wat een geldig beeld is om mee te trainen
 - hoe worden datasets getraind
@@ -171,3 +176,10 @@ Uitleg hier over: % TODO
 - bestaande datasets gebruiken zoals Google Gemini Vertex
 %  populaire datasets, zoals COCO (Common Objects in Context), Pascal VOC (Visual Object Classes), en ImageNet, worden vaak gebruikt voor het trainen en evalueren van objectherkenningsalgoritmen.
 % Convolutional Neural Networks
+
+%---------- De werking van AI ----------------------------------------------------------
+\section{De werking van grote taalmodellen}
+\label{sec:ls-artificiele-intelligentie}
+In het vorig hoofdstuk kwam computer visie aan bod als vakdomein binnen de artifici\"ele intelligentie.
+Een ander, en met hedendaagse coverage in het nieuws wellicht bekendere, domein hierin is de toepassing van large language models (LLM).
+Voorbeelden hiervan zijn GPT en haar toepassing ChatGPT. % TODO: hier op verder gaan & kijken naar voorstel of daar niets uit genomen kan worden.

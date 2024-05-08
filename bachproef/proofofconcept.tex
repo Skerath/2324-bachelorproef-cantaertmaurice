@@ -5,7 +5,8 @@
 \chapter{\IfLanguageName{dutch}{Proof-of-concept}{Proof-of-concept}}
 \label{ch:proof-of-concept}
 Na de~\nameref{ch:shortlist} kan de proof-of-concept uitgewerkt worden.
-De uitgewerkte code kan teruggevonden worden in deze GitHub repository(TODO). % TODO github url
+
+De uitgewerkte sourcecode kan teruggevonden worden in deze GitHub repository(TODO). % TODO github url
 
 \section{Visie}
 \label{sec:visie}
@@ -16,59 +17,67 @@ Ten slotte komen de innovatieve aspecten aan bod.
 \subsection{Beoogde resultaat}
 \label{subsec:doel-van-de-proof-of-concept}
 % een android app met achterliggende api
-TODO
+De proof-of-concept richt zich erop op om moderne objectherkenningstechnieken en generatieve AI met elkaar te integreren om suggesties weer te geven op basis van ingescande sportgerelateerde objecten en omgevingen.
+Dit alles hoort te gebeuren op een kosteffici\"ente manier, ten gevolge hiervan ontstaat de keuze voor het gebruiken van een bestaand AI-model met vooraf getrainde datasets om zowel objectherkenning en het genereren van suggestieve trainingsschema's mogelijk te maken.
+Personal trainers horen de mogelijkheid te hebben om voorbije interacties van de gebruiker met de app in te zien en bij te sturen in het genereren van suggesties.
 
-\subsection{Doelpubliek}
+\subsection{Architectuur}
+\label{subsec:architectuur}
+Het technisch luik bestaat uit drie lagen:
+\begin{itemize}
+    \item \textbf{Een simpele Android-app} met de functionaliteit om foto's te maken en door te sturen naar een achterliggende service voor cli\"enten van personal trainers.
+    \item \textbf{Een achterliggende service} met databank voor het bijhouden van de historiek van voorbije interacties van gebruikers.
+    De Android-app spreekt deze service aan om objectherkenning toe te passen op doorgestuurde foto's met als gevolg een suggestief trainingsschema terug te krijgen.
+    Daarnaast hebben personal trainers de mogelijkheid om deze service aan te spreken om de historiek van een gebruiker weer te geven en bij te sturen waar nodig.
+    \item \textbf{Een AI-platform} dat aangeroepen wordt door de achterliggende service.
+    Het platform gebruikt vooraf getrainde datasets om objectherkenning en generatieve AI mogelijk te maken.
+\end{itemize}
+
+\subsection{Doelpubliek, innovatie en voordelen}
 \label{subsec:doelpubliek}
-% personal trainers zoals de co-promotor
-TODO
+Het gebruik van geavanceerde kunstmatige intelligentiemodellen is niet meer weg te denken en wordt steeds meer toegepast in de digitale wereld.
+Dit voorstel tracht deze trend door te trekken in de personal training door baanbrekende ontwikkelingen in objectherkenning en generatieve AI toe te passen.
+Hiermee krijgen personal trainers een zicht op het potentieel om kunstmatige intelligentietechnieken te integreren in de fitnessindustrie.
+Vervolgens kunnen ze ervoor kiezen om de aangetoonde functionaliteiten toe te passen in hun workflow om de werkdruk te verminderen of de ervaring van cli\"enten te bevorderen.
+De achterliggende service dient ter illustratie van een overkoepelend systeem om data van klanten bij te houden en te manipuleren.
+Er kan ook voor gekozen worden om het toepassen van generatieve AI te integreren in bestaande applicaties en de nieuwe functionaliteiten bloot te stellen in bestaande mobiele apps.
 
-\subsection{Innovatie}
-\label{subsec:innovatie}
-% waarom is deze PoC innovatief
-TODO
-
-\subsection{Voordelen}
-\label{subsec:voordelen}
-% vergemakkelijkt het start proces dat personal trainers meemaken met  nieuwe clienten
-TODO
-
-\section{Proof-of-concept omgeving opzetten}
+\section{Proof-of-concept}
 \label{sec:proof-of-concept}
 Allereerst worden de omgevingen opgezet om het uitwerken van de proof-of-concept mogelijk te maken.
 Hierna komt het schrijven van de logica achter de app en achterliggende service aan bod.
+Ten slotte worden enkele belangrijke details rond reproduceerbaarheid aangehaald.
 
-\subsection{Opzetten Google Gemini omgeving}
-\label{subsec:aanmaken-google-gemini-profiel}
+\subsection{Omgevingen opzetten}
+\label{subsec:omgevingen-opzetten}
+De drie lagen van de~\nameref{subsec:architectuur} kennen enkele configuratiestappen tijdens het opzetten, de documentatie daarvan volgt hieronder.
+
+\subsubsection{Opzetten Google Gemini omgeving}
 TODO
 
-\subsection{Opzetten Quarkus back-end}
-\label{subsec:opzetten-quarkus-back-end}
+\subsubsection{Opzetten Quarkus service}
 De achterliggende service zal gebruik maken van de ingebouwde Quarkus extensies en Dev Services, zoals gezien in hoofdstuk~\ref{ch:shortlist}.
 Hoewel Quarkus vele taken voor de ontwikkelaar vergemakkelijkt vergt het enigszins wat opzetwerk.
 
-\subsubsection{Quarkus met Kotlin/Gradle}
+\paragraph{Quarkus met Kotlin/Gradle}
 %Opzetten Quarkus project met Kotlin en extensies
 TODO
 
-\subsubsection{Testcontainers}
+\paragraph{Testcontainers en Docker}
 %Opzetten test containers met configuratie
 TODO
 
-\subsection{Opzetten Jetpack Compose Android-app}
-\label{subsec:opzetten-jetpack-compose-android-app}
+\subsubsection{Opzetten Jetpack Compose Android-app}
 TODO
 
-\section{Reproduceren van de proof-of-concept}
-\label{sec:reproduceren-van-de-proof-of-concept}
+\subsection{Reproduceren van de proof-of-concept}
+\label{subsec:reproduceren-van-de-proof-of-concept}
 %Uitleggen waarom dit belangrijk is (zie cursus RM)
 TODO
 
-\subsection{Gebruikte hardware en software}
-\label{subsec:gebruikte-hardware}
+\subsubsection{Gebruikte hardware en software}
 TODO
 
-\subsection{Automatisatie script}
-\label{subsec:automatisatie-script}
+\subsubsection{Automatisatie script}
 %Docker script, jar file vanuit gradle builden enz
 TODO

@@ -85,7 +85,7 @@ Om het gebruik hiervan mogelijk te maken worden deep learning algoritmes zoals c
 Een tweede voorbeeld is het toepassen van computer visie in de transportsector.
 Met behulp van computer visie-algoritmen zoals kleurenruimte transformatie, Canny-randdetectie en Hough-lijntransformatie wordt het mogelijk voor zelfrijdende auto's om op een goedkopere wijze berekeningen te maken~\autocite{Gajjar2023}.
 Door middel van deze algoritmen verdwijnt de noodzaak om te ondersteunen op duurdere systemen, met name Lichtdetectie- en afstandmetingssensoren (LiDAR) die gebruikt worden om een virtuele driedimensionele map te maken van de direct omgeving.
-Beide systemen kennen een vorm van objectherkenning om objecten zoals verkeersborden of voertuigen in de omgeving te detecteren.
+Beide systemen kennen een vorm van objectherkenning om objecten zoals verkeersborden of voertuigen in de omgeving te detecteren, een visualisatie van het LiDAR-systeem in zelfrijdende auto's is terug te vinden in~\ref{fig:visualisatie-lidar}.
 De implementatie hiervan kent echter de moeilijkheid van data-analyse in donkere momenten zoals na zonsondergang, waardoor de kwaliteit van binnenkomende data afzwakt door het lage licht.
 Een mogelijke oplossing hierbij is het toevoegen van infrarood lampen gecombineerd met een infraroodcamera.
 Ook hierbij wordt het mogelijk om via CNN-algoritmes te bepalen wanneer overgestapt moet worden op een alternatief systeem.
@@ -200,33 +200,17 @@ In context van deze paper gaat het daarbij concreet over het classificeren van s
 Hierop volgen enkele ML-algoritmen:
 
 % TODO algoritmes bespreken
-\subsubsection{Algoritme A}
-Machine learning algoritme uitleggen
+\subsubsection{Ondersteunende vectormachines}
+% Supporting vector machines
+// TODO: Ondersteunende vectormachines (SVM) worden gebruikt voor classificatietaken zoals objectherkenning.
 
-\subsubsection{Algoritme B}
-Machine learning algoritme uitleggen
+\subsubsection{Beslisbomen}
+% Decision trees
+// TODO: Beslisbomen kunnen objecten identificeren door middel van een hi\"erarische reeks beslissingen op basis van beschrijvingskenmerken.
 
-%---------- Datasets en het effect van kwaliteit/grootte -------------------------------
-\subsection{Datasets}
-\label{subsec:datasets}
-De grootste factor in het bepalen van hoe accuraat functionaliteiten zoals objectherkenning met toevoeging van machine learning zijn is de grootte en de kwaliteit van de gebruikte datasets.
-\textcite{OpenAI2023}, een onderzoeksinstituut met het doel om veilige en nuttige algemene artifici\"ele intelligentie te ontwikkelen, beschrijft gunstige resultaten in haar technisch rapport over de nieuwere iteraties van het GPT-model met het trainen van steeds grotere datasets.
-De gratis dienst ChatGPT maakt daarbij gebruik van versie 3.5 van het model om verzoeken van gebruikers te vervullen in de vorm van een chatapplicatie.
-
-\subsubsection{Vooruitgang van AI-modellen}
-In het rapport haalt OpenAI aan dat versie 4 van haar GPT-model een score behaalt die in de top tien percent van de testnemers valt bij het afnemen van een gesimuleerde balie-examen.
-Versie 3.5 daarentegen scoort bij de laagste tien percent, wat een opmerkzame evolutie is.
-Het rapport geeft verschillende vergelijkbare resultaten weer, een daarvan is zichtbaar in~\ref{fig:gpt3.5-versus-4} waarbij beide modellen enkele academische en professionele examens afleggen.
-\begin{figure}
-    \includegraphics[width=1\linewidth]{images/gpt35-vs-4-exam-results}
-    \caption{Vergelijking tussen GPT 3.5 en GPT 4 bij het afleggen van verschillende academische en professionele examens. Bijkomende computer visie mogelijkheden helpen GPT-4 om betere resultaten te halen~\autocite{OpenAI2023}}.
-    \label{fig:gpt3.5-versus-4}
-\end{figure}
-
-\subsubsection{Versterkingsleren van menselijke feedback}
-Versterkingsleren van menselijke feedback (RLHF) heeft de mogelijkheid om de nauwkeurigheid van modellen te bevorderen na de initi\"ele dataset verwerking.
-RLHF is een voorbeeld van versterkend leren waarbij ML-algoritmen.
-% todo bron zoeken en uitleggen wat RLHF is
+\subsubsection{K-nabije buren}
+% K-Nearest Neighbors
+// TODO: K-nabije buren (KNN) wordt gebruikt om objecten te identificeren door kenmerken te vergelijken met kenmerken van gelijkaardige objecten in de trainingsdata.
 
 %---------- Deep learning in plaats van machine learning -------------------------------
 \subsection{Deep learning}
@@ -274,32 +258,58 @@ Het is daardoor moeilijker om de beslissingen en resultaten van deze technieken 
 Dit vereist het hertrainen van het algoritme om fouten recht te zetten.
 
 %---------- Deep learning toepassen in objectherkenning---------------------------------
-\subsection{Deep learning in objectherkenning}
+\subsection{Moderne objectherkenningsalgoritmen}
 \label{subsec:deep-learning-in-objectherkenning}
 Deep learning bouwt verder op klassieke objectdetectiealgoritmen om nauwkeurigheid te bevorderen en de uitdagingen zoals besproken in~\nameref{subsec:uitdagingen-en-beperkingen} te omzeilen.
 Door het concept van deep learning ontstaan vele nieuwe algoritmen voor het detecteren van objecten:
-% https://www.researchgate.net/publication/378435794_The_Role_of_Deep_Learning_in_Computer_Vision
+% https://www.researchgate.net/publication/378435794_The_Role_of_Deep_Learning_in_Computer_Vision TODO ?
 
 % TODO algoritmes bespreken
-\subsubsection{Algoritme A}
-Machine learning algoritme uitleggen
-
-\subsubsection{Algoritme B}
-Machine learning algoritme uitleggen
-
-%Uitleg hier over: % TODO
-%- misschien statistieken van hoe nauwkeurig
-%- bestaande datasets gebruiken zoals Google Gemini Vertex
-%  populaire datasets, zoals COCO (Common Objects in Context), Pascal VOC (Visual Object Classes), en ImageNet, worden vaak gebruikt voor het trainen en evalueren van objectherkenningsalgoritmen.
+\subsubsection{Convolutionele neurale netwerken)}
 % Convolutional Neural Networks
+// TODO: Convolutionele neurale netwerken (CNN) hebben het vermogen om automatisch kenmerken te leren uit afbeeldingen aan de hand van convolutielagen.
+
+\subsubsection{Terugkerende neurale netwerken}
+% Recurrent Neural Networks
+// TODO: Terugkerende neurale netwerken (RNN) worden gebruikt voor objectdetectie waar context van belang is, zoals het detecteren van objecten in sequenties van afbeeldingen.
+
+% TODO:
+%  populaire datasets, zoals COCO (Common Objects in Context), Pascal VOC (Visual Object Classes), en ImageNet, worden vaak gebruikt voor het trainen en evalueren van objectherkenningsalgoritmen.
 
 %%=============================================================================
 %% Generatieve AI
 %%=============================================================================
 \section{De werking van grote taalmodellen}
 \label{sec:ls-artificiele-intelligentie}
-Naast objectherkenning kent machine learning ook een toepassing in het ontwerpen van grote taalmodellen (LLM's).
-Generatieve AI maakt hiervan gebruik en kent vandaag vele succesverhalen in de media met name van ChatGPT, een AI-chatbot die beschikbaar gesteld wordt door OpenAI\@.
+Met een kennis over de manier waarop datasets gebruikt worden in machine learning kan tot slot het concept van generatieve AI verklaard worden.
+Generatieve AI verwijst hierbij naar de technologie van kunstmatige intelligentie om nieuwe gegevens voor te stellen op basis van trainingsdata~\autocite{Gupta2023}.
+Een voorbeeld hiervan is ChatGPT, een AI-chatbot die beschikbaar gesteld wordt door OpenAI\@.
 Gebruikers hebben daarbij de mogelijkheid om teksten te laten vertalen, broncode voor software te genereren of gedichten op te stellen.
 Dit alles gebeurt in een tekstgebaseerde interactieomgeving, waarbij gebruikers met de applicatie praten alsof ze communiceren in een chatapplicatie.
-% TODO: hier op verder gaan & kijken naar voorstel of daar niets uit genomen kan worden.
+
+\subsection{Vooruitgang van taalmodellen}
+\label{subsec:vooruitgang-van-taalmodellen}
+\textcite{OpenAI2023}, een onderzoeksinstituut met het doel om veilige en nuttige algemene artifici\"ele intelligentie te ontwikkelen, beschrijft gunstige resultaten in haar technisch rapport over de nieuwere iteraties van het GPT-model met het trainen van steeds grotere datasets.
+De voorgenoemde generatieve AI-toepassing ChatGPT maakt daarbij gebruik van versie 3.5 van het model om verzoeken van gebruikers te vervullen.
+In het rapport haalt OpenAI aan dat versie 4 van haar GPT-model een score behaalt die in de top tien percent van de testnemers valt bij het afnemen van een gesimuleerde balie-examen.
+Versie 3.5 daarentegen scoort bij de laagste tien percent, wat een opmerkzame evolutie is.
+Het rapport geeft verschillende vergelijkbare resultaten weer, een daarvan is zichtbaar in~\ref{fig:gpt3.5-versus-4} waarbij beide modellen enkele academische en professionele examens afleggen.
+\begin{figure}
+    \includegraphics[width=1\linewidth]{images/gpt35-vs-4-exam-results}
+    \caption{Vergelijking tussen GPT 3.5 en GPT 4 bij het afleggen van verschillende academische en professionele examens. Bijkomende computer visie mogelijkheden helpen GPT-4 om betere resultaten te halen~\autocite{OpenAI2023}}.
+    \label{fig:gpt3.5-versus-4}
+\end{figure}
+
+\subsection{Versterkingsleren via menselijke feedback}
+\label{subsec:versterkingsleren-via-menselijke-feedback}
+Versterkingsleren via menselijke feedback (RLHF) heeft de mogelijkheid om de nauwkeurigheid van modellen te bevorderen na de initi\"ele dataset verwerking.
+RLHF is een voorbeeld van versterkend leren waarbij ML-algoritmen geoptimaliseerd worden om nauwkeurigere resultaten te produceren die beter afgestemd zijn op specifieke verwachtingen~\autocite{Balakrishnan2024}.
+Dit proces vindt zich plaats na een dataset verwerkt is en er een AI-model tot stand is gekomen dat capabel is om taken uit te voeren.
+Met RLHF kunnen vakexperts of data ingenieurs de prestaties van het model beoordelen en corrigerende feedback geven.
+Deze feedback zorgt ervoor dat het model bijgestuurd wordt om specifiekere resultaten weer te geven.
+
+\subsection{Generatieve AI en deep learning}
+\label{subsec:generatieve-ai-en-deep-learning}
+Generatieve AI bouwt verder op het concept van deep learning om grote taalmodellen (LLM) te ontwikkelen~\autocite{Shen2024}.
+LLM's hebben door middel van deep learning de mogelijkheid om natuurlijke taal te begrijpen en suggesties te genereren.
+Deze AI-modellen richten zich specifiek op het verwerken en genereren van tekstuele data.

@@ -7,12 +7,15 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-%---------- Selectie van bronnen -------------------------------------------------------
+%%=============================================================================
+%% Selectie van bronnen
+%%=============================================================================
 \section{Selectie van bronnen}
 \label{sec:selectie-van-bronnen}
-Om deze literatuurstudie als volwaardig en kwalitatief te kunnen aanschouwen komt eerst een kleine uitleg aan bod rond de manier waarop de aangehaalde bronnen gekozen werden.
+Om deze literatuurstudie en deze bachelorproef an sich als volwaardig en kwalitatief te kunnen aanschouwen volgt eerst een kleine uitleg rond de keuze voor ondersteunende bronnen.
 De selectiecriteria bouwt hierbij verder op de CRAAP-test, opgesteld door~\textcite{Blakeslee2004}.
 
+%---------- Uitleg CRAAP-test ----------------------------------------------------------
 \subsection{De CRAAP-test}
 \label{subsec:de-craap-test}
 De CRAAP-test bestaat uit volgende criteria, zoals gezien in de syllabus IT-component van het opleidingsonderdeel Research Methods~\autocite{Bert2023}:
@@ -26,6 +29,7 @@ De CRAAP-test bestaat uit volgende criteria, zoals gezien in de syllabus IT-comp
     Hierbij is duidelijk of de inhoud gaat over een mening of over feiten, tevens sluit het doel van de bron aan bij het doel van deze paper.
 \end{itemize}
 
+%---------- Zoekstrategieen ------------------------------------------------------------
 \subsection{Gebruikte zoekstrategiëen}
 \label{subsec:zoekstrategieen}
 Zoekmachines en publicatieplatformen zoals Google Scholar en ResearchGate maken het mogelijk om allerlei publicaties te vinden rond het gepaste onderwerp.
@@ -35,6 +39,7 @@ De focus ligt hierdoor op bronnen die de afgelopen 3 jaar gepubliceerd werden, t
 Een uitzondering wordt gemaakt voor onderzoeken over lang bestaande onderwerpen waarvan de inhoud niet vaak zal veranderen, in het bijzonder klassieke objectherkenningsalgoritmen.
 Bronnen dienen eveneens relevant te zijn aan deze paper, daarvoor wordt gekozen voor bronnen waarvan het onderwerp overeenstemt met artifici\"ele intelligentie.
 
+%---------- Selectiecriteria -----------------------------------------------------------
 \subsection{Selectiecriteria}
 \label{subsec:selectiecriteria}
 Na het filteren van irrelevante en verouderde bronnen komt het beoordelen van de autoriteit en het doel van de bron aan bod.
@@ -43,13 +48,16 @@ Eveneens zijn bronnen die gepubliceerd werden in een betrouwbare wetenschappelij
 Een wetenschappelijke tijdschrift kan als betrouwbaar aanschouwd worden als publicaties door vakgenoten beoordeeld worden.
 Tevens worden ook bronnen die reproduceerbaar zijn als geldige, betrouwbare aanschouwd.
 
+%---------- Bronnen buiten literatuurstudie---------------------------------------------
 \subsubsection{Bronnen buiten de literatuurstudie}
 Bij het opstellen van de shortlist met gebruikte technologie\"en en het uitwerken van de proof-of-concept zal er voornamelijk naar technische bronnen verwezen worden.
 Dit in tegenstelling tot de academische bronnen die in deze literatuurstudie aangehaald worden.
 De bovenstaande selectiecriteria zijn hierbij ook van toepassing, met de uitzondering dat er gekeken zal worden naar documentatie van vertrouwde omgevingen in plaats van wetenschappelijke tijdschriften.
 Een omgeving is vertrouwd als het gaat om een bewezen ecosysteem met actieve ontwikkelaars en stabiel genoeg is om in productie genomen te worden.
 
-%---------- Objectherkenning -----------------------------------------------------------
+%%=============================================================================
+%% Klassieke objectherkenning
+%%=============================================================================
 \section{De werking van objectherkenning}\label{sec:ls-object-detectie}
 Omdat objectdetectie de kern van de proof-of-concept zal vormen, is het van essentieel belang om eerst een grondig begrip te defini\"eren van wat deze techniek precies inhoudt.
 In dit hoofdstuk zal eerst computer visie aan bod komen, een van de gebieden van hedendaagse artifici\"ele intelligentie, waarbinnen objectherkenning zich plaats vindt.
@@ -58,6 +66,7 @@ Daarna volgt een uitleg van de processen waarop beelden opgeslagen en verwerkt w
 Vervolgens worden enkele traditionele objectdetectie algoritmen besproken die de verwerkte data kunnen interpreteren.
 Tot slot komen enkele uitdagingen en limitaties van klassieke algoritmen aan bod, waar het volgende hoofdstuk een mogelijk antwoord op kan bieden.
 
+%---------- Computervisie --------------------------------------------------------------
 \subsection{Computer visie}\label{subsec:de-kern-van-objectdetectie}
 Computer visie is een van de vele vakgebieden binnen de kunstmatige intelligentie en richt zich op het interpreteren van multimedia~\autocite{Moin2023}.
 Met de komst van dit vakgebied ontstaat een grote waaier aan mogelijkheden voor computers om bij te staan bij complexere taken zoals gezichts- en emotieherkenning, sc\`eneanalyse en objectherkenning.
@@ -86,6 +95,7 @@ Ook hierbij wordt het mogelijk om via CNN-algoritmes te bepalen wanneer overgest
     \label{fig:visualisatie-lidar}
 \end{figure}
 
+%---------- Data & datakwaliteit -------------------------------------------------------
 \subsection{Beeldfragmenten in datavorm}\label{subsec:beeldfragmenten-als-data}
 Concreet worden beelden digitaal opgeslagen in tweedimensionale tabellen van pixels, waarbij elke pixel kleurdata bevat.
 De resolutie, of scherpheid, van een beeldfragment wordt vaak hierin uitgedrukt.
@@ -105,7 +115,7 @@ Om het voorgenoemde fenomeen te mitigeren wordt in vele gevallen aan pixel binni
     \label{fig:pixel-binning}
 \end{figure}
 
-
+%---------- Verwerken van data ---------------------------------------------------------
 \subsection{Het verwerken van data uit multimedia}\label{subsec:het-verwerken-van-data}
 Om de nauwkeurigheid en snelheid van objectherkenningsalgoritmen zo veel mogelijk te bevorderen worden eerst enkele stappen uitgevoerd ter voorbereiding.
 Deze algoritmen kennen immers een langere verwerkingstijd bij grotere bestanden.
@@ -126,6 +136,7 @@ Door middel van deze techniek worden dominante ruimtelijke frequenties benadrukt
 Beelden kunnen daarnaast ook geschaald of gedraaid worden voor geometrische correcties of ter uitlijning van afbeeldingen.
 Vervolgens kunnen beelden opgedeeld worden naar gelang de kleur, textuur of randen.
 
+%---------- Toepassen van klassieke algoritmen------------------------------------------
 \subsection{Klassieke objectherkenningsalgoritmen}
 \label{subsec:klassieke-objectherkenningsalgoritmen}
 Na het verwerken van beeldfragmenten komt verdere segmentatie aan bod door middel van klassieke objectherkenningsalgoritmen, wat in vakliteratuur vaak als \textit{feature extraction} vernoemd wordt.
@@ -160,32 +171,37 @@ Het concept van SURF is vergelijkbaar met dat van SIFT, echter maakt SURF gebrui
 In dit algoritme wordt bewust niet gekozen voor DoG en wordt enkel gebruik gemaakt van een Hessische matrix voor de detectie van kenmerken.
 Daarnaast maakt het SURF-algoritme gebruik van een eenvoudigere Haar-waveletberekening met de x- en y-richtingen van elk gebied binnen een afbeelding.
 
+%---------- Uitdagingen & beperkingen --------------------------------------------------
 \subsection{Uitdagingen en beperkingen}
 \label{subsec:uitdagingen-en-beperkingen}
-% TODO: uitdagingen en beperkingen van objectdetectie
-TODO: uitdagingen en beperkingen van objectdetectie
+Hoewel er vele mogelijkheden ontstaan door het gebruik van de voorgenoemde voorbeelden van klassieke algoritmen, kent de technologie ook enkele limitaties.
+De voorgenoemde algoritmen hebben vaak te maken met moeilijkheden in het detecteren van objecten in complexe situaties~\autocite{Luz2024}.
+Variaties in belichting, drukke achtergronden rond objecten en occlusie van objecten verminderen de nauwkeurigheid van deze traditionele algoritmen.
+Machine learning kan hierop inspelen door bijkomende attributen toe te wijzen aan objecten.
 
+%%=============================================================================
+%% Machine learning toepassen in objectherkenning
+%%=============================================================================
 % https://www.researchgate.net/publication/378435794_The_Role_of_Deep_Learning_in_Computer_Vision
-% TODO: dit als segway naar datasets / machine learning, en dan daarna pas generatieve AI
-% ??? variaties in verlichting, complexe achtergronden, schaalvariaties, vervormingen en occlusie.
-
-%---------- Datasets generereren ------------------------------------------------------
 \section{Objectherkenning met machine learning}\label{sec:datasets}
-%TODO: Intro voor machine OH met ML
-Met een begrip voor de verschillende stappen van computer visie en objectherkenning kan vervolgens gekeken worden naar de volgende stap die toegepast zal worden in de proof-of-concept.
-Het volgende hoofdstuk in deze literatuurstudie gaat hierop verder met meer informatie rond grote taalmodellen (LLM), een ander domein binnen kunstmatige intelligentie.
+Het vorige hoofdstuk definieerde de werking van objectherkenning en diens situering binnen de artifici\"ele intelligentiesector samen met enkele voorbeelden van klassieke algoritmen.
+Deze algoritmen kennen enkele beperkingen, waar machine learning een antwoord op kan bieden.
+De komst van machine learning kent buiten objectherkenning vele andere toepassingen zoals het ontstaan van grote taalmodellen, wat later aan bod zal komen.
 
-Uitleg hier over: % TODO
-- hoe wordt bepaald wat een geldig beeld is om mee te trainen
-- hoe worden datasets getraind
-- misschien statistieken van hoe nauwkeurig
-- bestaande datasets gebruiken zoals Google Gemini Vertex
+%Uitleg hier over: % TODO
+%- hoe worden datasets getraind
+%- misschien statistieken van hoe nauwkeurig
+%- bestaande datasets gebruiken zoals Google Gemini Vertex
 %  populaire datasets, zoals COCO (Common Objects in Context), Pascal VOC (Visual Object Classes), en ImageNet, worden vaak gebruikt voor het trainen en evalueren van objectherkenningsalgoritmen.
 % Convolutional Neural Networks
 
-%---------- De werking van AI ----------------------------------------------------------
+%%=============================================================================
+%% Generatieve AI
+%%=============================================================================
 \section{De werking van grote taalmodellen}
 \label{sec:ls-artificiele-intelligentie}
-In het vorig hoofdstuk kwam computer visie aan bod als vakdomein binnen de artifici\"ele intelligentie.
-Een ander, en met hedendaagse coverage in het nieuws wellicht bekendere, domein hierin is de toepassing van large language models (LLM).
-Voorbeelden hiervan zijn GPT en haar toepassing ChatGPT. % TODO: hier op verder gaan & kijken naar voorstel of daar niets uit genomen kan worden.
+Naast objectherkenning kent machine learning ook een toepassing in het ontwerpen van grote taalmodellen (LLM's).
+Generatieve AI maakt hiervan gebruik en kent vandaag vele succesverhalen in de media met name van ChatGPT, een AI-chatbot die beschikbaar gesteld wordt door OpenAI\@.
+Gebruikers hebben daarbij de mogelijkheid om teksten te laten vertalen, broncode voor software te genereren of gedichten op te stellen.
+Dit alles gebeurt in een tekstgebaseerde interactieomgeving, waarbij gebruikers met de applicatie praten alsof ze communiceren in een chatapplicatie.
+% TODO: hier op verder gaan & kijken naar voorstel of daar niets uit genomen kan worden.

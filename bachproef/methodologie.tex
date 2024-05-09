@@ -28,6 +28,38 @@ Vervolgens worden de gevraagde functionaliteiten ge\"{\i}mplementeerd, belangrij
 Daarna volgt een demonstratie van het experiment om de ondervindingen en resultaten mee te delen.
 Als de opdrachtgever een positieve reactie geeft komen enkele optimalisaties aan bod, waaronder het documenteren van de gebruikte hardware en het schrijven van een script om de reproduceerbaarheid van het experiment te bevorderen.
 
+\subsection{Visie}
+\label{subsec:visie}
+Dit onderdeel richt zich op het defini\"eren van de visie achter de uitgewerkte proof-of-concept.
+De aanhaling van de verwachte resultaten, diens doelpubliek en de voordelen van het gebruik ervan benadrukken de toegevoegde waarden van het technisch luik.
+
+\subsubsection{Beoogde resultaat}
+\label{subsubsec:doel-van-de-proof-of-concept}
+De proof-of-concept richt zich erop op om moderne objectherkenningstechnieken en generatieve AI met elkaar te integreren om suggesties weer te geven op basis van ingescande sportgerelateerde objecten en omgevingen.
+Dit alles hoort te gebeuren op een kosteffici\"ente manier, ten gevolge hiervan ontstaat de keuze voor het gebruiken van een bestaand AI-model met vooraf getrainde datasets om zowel objectherkenning en het genereren van suggestieve trainingsschema's mogelijk te maken.
+Personal trainers horen de mogelijkheid te hebben om voorbije interacties van de gebruiker met de app in te zien en bij te sturen in het genereren van suggesties.
+
+\subsubsection{Architectuur}
+\label{subsubsec:architectuur}
+Het technisch luik bestaat uit drie lagen:
+\begin{itemize}
+    \item \textbf{Een simpele Android-app} met de functionaliteit om foto's te maken en door te sturen naar een achterliggende service voor cli\"enten van personal trainers.
+    \item \textbf{Een achterliggende service} met databank voor het bijhouden van de historiek van voorbije interacties van gebruikers.
+    De Android-app spreekt deze service aan om objectherkenning toe te passen op doorgestuurde foto's met als gevolg een suggestief trainingsschema terug te krijgen.
+    Daarnaast hebben personal trainers de mogelijkheid om deze service aan te spreken om de historiek van een gebruiker weer te geven en bij te sturen waar nodig.
+    \item \textbf{Een AI-platform} dat aangeroepen wordt door de achterliggende service.
+    Het platform gebruikt vooraf getrainde datasets om objectherkenning en generatieve AI mogelijk te maken.
+\end{itemize}
+
+\subsubsection{Doelpubliek, innovatie en voordelen}
+\label{subsubsec:doelpubliek}
+Het gebruik van geavanceerde kunstmatige intelligentiemodellen is niet meer weg te denken en wordt steeds meer toegepast in de digitale wereld.
+Dit voorstel tracht deze trend door te trekken in de personal training door baanbrekende ontwikkelingen in objectherkenning en generatieve AI toe te passen.
+Hiermee krijgen personal trainers een zicht op het potentieel om kunstmatige intelligentietechnieken te integreren in de fitnessindustrie.
+Vervolgens kunnen ze ervoor kiezen om de aangetoonde functionaliteiten toe te passen in hun workflow om de werkdruk te verminderen of de ervaring van cli\"enten te bevorderen.
+De achterliggende service dient ter illustratie van een overkoepelend systeem om data van klanten bij te houden en te manipuleren.
+Er kan ook voor gekozen worden om het toepassen van generatieve AI te integreren in bestaande applicaties en de nieuwe functionaliteiten bloot te stellen in bestaande mobiele apps.
+
 \section{Conclusie en vooruitzichten}
 \label{sec:conclusie-en-vooruitzichten}
 Tot slot volgt een korte conclusie met een terugblik op de resultaten ter antwoord op de gestelde onderzoeksvragen.

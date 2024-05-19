@@ -5,63 +5,127 @@
 \chapter{\IfLanguageName{dutch}{Proof-of-concept}{Proof-of-concept}}
 \label{ch:proof-of-concept}
 Na de~\nameref{ch:shortlist} kan de proof-of-concept uitgewerkt worden.
-Allereerst worden de omgevingen opgezet om het uitwerken van de proof-of-concept mogelijk te maken.
-Hierna komt het schrijven van de logica achter de app en achterliggende service aan bod.
-Ten slotte worden enkele belangrijke details rond reproduceerbaarheid aangehaald.
-
+Allereerst worden de omgevingen opgezet om de uitwerking mogelijk te maken.
+Hierbij volgt telkens een kleine situering van de gebruikte architectuur en gemaakte keuzes.
+Daarna volgt de implementatie van de Android-app en de achterliggende service.
+Tot slot worden enkele details rond reproduceerbaarheid aangehaald.
 De uitgewerkte broncode kan teruggevonden worden in deze GitHub repository(TODO). % TODO github url
+
+\section{Voorvereisten}
+\label{sec:voorvereisten}
+De proof-of-concept maakt gebruik van enkele bestaande tools om een werkende applicatie op te zetten.
+Deze dienen vooraf ge\"{\i}nstalleerd te worden.
+
+\subsection{Quarkus CLI}
+\label{subsec:de-quarkus-cli}
+De Quarkus commandline-interface tool (Quarkus CLI) kan gebruikt worden om een Quarkus-applicatie te genereren.
+Deze tool kent vele installatiemogelijkheden, in deze bachelorproef werd ervoor gekozen om de package manager Chocolatey te gebruiken.
+Na het installeren van deze tool wordt~\nameref{subsec:opzetten-quarkus-omgeving} mogelijk.
+Het kent de bijkomende functionaliteiten om extensies toe te voegen, bij te werken of te verwijderen.
+Bovendien bevordert het het updateproces van het raamwerk zelf door voorgedefinieerde acties van het Quarkus-team toe te passen tussen elke update in.
+Hierdoor kan deze proof-of-concept met de steeds recentste versies van Quarkus 3 en haar extensies uitgevoerd worden.
+
+\subsection{Java Software Development Kit}
+\label{subsec:java-software-development-kit}
+Naast de Quarkus CLI maakt een Quarkus applicatie ook gebruik van de Java Software Development Kit (Java SDK).
+De SDK bevat een verzameling van functionaliteiten en documentatie die softwareontwikkelaars gebruiken om applicaties op te zetten.
+Binnen het Java ecosysteem zijn er verschillende distributies van de Java SDK, met telkens andere implementaties van dezelfde functionaliteiten.
+De voorkeur gaat in dit geval uit naar de Adoptium Eclipse Temurin distributie van Java 21, de huidige lange-termijnondersteuning versie.
+Deze distributie is open-source en vereist geen betalende licentie.
+
+\subsubsection{De Java Virtuele Machine}
+Raamwerken binnen het Java ecosysteem, zoals Quarkus en Jetpack Compose, worden in de Java programmeertaal geschreven.
+Ze maken daardoor gebruik van de Java SDK en de Java Virtuele Machine (JVM).
+Concreet schrijven softwareontwikkelaars een applicatie bovenop deze raamwerken in programmeertalen bovenop de JVM\@, vaak is dit Java zelf.
+Jetpack Compose is hier een uitzondering op waarbij softwareontwikkelaars gebruik maken van de Kotlin programmeertaal, zoals aangeraden door de ontwikkelaars achter Android.
+Een build tool, in dit geval de Gradle build tool, spreekt een gespecialiseerde compiler aan om de geschreven code om te vormen naar code die leesbaarder is voor computers.
+Het resultaat hiervan is Java bytecode die de JVM kan interpreteren en uitvoeren.
+Android telefoons en servers gebruiken Java Virtuele Machines die ontworpen zijn voor hun interne infrastructuur en het besturingssysteem.
+
+\subsection{Docker}
+\label{subsec:docker}
+Docker is een systeem vergelijkbaar met de Java Virtuele Machine.
+Het bevat alle benodigdheden om software te draaien binnen gecontaineriseerde instanties die ongeacht van de infrastructuur en het besturingssysteem op een reproduceerbare manier draaien.
+Hiermee ontstaat de mogelijkheid om instructies te schrijven om bepaalde diensten op te zetten op een omgeving-agnostische manier, dit in de vorm van~\textit{Docker images}.
+De Docker Engine voert de instructies van de Docker images uit op een manier waarin images geen zicht hebben op andere draaiende images en de rest van het systeem.
+
+\subsubsection{Docker Desktop}
+Docker Desktop is de Docker-toepassing die gebruikt zal worden voor deze proof-of-concept.
+Met deze applicatie kunnen Docker images opgezet worden om te draaien in Docker containers.
+Om dit te bereiken creëert de Docker Desktop applicatie intern een virtuele machine die Linux draait waarop deze containers vervolgens draaien.
 
 \section{Omgevingen opzetten}
 \label{sec:omgevingen-opzetten}
-De drie lagen van de~\nameref{subsubsec:architectuur} kennen enkele configuratiestappen tijdens het opzetten, de documentatie daarvan volgt hieronder.
+De drie lagen van de~\nameref{subsubsec:architectuur} kennen verschillende architecturele beslissingen, deze worden hieronder toegelicht.
 
 \subsection{Opzetten Google Gemini omgeving}
 \label{subsec:opzetten-google-gemini-omgeving}
 %Hier wordt het AI-platform opgezet om objectherkenning en suggereren van fitnessschema's mogelijk te maken TODO
 TODO
 
-\subsection{Opzetten Quarkus service}
-\label{subsec:opzetten-quarkus-service}
-De achterliggende service zal gebruik maken van de ingebouwde Quarkus extensies en Dev Services, zoals gezien in hoofdstuk~\ref{ch:shortlist}.
-Hoewel Quarkus vele taken voor de ontwikkelaar vergemakkelijkt vergt het enigszins wat opzetwerk.
+\subsection{Het opzetten van de Quarkus omgeving}
+\label{subsec:opzetten-quarkus-omgeving}
+De Quarkus commandline-interface tool Quarkus CLI maakt het genereren en beheren van Quarkus-applicaties mogelijk.
+Gezien we gebruik willen maken van het Kotlin-ecosysteem om consistent te blijven met onze Android-app zal de Kotlin extensie toegevoegd worden samen met enkele andere Quarkus-extensies:
+\begin{itemize}
+    \item \textbf{Hibernate ORM Panache Kotlin} zal de gegevens van de gebruikers en personal trainer opslaan in de databank op een Kotlin-gerichte wijze.
+    \item \textbf{Java Database Connectivity (JDBC)} verzorgt de connectie met de databank zelf.
+    JDBC haalt de inloggegevens van de databank op uit de application.properties bestand van de Quarkus-app.
+    Als deze niet gedefinieerd zijn, dan zal Quarkus zelf een databank opstarten in een Docker-container en dit doorgeven aan JDBC\@.
+    \item \textbf{Hibernate Validator} vergemakkelijkt het valideren van binnenkomende data van gebruikers.
+    Langs deze weg verplicht de API de gebruiker om een foto mee in het verzoek te versturen.
+    \item \textbf{LangChain4j}, tenslotte, maakt de communicatie met de Google Gemini-omgeving mogelijk.
+\end{itemize}
+Met de voornoemde specificaties in het achterhoofd gehouden kan deze commando uitgevoerd worden om het Quarkus-project op te zetten:
+\begin{mdframed}[backgroundcolor=bg]
+    \begin{minted}[breaklines]{sh}
+quarkus create app mauricecantaert:bachelorproef-ti-quarkus \
+    --extensions=kotlin,rest,rest-jackson,hibernate-orm-panache-kotlin,hibernate-validator,jdbc-mariadb,quarkus-langchain4j-core \
+    --gradle-kotlin-dsl
+    \end{minted}
+\end{mdframed}
 
-\subsubsection{Quarkus met Kotlin/Gradle}
-%Opzetten Quarkus project met Kotlin en extensies TODO
-TODO
+\subsubsection{De werking van een Quarkus API}
+De achterliggende service is geschreven volgens de principes van de REST-architectuur.
+REST, of Representational State Transfer, is een vorm van een Application Programming Interface (API) dat het communiceren tussen apparaten via het internet standaardiseert~\autocite{Doglio2018}.
+De voornaamste vereiste van een REST-applicatie is het behandelen van elk verzoek als nieuwe taak die telkens reproduceerbaar is.
+Daaropvolgende verzoeken kennen geen geschiedenis van voorgaande verzoeken, waardoor het noodzakelijk is om steeds alle data mee te geven in één verzoek.
 
-\subsubsection{Testcontainers en Docker}
-%Opzetten test containers met configuratie TODO
-TODO
+\subsubsection{Het aanspreken van functionaliteiten binnen de Quarkus API}
+Elke bron, of type verzoek, krijgt volgens de REST-architectuur een Uniforme Bronidentificatie (URI) die gebruikt kan worden om de achterliggende dienst aan te spreken.
+Deze Quarkus API kent daarmee twee bronnen, één voor de gebruikers en één voor personal trainers.
+Gebruikers krijgen daarbij de mogelijkheid om fitnessinstrumenten te detecteren en daarvoor suggesties te laten genereren.
+Personal trainers krijgen zicht op de geschiedenis van gebruikers en kunnen de suggesties bijsturen waar nodig.
+Concreet spreekt de Android-app de achterliggende service aan met de gewenste URI's.
 
 \subsection{Opzetten Jetpack Compose Android-app}
 \label{subsec:opzetten-jetpack-compose-android-app}
-Ook Jetpack Compose kent enigszins wat opzetwerk, zoals het verbinden met de achterliggende dienst en het vragen van permissies  % TODO
+TODO
 
 \subsubsection{Communicatie met de achterliggende service}
-TODO communicatie met API opzetten % TODO
+TODO % communicatie met API opzetten % TODO
 
 \subsubsection{Toestemming vragen aan de gebruiker}
-TODO opzetten systeem om toestemming te vragen om camera te gebruiken % TODO
+TODO % opzetten systeem om toestemming te vragen om camera te gebruiken % TODO
 
 \subsection{Reproduceren van de proof-of-concept}
 \label{subsec:reproduceren-van-de-proof-of-concept}
 %Uitleggen waarom dit belangrijk is (zie cursus RM) TODO
-TODO uitleggen waarom reproduceren belangrijk is en wat er gedaan is om dit mogelijk te maken
+TODO % uitleggen waarom reproduceren belangrijk is en wat er gedaan is om dit mogelijk te maken
 
 \subsubsection{Gebruikte hardware en software}
-% TODO
-TODO verklaren welke software nodig is om de PoC te reproduceren en op welke hardware de testen zijn uitgevoerd
+TODO % verklaren welke software nodig is om de PoC te reproduceren en op welke hardware de testen zijn uitgevoerd
 
 \subsubsection{Automatisatie script}
 %Docker script, jar file vanuit gradle builden enz TODO
-TODO verklaren welke script gebruikt moet worden om te reproduceren
+TODO % verklaren welke script gebruikt moet worden om te reproduceren
 
 \section{Uitwerking van de proof-of-concept}
 \label{sec:uitwerking-van-de-proof-of-concept}
 % TODO
-TODO uitwerking van code met genomen keuzes en toelichting
+TODO % uitwerking van code met genomen keuzes en toelichting
 
 \section{Resultaten}
 \label{sec:resultaten}
 % TODO
-TODO demonstratie \& screenshots vanuit het perspectief van de gebruiker en de trainer
+TODO % demonstratie \& screenshots vanuit het perspectief van de gebruiker en de trainer

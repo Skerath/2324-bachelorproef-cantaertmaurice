@@ -11,15 +11,49 @@ Het volgende hoofdstuk beschrijft vervolgens de uitwerking van dit luik met de g
 
 \section{Android-app met Jetpack Compose}
 \label{sec:keuze-framework-voor-android-app}
-TODO toelichten waarom er voor native is gekozen boven een progressive web app en crossplatform apps.
+TODO toelichten waarom er voor native is gekozen boven een progressive web app en crossplatform apps. % TODO
 
 \section{Achterliggende service met Quarkus}
 \label{sec:keuze-framework-voor-back-end}
-TODO toelichten waarom er voor Quarkus gekozen is en wat de voordelen zijn (Quarkus Dev Services en extensies, Langchain4j, Docker/Testcontainers, Kotlin in plaats van Java).
+Quarkus is een open source raamwerk bovenop het Java ecosysteem dat talloze functionaliteiten biedt aan softwareontwikkelaars om Java applicaties uit te werken.
+RedHat, een dochteronderming van IBM dat zich richt op het toegankelijk maken van open-source software, sponsort en ondersteunt dit initiatief.
+Bovendien dragen ontwikkelaars binnen RedHat bij aan het project met de ontwikkeling van Mandrel, een distributie van GraalVM specifiek voor de vereisten van Quarkus.
+Mede door deze ondersteuning kent Quarkus een penetratie in het door Java Spring-gedomineerde landschap van Java raamwerken.
+
+\subsection{Modern raamwerk}
+\label{subsec:modern-raamwerk}
+Quarkus is een modern raamwerk ontstaan in 2019 dat verder bouwt op industriestandaarden zoals de Java Context~\& Dependency Injection CDI (CDI) en Persistence API (JPA) standaarden.
+Hierdoor is het makkelijk te interpreteren en verder op te bouwen voor bestaande Java-ontwikkelaars met expertise in back-end ontwikkeling.
+Bovendien heeft Quarkus het voordeel om deze standaarden te implementeren volgens hedendaagse vereisten met kennis opgedaan uit oudere raamwerken zoals Java Spring en Jakarta EE\@.
+Met een focus op Kubernetes en de bijkomende \textit{Dev Services} wilt Quarkus zich differentiëren binnen het Java landschap.
+
+\subsection{Quarkus Dev Services}
+\label{subsec:quarkus-dev-services}
+Aan de hand van~\autocite{Quarkus} ontstaat de mogelijkheid om op een snelle, iteratieve manier voort te bouwen zonder initiële configuratie.
+Zolang er geen bijkomende configuratie van afhankelijke instanties van software aanwezig is, bijvoorbeeld de login details van een databank, voorziet Quarkus van deze instanties.
+In het geval van de MariaDB databank, die gebruikt zal worden om de geschiedenis van gebruikers op te slaan, wordt daarbij achterliggend een Testcontainer opgestart.
+Testcontainers draaien op Docker, een technologie die zich richt op het draaien van software op een platform-agnostische manier, wat verder aan bod komt in subsectie~\ref{subsec:docker}.
+
+\subsection{Quarkus AI met Langchain4j}
+\label{subsec:quarkus-ai-met-langchain4j}
+Langchain4j is de Java-implementatie van Langchain, een raamwerk dat het communiceren met grote taalmodellen vermakelijkt.
+Het is best te vergelijken met Java Hibernate, de industriestandaard raamwerk om het communiceren met achterliggende databanken toegankelijker te maken~\autocite{Langchain4j}.
+Quarkus AI bouwt hierop verder door een Langchain4j integratie te voorzien voor Quarkus applicaties om grote taalmodellen toegankelijk te maken.
+De situering van deze extensie is zichtbaar in~\ref{fig:quarkus-ai}.
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.45]{images/quarkus-ai-visualisation}
+        \caption{Quarkus AI is een dienst waarmee Quarkus applicaties kunnen communiceren met grote taalmodellen. De document store stelt hierbij de databank voor met de geschiedenis van gebruikers in het opvragen van suggesties rond fitnesstoestelen.~\autocite{Lowe2004}}
+        \label{fig:quarkus-ai}
+    \end{center}
+\end{figure}
 
 \section{Artificiële intelligentie met Vertex AI}
 \label{sec:keuze-ai-platform}
-TODO toelichten waarom Google Cloud gebruikt wordt om het AI-model te hosten en waarom Google Gemini 1.5 Pro gekozen werd als model.
+De Quarkus AI-extensie zal zich richten op Gemini 1.5 Pro, een multimodaal taalmodel dat beschikbaar gesteld wordt door Google Cloud Vertex AI\@.
+%TODO toelichten waarom Google Cloud gebruikt wordt om het AI-model te hosten en waarom Google Gemini 1.5 Pro gekozen werd als model.
+
 
 \section{Build tool}
 \label{sec:build-tool}
@@ -47,7 +81,7 @@ Eveneens vergemakkelijkt het gebruik van een bouwsysteem om de proof-of-concept 
     \textit{Continuous integration} maakt het mogelijk om vooraf gedefinieerde bouwprocessen te lanceren eens er nieuwe code beschikbaar komt.
 \end{itemize}
 
-\subsection{Gradle}
+\subsection{Gradle als buildtool}
 \label{subsec:gradle}
 Binnen het Java-ecosysteem staan Apache Maven en Gradle centraal als build tools.
 Bij sommige oudere applicaties is het Ant-bouwsysteem nog in gebruik.
@@ -55,8 +89,8 @@ Het Kotlin-ecosysteem kent de voorkeur naar Maven en Gradle gezien haar oorspron
 Google, de ontwikkelaars achter het Jetpack Compose framework en het Android besturingssysteem, hebben ervoor gekozen om uitsluitend met Gradle te werken wegens de beperktheid van Maven op vlak van bouwprocessen opstellen.
 Met de keuze voor Jetpack Compose zoals besproken in~\ref{sec:keuze-framework-voor-android-app} zal daarmee ook gebruik gemaakt worden van Gradle voor de achterliggende Quarkus service.
 De reden hiervoor is om het bouwproces zo gestroomlijnd en consistent mogelijk te houden tussen de te ontwikkelende platformen, de visualisatie van dit bouwproces is te zien in~\ref{fig:visualisatie-gradle-bouwproces}.
-Een bijkomend voordeel is de mogelijkheid om de Kotlin-syntax te gebruiken binnen Gradlebestanden.
-\begin{figure}
+Een bijkomend voordeel is de mogelijkheid om de Kotlin-syntax te gebruiken binnen Gradlebestanden, wat het meer consistent maakt met de syntax van de Quarkus en Jetpack Compose applicaties.
+\begin{figure}[H]
     \includegraphics[width=1\linewidth]{images/gradle-buildprocess}
     \caption{De drie stappen in het Gradle bouwproces~\autocite{Gradle}}
     \label{fig:visualisatie-gradle-bouwproces}
@@ -64,4 +98,4 @@ Een bijkomend voordeel is de mogelijkheid om de Kotlin-syntax te gebruiken binne
 
 \section{Gekozen fitnessinstrument}
 \label{sec:gekozen-fitnessinstrument}
-TODO criteria voor het gekozen fitness instrument dat getest moest worden met motivering
+TODO criteria voor het gekozen fitness instrument dat getest moest worden met motivering % TODO

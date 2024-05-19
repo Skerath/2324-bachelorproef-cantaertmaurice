@@ -16,7 +16,9 @@
 
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
-\usepackage[section]{minted}
+%\usepackage[cache=false]{minted}
+\usepackage[section,outputdir=../output]{minted}
+\usepackage{mdframed}
 %% If you compile with the make_thesis.{bat,sh} script, use the following
 %% import instead:
 %% \usepackage[section,outputdir=../output]{minted}
@@ -92,8 +94,8 @@
 \maketitle
 \hypersetup{pageanchor=true}
 
-\input{voorwoord}
-\input{samenvatting}
+%\input{voorwoord} TODO
+%\input{samenvatting}
 
 %---------- Inhoud, lijst figuren, ... -----------------------------------------
 
@@ -136,7 +138,7 @@
 \input{shortlist}
 \input{proofofconcept}
 
-\input{conclusie}
+%\input{conclusie} TODO
 
 %---------- Bijlagen -----------------------------------------------------------
 
@@ -151,7 +153,7 @@ Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat 
 % Kopieer en plak hier de samenvatting (abstract) van je onderzoeksvoorstel.
 
 % Verwijzing naar het bestand met de inhoud van het onderzoeksvoorstel
-\input{../voorstel/voorstel-inhoud}
+%\input{../voorstel/voorstel-inhoud} TODO
 
 %%---------- Andere bijlagen --------------------------------------------------
 % TODO: Voeg hier eventuele andere bijlagen toe. Bv. als je deze BP voor de

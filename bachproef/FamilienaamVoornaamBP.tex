@@ -17,13 +17,34 @@
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
 %\usepackage[cache=false]{minted}
-\usepackage[section,outputdir=../output]{minted}
+\usepackage[chapter,outputdir=../output]{minted}
 \usepackage{mdframed}
 %% If you compile with the make_thesis.{bat,sh} script, use the following
 %% import instead:
 %% \usepackage[section,outputdir=../output]{minted}
 \usemintedstyle{solarized-light}
 \definecolor{bg}{RGB}{253,246,227} %% Set the background color of the codeframe
+
+%% Formatting for minted environments.
+\setminted{%
+    autogobble,
+    frame=lines,
+    breaklines,
+    linenos,
+    tabsize=4
+}
+
+%% Ensure the list of listings is in the table of contents
+\renewcommand\listoflistingscaption{%
+    \IfLanguageName{dutch}{Lijst van codefragmenten}{List of listings}
+}
+\renewcommand\listingscaption{%
+    \IfLanguageName{dutch}{Codefragment}{Listing}
+}
+\renewcommand*\listoflistings{%
+    \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\listoflistingscaption}%
+    \listof{listing}{\listoflistingscaption}%
+}
 
 %% Change this line to edit the line numbering style:
 \renewcommand{\theFancyVerbLine}{\ttfamily\scriptsize\arabic{FancyVerbLine}}
@@ -113,7 +134,7 @@
 % If you included tables and/or source code listings, uncomment the appropriate
 % lines.
 %\listoftables
-%\listoflistings
+\listoflistings
 
 % Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.

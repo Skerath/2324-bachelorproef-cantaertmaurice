@@ -11,6 +11,7 @@ Daarna volgt de implementatie van de Android-app en de achterliggende service.
 Tot slot worden enkele details rond reproduceerbaarheid aangehaald.
 De uitgewerkte broncode kan teruggevonden worden in deze GitHub repository(TODO). % TODO github url
 
+
 \section{Voorvereisten}
 \label{sec:voorvereisten}
 De proof-of-concept maakt gebruik van enkele bestaande tools om een werkende applicatie op te zetten.
@@ -54,6 +55,7 @@ Docker Desktop is de Docker-toepassing die gebruikt zal worden voor deze proof-o
 Met deze applicatie kunnen Docker images opgezet worden om te draaien in Docker containers.
 Om dit te bereiken creëert de Docker Desktop applicatie intern een virtuele machine die Linux draait waarop deze containers vervolgens draaien.
 
+
 \section{Omgevingen opzetten en testen}
 \label{sec:omgevingen-opzetten}
 De drie lagen van de~\nameref{subsubsec:architectuur} kennen verschillende architecturele beslissingen, deze worden hieronder toegelicht.
@@ -79,13 +81,15 @@ Gezien we gebruik willen maken van het Kotlin-ecosysteem om consistent te blijve
     \item \textbf{LangChain4j}, tenslotte, maakt de communicatie met de Google Gemini-omgeving mogelijk.
 \end{itemize}
 Met de voornoemde specificaties in het achterhoofd gehouden kan deze commando uitgevoerd worden om het Quarkus-project op te zetten:
-\begin{mdframed}[backgroundcolor=bg]
+
+\begin{listing}[H]
     \begin{minted}[breaklines]{sh}
 quarkus create app mauricecantaert:bachelorproef-ti-quarkus \
     --extensions=kotlin,rest,rest-jackson,hibernate-orm-panache-kotlin,hibernate-validator,jdbc-mariadb,quarkus-langchain4j-core \
     --gradle-kotlin-dsl
     \end{minted}
-\end{mdframed}
+    \captionof{listing}{\IfLanguageName{dutch}{Commando om het Quarkus project met bijhorende extensies en configuratie te genereren}{Command to generate the Quarkus project with extensions and configuration}}
+\end{listing}
 
 \subsubsection{De werking van een Quarkus API}
 \label{subsubsec:werking-api}
@@ -123,17 +127,18 @@ In elke test wordt gekozen voor een afbeelding gemaakt met een andere telefoon o
 De eerste afbeelding~\ref{fig:test-een} bevat enkel de bovenkant van een dumbbell, de dumbbell zelf is dus niet triviaal te detecteren door het model.
 Het gewicht daarentegen is wel duidelijk zichtbaar, namelijk 16 pond.
 Gemini geeft een gunstig resultaat en detecteert het onderwerp en het gewicht:
-\begin{mdframed}[backgroundcolor=bg]
+\begin{listing}[H]
     \begin{minted}[breaklines]{json}
 {
     "name": "DUMBBELL",
     "type": "FREE_WEIGHT",
     "weight": 16,
     "weight_measurement": "LBS",
-    "unknown_field": []
+    "unknown_fields": []
 }
     \end{minted}
-\end{mdframed}
+    \captionof{listing}{\IfLanguageName{dutch}{Resulterende JSON-data van de eerste computer visie test.}{Resulting JSON-data from the first computer vision test.}}
+\end{listing}
 
 \begin{figure}[H]
     \begin{center}
@@ -147,7 +152,7 @@ Gemini geeft een gunstig resultaat en detecteert het onderwerp en het gewicht:
 Voor de tweede test bevat afbeelding~\ref{fig:test-twee} de zijkant van twee dumbbells.
 Echter is het gewicht, 8 kilogram, in dit geval minder duidelijk zichtbaar,
 Gemini geeft wederom een gunstig resultaat en detecteert zowel het onderwerp als het gewicht:
-\begin{mdframed}[backgroundcolor=bg]
+\begin{listing}[H]
     \begin{minted}[breaklines]{json}
 {
     "name": "DUMBBELL",
@@ -157,20 +162,21 @@ Gemini geeft wederom een gunstig resultaat en detecteert zowel het onderwerp als
     "unknown_fields": []
 }
     \end{minted}
-\end{mdframed}
+    \captionof{listing}{\IfLanguageName{dutch}{Resulterende JSON-data van de tweede computer visie test.}{Resulting JSON-data from the first computer vision test.}}
+\end{listing}
 
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[scale=0.1]{images/prompt2-image}
+        \includegraphics[scale=0.20]{images/prompt2-image}
         \caption{De zijkant van twee 8 kilogram dumbbells, de foto werd genomen met een OnePlus 8T.}
         \label{fig:test-twee}
     \end{center}
 \end{figure}
 
 \subsubsection{Laatste test}
-Ten slotte bevat de laatste test afbeelding~\ref{fig:test-drie} met een dumbbell met een gewicht van 5kg, dit gewicht staat echter niet beschreven op het voorwerp.
+Ten slotte bevat de laatste test afbeelding~\ref{fig:test-drie} met een dumbbell met een gewicht van 5 kilogram, dit gewicht staat echter niet beschreven op het voorwerp.
 Gemini geeft hierbij een correcte inschatting van het gewicht, maar deelt mee dat het slechts om een inschatting gaat:
-\begin{mdframed}[backgroundcolor=bg]
+\begin{listing}[H]
     \begin{minted}[breaklines]{json}
 {
     "name": "DUMBBELL",
@@ -182,11 +188,12 @@ Gemini geeft hierbij een correcte inschatting van het gewicht, maar deelt mee da
     ]
 }
     \end{minted}
-\end{mdframed}
+    \captionof{listing}{\IfLanguageName{dutch}{Resulterende JSON-data van de laatste computer visie test.}{Resulting JSON-data from the first computer vision test.}}
+\end{listing}
 
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[scale=0.1]{images/prompt3-image}
+        \includegraphics[scale=0.11]{images/prompt3-image}
         \caption{Een zijaanzicht van een 5 kilogram dumbbell, de foto werd genomen met een Samsung S23 Ultra.}
         \label{fig:test-drie}
     \end{center}
@@ -259,6 +266,7 @@ Het is mogelijk om een externe applicatie zoals een website of desktop applicati
 TODO % TODO
 % json formaat, schattingen, tokens verminderen van foto's
 
+
 \section{Reproduceren van de proof-of-concept}
 \label{sec:reproduceren-van-de-proof-of-concept}
 %Uitleggen waarom dit belangrijk is (zie cursus RM) TODO
@@ -272,6 +280,7 @@ TODO % verklaren welke software nodig is om de PoC te reproduceren en op welke h
 \label{subsec:automatisatie-script}
 %Docker script, jar file vanuit gradle builden enz TODO
 TODO % verklaren welke script gebruikt moet worden om te reproduceren
+
 
 \section{Resultaten}
 \label{sec:resultaten}

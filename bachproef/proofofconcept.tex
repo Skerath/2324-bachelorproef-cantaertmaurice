@@ -55,7 +55,6 @@ Docker Desktop is de Docker-toepassing die gebruikt zal worden voor deze proof-o
 Met deze applicatie kunnen Docker images opgezet worden om te draaien in Docker containers.
 Om dit te bereiken creëert de Docker Desktop applicatie intern een virtuele machine die Linux draait waarop deze containers vervolgens draaien.
 
-
 \section{Omgevingen opzetten en testen}
 \label{sec:omgevingen-opzetten}
 De drie lagen van de~\nameref{subsubsec:architectuur} kennen verschillende architecturele beslissingen, deze worden hieronder toegelicht.
@@ -66,6 +65,7 @@ Zoals verklaard in~\nameref{ch:shortlist} biedt Google Vertex AI allerlei taalmo
 Een omgeving opzetten is triviaal, een gebruiker hoeft daarbij enkel een Googleaccount en project aan te maken op Google Cloud.
 Daarna kiest de gebruiker ervoor om de Vertex AI-mogelijkheden en bijhorende taalmodellen aan te zetten.
 Voor prototypes is het mogelijk om € 280 aan krediet aan te vragen, waarmee nieuwe klanten de functionaliteiten van Gemini gratis kunnen uitproberen.
+Ten slotte hoort de server toegang te krijgen tot Vertex AI, dit kan door het volgen van de \textit{Set up Application Default Credentials} handleiding voor lokale ontwikkelingsomgevingen\footnote{De handleiding kan \href{https://cloud.google.com/docs/authentication/provide-credentials-adc#local-dev}{hier} geraadpleegd worden}.
 
 \subsection{Opzetten van de Quarkus omgeving}
 \label{subsec:opzetten-quarkus-omgeving}
@@ -81,11 +81,10 @@ Gezien we gebruik willen maken van het Kotlin-ecosysteem om consistent te blijve
     \item \textbf{LangChain4j}, tenslotte, maakt de communicatie met de Google Gemini-omgeving mogelijk.
 \end{itemize}
 Met de voornoemde specificaties in het achterhoofd gehouden kan deze commando uitgevoerd worden om het Quarkus-project op te zetten:
-
 \begin{listing}[H]
     \begin{minted}[breaklines]{sh}
 quarkus create app mauricecantaert:bachelorproef-ti-quarkus \
-    --extensions=kotlin,rest,rest-jackson,hibernate-orm-panache-kotlin,hibernate-validator,jdbc-mariadb,quarkus-langchain4j-core \
+    --extensions=kotlin,rest,rest-jackson,rest-multipart,hibernate-orm-panache-kotlin,hibernate-validator,jdbc-mariadb,quarkus-langchain4j-core \
     --gradle-kotlin-dsl
     \end{minted}
     \captionof{listing}{\IfLanguageName{dutch}{Commando om het Quarkus project met bijhorende extensies en configuratie te genereren}{Command to generate the Quarkus project with extensions and configuration}}
@@ -214,7 +213,14 @@ Om dit te bereiken zullen de resultaten, zoals gezien in subsectie~\ref{subsec:g
 De Quarkus applicatie houdt de ingezonden afbeelding niet bij in de databank om de privacy van de gebruiker te bewaren, het verwerkt deze enkel zoals beschreven in~\nameref{subsubsec:werking-api}.
 Vertex AI verwerkt verzoeken van de Quarkus applicatie en stuurt deze terug in het vooraf opgestelde JSON-formaat.
 Quarkus zal dit formaat terug omzetten naar het gepaste domein object om vervolgens te bewaren in de historiek van de gebruiker.
-Afbeelding X beschrijft de topologie van het uitgewerkte domeinmodel. %TODO foto invoegen
+Afbeelding~\ref{fig:domein-model} beschrijft de topologie van het uitgewerkte domeinmodel.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.3]{images/domeinmodel}
+        \caption{Formaat om data op te slaan in de databank. Een cliënt vraagt een verzoek aan om meer informatie te krijgen over een object (equipment\_request), op basis hiervan krijgt de cliënt een suggestie terug met optionele invloed van de personal trainer (trainer\_input).}
+        \label{fig:domein-model}
+    \end{center}
+\end{figure}
 
 \subsection{Functionaliteiten van de gebruiker}
 \label{subsec:functionaliteiten-van-de-gebruiker}
@@ -233,15 +239,75 @@ Daarna slaat de applicatie het resultaat op in de databank en haalt het aansluit
 Met de opgevraagde gegevens omtrent de foto en eventuele bijkomende instructies van de coach zal Quarkus opnieuw een verzoek sturen naar Vertex AI om suggesties voor te stellen met behulp van generatieve AI.
 Alvorens de resulterende suggesties terug te sturen naar de gebruiker zal de applicatie deze opslaan in de databank.
 
-\subsubsection{Implementatie van Langchain4j}
-De bovenstaande bron kent de volgende Langchain4j uitwerking:
-TODO % todo
+\subsubsection{Implementatie van de bron om suggesties te genereren}
+\label{subsubsec:implementatie-bron-suggesties-genereren}
+De bovenstaande bron kent de volgende uitwerking met behulp van enkele Langchain4j implementaties:
+\begin{listing}[H]
+    \begin{minted}[breaklines]{kotlin}
+    fun getSuggestions(
+        @NotNull @RestForm("image") file: File,
+    ): String {
+        val user = User.byName("Maurice Cantaert") ?: throw IllegalArgumentException("User can't be null")
+
+        // 1
+        val equipmentDetails = imageAnalyzer.getEquipmentDetails(file)
+        val trainerInput = TrainerInput.latest(user, equipmentDetails.type)
+
+        // 2
+        equipmentDetails.client = user
+        equipmentDetails.persist()
+
+        // 3
+        val response = suggestionGenerator.getSuggestion(equipmentDetails, trainerInput)
+        response.persist()
+
+        return response.suggestion
+    }
+    \end{minted}
+    \captionof{listing}{\IfLanguageName{dutch}{Instructies van de bron om een afbeelding te analyseren en daarvoor suggesties te genereren}{Instructies of the resource to generate suggestions based on the analysed picture}}
+\end{listing}
+\label{code:user-resource}
+Allereerst zal het systeem de gebruiker opvragen volgens de gebruikersnaam.
+In de eerste stap zal daarmee de recentste input van de personal trainer voor het type fitness toestel opgevraagd worden.
+Ondertussen stuurt het systeem een verzoek aan de computer visie-dienst (imageAnalyzer) om het object te analyseren.
+Vervolgens, in de tweede stap, zal het systeem de resultaat van de fotoverwerker opslaan in de databank.
+Ten slotte zal het systeem suggesties laten genereren door middel van een verzoek aan de generatieve AI-dienst (suggestionGenerator).
+
+\subsubsection{Implementation van de AI-gestuurde diensten}
+Zowel de imageAnalyzer als de suggestionGenerator uit codefragment~\ref{code:user-resource} maken gebruik van een eigen implementatie van Langchain4j.
+Beide implementaties delen dezelfde fundamentele werking:
+\begin{listing}[H]
+    \begin{minted}[breaklines]{kotlin}
+        UserMessage.from(
+            ImageContent.from(encodedFile, mime),
+            TextContent.from(
+                """
+            A user wants to know what fitness equipment he's looking at along with some details. Respond in the following JSON format.
+            If any details are unknown (such as weight or the type), try to make an estimation.
+
+            Answer with a single raw JSON document, WITHOUT any markdown markup such as ````json or ``` surrounding it.
+            The JSON document must contain:
+            - the type of equipment, such as a DUMBBELL or BARBELL, in the `type` key as a string
+            - the purpose of equipment, such as STRENGTH or CARDIO, in the `purpose` key as a string
+            - the weight of the equipment, in the `weight` key as a number
+            - the weight measurement, either KG or LBS, in the `weight_unit` key as a string
+                """.trimIndent()
+            )
+        )
+    \end{minted}
+    \captionof{listing}{\IfLanguageName{dutch}{Instructies om computer visie uit te voeren op een afbeelding om het object te analyseren en vervolgens uit te gieten in een vooraf gedefinieerd JSON-bestand}{Instructions to perform computer vision on an image to analyze the object and then pour it out into a predefined JSON file}}
+\end{listing}
+\label{code:get-suggestions}
+Bij het oproepen van de bron beschreven in subsectie~\ref{subsubsec:implementatie-bron-suggesties-genereren} zal het systeem de functie~\textit{getEquipmentDetails()} oproepen.
+Allereerst zal de dienst de afbeelding verwerken zodat deze door het systeem gebruikt kan worden voor computer visie.
+Vervolgens wijst de dienst aan welk model toegepast zal worden, in dit geval is dat het Gemini 1.5 Pro model.
+Het verzoek wordt verstuurd naar het model om te verwerken, zoals beschreven in codefragment~\ref{code:get-suggestions}.
+Ten slotte zal de beeldverwerker het resultaat omvormen tot een gepast domeinobject dat verder gebruikt kan worden.
 
 \subsubsection{Implementatie van de Android applicatie}
 De Android-applicatie maakt gebruik van Retrofit om de bovenstaande bron op te roepen.
 Door een foto uit de galerij te selecteren kan de gebruiker deze dienst oproepen.
-Ten slotte geeft de app de gegenereerde suggesties weer.
-% todo viewmodel & api service code tonen ?
+Ten slotte geeft de app de gegenereerde suggesties weer in Markdown formaat.
 
 \subsection{Functionaliteiten van de personal trainer uitwerken}
 \label{subsec:functionaliteiten-van-de-personal-trainer-uitwerken}
@@ -263,26 +329,33 @@ Het is mogelijk om een externe applicatie zoals een website of desktop applicati
 
 \subsection{Opmerkingen}
 \label{subsec:opmerkingen}
-TODO % TODO
-% json formaat, schattingen, tokens verminderen van foto's
-
+Tijdens het uitwerken van de proof-of-concept kwamen enkele uitdagingen aan bod:
+\begin{itemize}
+    \item De automatische integratie van \textbf{Quarkus AI} met Langchain4j zorgt momenteel voor enkele problemen bij het uitvoeren van correcte computer visie.
+    Een mogelijke oorzaak is het foutief verwerken van de afbeelding om door te sturen naar het Gemini taalmodel, waardoor sommige verwerkingen minder accuraat zijn.
+    Om dit te mitigeren is dit deel van de proof-of-concept zonder Quarkus AI geschreven in pure Langchain4j instructies.
+    Hiermee zijn de resultaten zoals verwacht en overeenkomstig met de resultaten in de voorafgaande testen.
+    \item De \textbf{vooraf gedefinieerde instructies} zoals beschreven in codefragement~\ref{code:get-suggestions} vereisen specifieke voorwaarden om een gepast resultaat te bekomen.
+    Hierbij moet de achterliggende service enkele zaken verduidelijken, zoals het gevraagde JSON-formaat of de context van het verzoek.
+\end{itemize}
 
 \section{Reproduceren van de proof-of-concept}
 \label{sec:reproduceren-van-de-proof-of-concept}
-%Uitleggen waarom dit belangrijk is (zie cursus RM) TODO
-TODO % uitleggen waarom reproduceren belangrijk is en wat er gedaan is om dit mogelijk te maken
-
-\subsection{Gebruikte hardware en software}
-\label{subsec:gebruikte-hardware-en-software}
-TODO % verklaren welke software nodig is om de PoC te reproduceren en op welke hardware de testen zijn uitgevoerd TODO
-
-\subsection{Automatisatie script}
-\label{subsec:automatisatie-script}
-%Docker script, jar file vanuit gradle builden enz TODO
-TODO % verklaren welke script gebruikt moet worden om te reproduceren
-
+Om het reproduceren van deze proof-of-concept mogelijk te maken is er een Gradle-scripts die uitgevoerd kan worden om de applicatie op te starten.
+Belangrijk hierbij is dat er een~\nameref{subsec:docker} omgeving aanwezig is en draait, zodat Quarkus een test databank kan genereren.
+Bovendien is het belangrijk om een~\textit{.env} bestand aan te maken in de kernmap van het project met volgende waarden om de Gemini omgeving op te kunnen roepen:
+\begin{listing}[H]
+    \begin{minted}[breaklines]{properties}
+GEMINI_PROJECT_ID=rare-nectar-414417
+GEMINI_PROJECT_LOCATION=europe-west1
+    \end{minted}
+    \captionof{listing}{\IfLanguageName{dutch}{Omgevingswaarden met informatie over Gemini}{Environment values with information reegarding Gemini}}
+\end{listing}
 
 \section{Resultaten}
 \label{sec:resultaten}
-% TODO
-TODO % demonstratie \& screenshots vanuit het perspectief van de gebruiker en de trainer
+De uitwerking van de proof-of-concept heeft een gunstig resultaat.
+Cliënten kunnen makkelijk suggesties krijgen op basis van ingezonden afbeeldingen.
+De historiek van de gebruiker wordt bijgehouden en is ten alle tijde raadpleegbaar door de personal trainer.
+Bovendien kan de personal trainer volgende suggesties manipuleren door middel van eigen invoer in te geven.
+In subsectie~\ref{subsec:opmerkingen} komen enkele opmerkingen aan bod.

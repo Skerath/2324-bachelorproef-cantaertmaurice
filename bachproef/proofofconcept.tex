@@ -60,11 +60,10 @@ De drie lagen van de~\nameref{subsubsec:architectuur} kennen verschillende archi
 
 \subsection{Opzetten Google Gemini omgeving}
 \label{subsec:opzetten-google-gemini-omgeving}
-%Hier wordt het AI-platform opgezet om objectherkenning en suggereren van fitnessschema's mogelijk te maken TODO
-TODO
-
-\subsubsection{Tokens binnen een verzoek aan een AI-model}
-TODO % todo uitleggen wat zijn tokens & hoe ze verminderen ----> misschien in literatuurstudie?
+Zoals verklaard in~\nameref{ch:shortlist} biedt Google Vertex AI allerlei taalmodellen ter beschikking voor Google Cloud gebruikers.
+Een omgeving opzetten is triviaal, een gebruiker hoeft daarbij enkel een Googleaccount en project aan te maken op Google Cloud.
+Daarna kiest de gebruiker ervoor om de Vertex AI-mogelijkheden en bijhorende taalmodellen aan te zetten.
+Voor prototypes is het mogelijk om € 280 aan krediet aan te vragen, waarmee nieuwe klanten de functionaliteiten van Gemini gratis kunnen uitproberen.
 
 \subsection{Opzetten van de Quarkus omgeving}
 \label{subsec:opzetten-quarkus-omgeving}
@@ -113,7 +112,85 @@ Deze maakt standaard gebruik van het Gradle bouwsysteem, wat de Quarkus api teve
 
 \subsection{Gemini AI testen}
 \label{subsec:gemini-ai-testen}
-TODO % todo
+Vertex AI biedt een test interface vergelijkbaar aan de werking van Langchain4j.
+Dit is belangrijk om de eerste stap in het gebruiksverloop van klanten te testen.
+Als het gebruik hiervan een ongunstig resultaat zou opleveren, betekent dit dat het gebruikte taalmodel ongepast is voor deze proof-of-concept.
+Hierna volgen enkele testen van het Gemini 1.5 Pro platform, de resultaten worden gegoten in een vooraf gedefinieerde JSON-formaat.
+Het model krijgt de instructie om een schatting te maken voor onzekere eigenschappen, zoals wanneer het gewicht niet duidelijk vermeld.
+In elke test wordt gekozen voor een afbeelding gemaakt met een andere telefoon om verschillende gebruikers te simuleren.
+
+\subsubsection{Eerste test}
+De eerste afbeelding~\ref{fig:test-een} bevat enkel de bovenkant van een dumbbell, de dumbbell zelf is dus niet triviaal te detecteren door het model.
+Het gewicht daarentegen is wel duidelijk zichtbaar, namelijk 16 pond.
+Gemini geeft een gunstig resultaat en detecteert het onderwerp en het gewicht:
+\begin{mdframed}[backgroundcolor=bg]
+    \begin{minted}[breaklines]{json}
+{
+    "name": "DUMBBELL",
+    "type": "FREE_WEIGHT",
+    "weight": 16,
+    "weight_measurement": "LBS",
+    "unknown_field": []
+}
+    \end{minted}
+\end{mdframed}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.1]{images/prompt1-image}
+        \caption{De bovenkant van een 16 pond dumbbell, de foto werd genomen met een Apple iPhone 14.}
+        \label{fig:test-een}
+    \end{center}
+\end{figure}
+
+\subsubsection{Tweede test}
+Voor de tweede test bevat afbeelding~\ref{fig:test-twee} de zijkant van twee dumbbells.
+Echter is het gewicht, 8 kilogram, in dit geval minder duidelijk zichtbaar,
+Gemini geeft wederom een gunstig resultaat en detecteert zowel het onderwerp als het gewicht:
+\begin{mdframed}[backgroundcolor=bg]
+    \begin{minted}[breaklines]{json}
+{
+    "name": "DUMBBELL",
+    "type": "FREE_WEIGHT",
+    "weight": 8,
+    "weight_measurement": "KG",
+    "unknown_fields": []
+}
+    \end{minted}
+\end{mdframed}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.1]{images/prompt2-image}
+        \caption{De zijkant van twee 8 kilogram dumbbells, de foto werd genomen met een OnePlus 8T.}
+        \label{fig:test-twee}
+    \end{center}
+\end{figure}
+
+\subsubsection{Laatste test}
+Ten slotte bevat de laatste test afbeelding~\ref{fig:test-drie} met een dumbbell met een gewicht van 5kg, dit gewicht staat echter niet beschreven op het voorwerp.
+Gemini geeft hierbij een correcte inschatting van het gewicht, maar deelt mee dat het slechts om een inschatting gaat:
+\begin{mdframed}[backgroundcolor=bg]
+    \begin{minted}[breaklines]{json}
+{
+    "name": "DUMBBELL",
+    "type": "FREE_WEIGHT",
+    "weight": 5,
+    "weight_measurement": "KG",
+    "unknown_fields": [
+        "weight"
+    ]
+}
+    \end{minted}
+\end{mdframed}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.1]{images/prompt3-image}
+        \caption{Een zijaanzicht van een 5 kilogram dumbbell, de foto werd genomen met een Samsung S23 Ultra.}
+        \label{fig:test-drie}
+    \end{center}
+\end{figure}
 
 \section{Functionaliteiten uitwerken}
 \label{sec:functionaliteiten-uitwerken}
@@ -121,7 +198,7 @@ De resultaten uit de vorige stap bewijzen de mogelijkheden van het Gemini-platfo
 Eerst volgt de opzet van het domeinmodel in de achterliggende service, dit dient om de historiek van de gebruiker bij te kunnen houden in de databank.
 Daarna volgt een uitwerking van de bronnen die de gebruiker en de personal trainer zal kunnen oproepen om de functionaliteiten te gebruiken.
 De gebruiker zal deze bronnen kunnen oproepen door middel van een kleine Android-app, wat in de laatste stap opgezet wordt.
-Met een demo ontstaat een zicht op de bereikte functionaliteiten en de resultaten, wat besproken zal worden in de volgende sectie.
+Een demo geeft het zicht op de bereikte functionaliteiten en de resultaten, wat besproken zal worden in de volgende sectie.
 
 \subsection{Domeinmodel opzetten}
 \label{subsec:domeinmodel-opzetten}
@@ -132,8 +209,8 @@ Vertex AI verwerkt verzoeken van de Quarkus applicatie en stuurt deze terug in h
 Quarkus zal dit formaat terug omzetten naar het gepaste domein object om vervolgens te bewaren in de historiek van de gebruiker.
 Afbeelding X beschrijft de topologie van het uitgewerkte domeinmodel. %TODO foto invoegen
 
-\subsection{Functionaliteiten van de gebruiker uitwerken}
-\label{subsec:functionaliteiten-van-de-gebruiker-uitwerken}
+\subsection{Functionaliteiten van de gebruiker}
+\label{subsec:functionaliteiten-van-de-gebruiker}
 Na het opzetten van het domeinmodel kunnen de bronnen voor de gebruikers gedefinieerd en geïmplementeerd worden.
 Voor deze proof-of-concept is er hierbij slechts een bron blootgesteld aan de gebruiker, namelijk het doorsturen van een foto.
 In de achtergrond zal de applicatie de opgevraagde gegevens en de resultaten bijhouden in de databank.
@@ -142,16 +219,22 @@ Hierbij kijkt de applicatie naar de input van de personal trainer en past het de
 Belangrijk hierbij is dat de gebruiker hier geen extra input voor moet geven.
 
 \subsubsection{Bron definiëren}
-TODO % TODO code over resource hier kort tonen, dit wordt in volgende stap dan gebruikt om langchain4j op te roepen en daarna op te slaan in hibernate
+Quarkus biedt een triviale oplossing om bronnen te definiëren en bloot te stellen aan gebruikers.
+Elke bron voert vervolgens enkele stappen uit, in het geval van de bron voor cliënten begint dat met het verwerken van de afbeelding.
+De applicatie een verzoek naar Vertex AI met bijkomende gegevens zoals het vooraf gedefinieerde JSON-formaat.
+Daarna slaat de applicatie het resultaat op in de databank en haalt het aansluitende instructies van de personal trainer op.
+Met de opgevraagde gegevens omtrent de foto en eventuele bijkomende instructies van de coach zal Quarkus opnieuw een verzoek sturen naar Vertex AI om suggesties voor te stellen met behulp van generatieve AI.
+Alvorens de resulterende suggesties terug te sturen naar de gebruiker zal de applicatie deze opslaan in de databank.
 
-\subsubsection{Bron oproepen vanuit de Android applicatie}
-TODO % TODO Retrofit, vragen voor permissie, foto versturen, tekst ontvangen
+\subsubsection{Implementatie van Langchain4j}
+De bovenstaande bron kent de volgende Langchain4j uitwerking:
+TODO % todo
 
-\subsubsection{Objectherkenning en generatieve AI toepassen}
-TODO % TODO aanroepen van bron voert deze code uit, Langchain4j gebruiken en suggesties van PT halen uit DB
-
-\subsubsection{Resultaten terugsturen en historiek bijhouden}
-TODO % TODO langchain4j resultaten terugsturen naar gebruiker, historiek opslaan in DB
+\subsubsection{Implementatie van de Android applicatie}
+De Android-applicatie maakt gebruik van Retrofit om de bovenstaande bron op te roepen.
+Door een foto uit de galerij te selecteren kan de gebruiker deze dienst oproepen.
+Ten slotte geeft de app de gegenereerde suggesties weer.
+% todo viewmodel & api service code tonen ?
 
 \subsection{Functionaliteiten van de personal trainer uitwerken}
 \label{subsec:functionaliteiten-van-de-personal-trainer-uitwerken}
@@ -164,15 +247,17 @@ De tweede bron bestaat uit het manipuleren van toekomstige suggesties die aan de
 Met het toevoegen van enkele suggesties, zoals het focussen op een bepaalde oefening of meer repetities aan een lager gewicht, zal de gebruiker gepersonaliseerde suggesties krijgen bij het volgende gebruik van de Android app.
 Bovendien zal de coach deze gegevens niet zelf nog bij te houden, deze zullen telkens raadpleegbaar blijven in de databank bij volgende consultaties.
 
-\subsubsection{Historiek van de gebruiker raadplegen}
-TODO % TODO api call in postman tonen, bron definieren is zoals in vorige stap al uitgelegd
-
-\subsubsection{Toekomstige suggesties manipuleren}
-TODO % TODO met data uit historiek dan aanpassen
+\subsubsection{Implementatie}
+De implementatie van de voorgaande functionaliteit voor gebruikers haalt reeds de invoer op van de personal trainer.
+Langchain4j krijgt deze invoer en zorgt ervoor dat Vertex AI hier rekening mee houdt.
+Het definiëren van de bron en de manipulatie van de data in de databank is gelijkaardig met~\nameref{subsec:functionaliteiten-van-de-gebruiker}.
+De personal trainer kan deze bronnen oproepen door middel van Postman, een platform voor het rechtstreeks gebruiken van achterliggende API's.
+Het is mogelijk om een externe applicatie zoals een website of desktop applicatie te maken met een gebruiksvriendelijke interface, dit valt echter buiten de scope van deze proof-of-concept.
 
 \subsection{Opmerkingen}
 \label{subsec:opmerkingen}
 TODO % TODO
+% json formaat, schattingen, tokens verminderen van foto's
 
 \section{Reproduceren van de proof-of-concept}
 \label{sec:reproduceren-van-de-proof-of-concept}

@@ -54,7 +54,7 @@ Docker Desktop is de Docker-toepassing die gebruikt zal worden voor deze proof-o
 Met deze applicatie kunnen Docker images opgezet worden om te draaien in Docker containers.
 Om dit te bereiken creëert de Docker Desktop applicatie intern een virtuele machine die Linux draait waarop deze containers vervolgens draaien.
 
-\section{Omgevingen opzetten}
+\section{Omgevingen opzetten en testen}
 \label{sec:omgevingen-opzetten}
 De drie lagen van de~\nameref{subsubsec:architectuur} kennen verschillende architecturele beslissingen, deze worden hieronder toegelicht.
 
@@ -63,7 +63,10 @@ De drie lagen van de~\nameref{subsubsec:architectuur} kennen verschillende archi
 %Hier wordt het AI-platform opgezet om objectherkenning en suggereren van fitnessschema's mogelijk te maken TODO
 TODO
 
-\subsection{Het opzetten van de Quarkus omgeving}
+\subsubsection{Tokens binnen een verzoek aan een AI-model}
+TODO % todo uitleggen wat zijn tokens & hoe ze verminderen ----> misschien in literatuurstudie?
+
+\subsection{Opzetten van de Quarkus omgeving}
 \label{subsec:opzetten-quarkus-omgeving}
 De Quarkus commandline-interface tool Quarkus CLI maakt het genereren en beheren van Quarkus-applicaties mogelijk.
 Gezien we gebruik willen maken van het Kotlin-ecosysteem om consistent te blijven met onze Android-app zal de Kotlin extensie toegevoegd worden samen met enkele andere Quarkus-extensies:
@@ -86,6 +89,7 @@ quarkus create app mauricecantaert:bachelorproef-ti-quarkus \
 \end{mdframed}
 
 \subsubsection{De werking van een Quarkus API}
+\label{subsubsec:werking-api}
 De achterliggende service is geschreven volgens de principes van de REST-architectuur.
 REST, of Representational State Transfer, is een vorm van een Application Programming Interface (API) dat het communiceren tussen apparaten via het internet standaardiseert~\autocite{Doglio2018}.
 De voornaamste vereiste van een REST-applicatie is het behandelen van elk verzoek als nieuwe taak die telkens reproduceerbaar is.
@@ -98,32 +102,91 @@ Gebruikers krijgen daarbij de mogelijkheid om fitnessinstrumenten te detecteren 
 Personal trainers krijgen zicht op de geschiedenis van gebruikers en kunnen de suggesties bijsturen waar nodig.
 Concreet spreekt de Android-app de achterliggende service aan met de gewenste URI's.
 
-\subsection{Opzetten Jetpack Compose Android-app}
+\subsection{Opzetten Jetpack Compose Android-app omgeving}
 \label{subsec:opzetten-jetpack-compose-android-app}
-TODO
+Cliënten horen de mogelijkheid te hebben om de opgezette Quarkus applicatie op te roepen vanuit een Android applicatie.
+Gebruikers kiezen daarvoor om een nieuwe foto te maken of een bestaande te selecteren uit de galerij van hun telefoon.
+Het Android besturingssysteem verplicht applicaties om hiervoor eerst toestemming te vragen aan de gebruiker, wat geïmplementeerd zal worden door gebruik te maken van het bestaande proces dat het besturingssysteem beschikbaar stelt.
+Tot slot zal Retrofit, een bestaande oplossing om REST-verzoeken te versturen en ontvangen, de connectie met de Quarkus dienst behandelen.
+Android Studio, de geïntegreerde ontwikkelaarsomgeving voor ontwikkelaars op het Android platform, biedt een template aan voor het genereren van een Android project.
+Deze maakt standaard gebruik van het Gradle bouwsysteem, wat de Quarkus api tevens ook gebruikt.
 
-\subsubsection{Communicatie met de achterliggende service}
-TODO % communicatie met API opzetten % TODO
+\subsection{Gemini AI testen}
+\label{subsec:gemini-ai-testen}
+TODO % todo
 
-\subsubsection{Toestemming vragen aan de gebruiker}
-TODO % opzetten systeem om toestemming te vragen om camera te gebruiken % TODO
+\section{Functionaliteiten uitwerken}
+\label{sec:functionaliteiten-uitwerken}
+De resultaten uit de vorige stap bewijzen de mogelijkheden van het Gemini-platform, hiermee ontstaat de zekerheid dat de proof-of-concept hier verder op zal kunnen bouwen.
+Eerst volgt de opzet van het domeinmodel in de achterliggende service, dit dient om de historiek van de gebruiker bij te kunnen houden in de databank.
+Daarna volgt een uitwerking van de bronnen die de gebruiker en de personal trainer zal kunnen oproepen om de functionaliteiten te gebruiken.
+De gebruiker zal deze bronnen kunnen oproepen door middel van een kleine Android-app, wat in de laatste stap opgezet wordt.
+Met een demo ontstaat een zicht op de bereikte functionaliteiten en de resultaten, wat besproken zal worden in de volgende sectie.
 
-\subsection{Reproduceren van de proof-of-concept}
-\label{subsec:reproduceren-van-de-proof-of-concept}
+\subsection{Domeinmodel opzetten}
+\label{subsec:domeinmodel-opzetten}
+De achterliggende service hoort de historiek van de gebruiker bij te houden zodat de coach deze op elk moment hoort te kunnen raadplegen.
+Om dit te bereiken zullen de resultaten, zoals gezien in subsectie~\ref{subsec:gemini-ai-testen}, ingedeeld worden als objecten.
+De Quarkus applicatie houdt de ingezonden afbeelding niet bij in de databank om de privacy van de gebruiker te bewaren, het verwerkt deze enkel zoals beschreven in~\nameref{subsubsec:werking-api}.
+Vertex AI verwerkt verzoeken van de Quarkus applicatie en stuurt deze terug in het vooraf opgestelde JSON-formaat.
+Quarkus zal dit formaat terug omzetten naar het gepaste domein object om vervolgens te bewaren in de historiek van de gebruiker.
+Afbeelding X beschrijft de topologie van het uitgewerkte domeinmodel. %TODO foto invoegen
+
+\subsection{Functionaliteiten van de gebruiker uitwerken}
+\label{subsec:functionaliteiten-van-de-gebruiker-uitwerken}
+Na het opzetten van het domeinmodel kunnen de bronnen voor de gebruikers gedefinieerd en geïmplementeerd worden.
+Voor deze proof-of-concept is er hierbij slechts een bron blootgesteld aan de gebruiker, namelijk het doorsturen van een foto.
+In de achtergrond zal de applicatie de opgevraagde gegevens en de resultaten bijhouden in de databank.
+De bron stuurt de suggesties door naar de gebruiker zodat de persoon verder kan met zijn workout.
+Hierbij kijkt de applicatie naar de input van de personal trainer en past het de suggesties aan waar nodig.
+Belangrijk hierbij is dat de gebruiker hier geen extra input voor moet geven.
+
+\subsubsection{Bron definiëren}
+TODO % TODO code over resource hier kort tonen, dit wordt in volgende stap dan gebruikt om langchain4j op te roepen en daarna op te slaan in hibernate
+
+\subsubsection{Bron oproepen vanuit de Android applicatie}
+TODO % TODO Retrofit, vragen voor permissie, foto versturen, tekst ontvangen
+
+\subsubsection{Objectherkenning en generatieve AI toepassen}
+TODO % TODO aanroepen van bron voert deze code uit, Langchain4j gebruiken en suggesties van PT halen uit DB
+
+\subsubsection{Resultaten terugsturen en historiek bijhouden}
+TODO % TODO langchain4j resultaten terugsturen naar gebruiker, historiek opslaan in DB
+
+\subsection{Functionaliteiten van de personal trainer uitwerken}
+\label{subsec:functionaliteiten-van-de-personal-trainer-uitwerken}
+Een personal trainer krijgt toegang tot twee bronnen.
+Om de applicatie te gebruiken start hij met het raadplegen van de historiek van de gebruiker.
+Met deze gegevens krijgt hij een globaal zicht op de vooruitgang van de gebruiker, bijvoorbeeld aan de hand van het gewicht van enkele gebruikte toestellen.
+Ook krijgt hij een zicht op de hoeveelheid toestellen die gebruikt werden, hoe vaak en over welke periode.
+Hiermee hoeven zowel de coach als de cliënt dit niet zelf bij te houden of te noteren.
+De tweede bron bestaat uit het manipuleren van toekomstige suggesties die aan de cliënt voorgesteld zullen worden, dit aan de hand van de gegevens uit de voorgenoemde bron.
+Met het toevoegen van enkele suggesties, zoals het focussen op een bepaalde oefening of meer repetities aan een lager gewicht, zal de gebruiker gepersonaliseerde suggesties krijgen bij het volgende gebruik van de Android app.
+Bovendien zal de coach deze gegevens niet zelf nog bij te houden, deze zullen telkens raadpleegbaar blijven in de databank bij volgende consultaties.
+
+\subsubsection{Historiek van de gebruiker raadplegen}
+TODO % TODO api call in postman tonen, bron definieren is zoals in vorige stap al uitgelegd
+
+\subsubsection{Toekomstige suggesties manipuleren}
+TODO % TODO met data uit historiek dan aanpassen
+
+\subsection{Opmerkingen}
+\label{subsec:opmerkingen}
+TODO % TODO
+
+\section{Reproduceren van de proof-of-concept}
+\label{sec:reproduceren-van-de-proof-of-concept}
 %Uitleggen waarom dit belangrijk is (zie cursus RM) TODO
 TODO % uitleggen waarom reproduceren belangrijk is en wat er gedaan is om dit mogelijk te maken
 
-\subsubsection{Gebruikte hardware en software}
-TODO % verklaren welke software nodig is om de PoC te reproduceren en op welke hardware de testen zijn uitgevoerd
+\subsection{Gebruikte hardware en software}
+\label{subsec:gebruikte-hardware-en-software}
+TODO % verklaren welke software nodig is om de PoC te reproduceren en op welke hardware de testen zijn uitgevoerd TODO
 
-\subsubsection{Automatisatie script}
+\subsection{Automatisatie script}
+\label{subsec:automatisatie-script}
 %Docker script, jar file vanuit gradle builden enz TODO
 TODO % verklaren welke script gebruikt moet worden om te reproduceren
-
-\section{Uitwerking van de proof-of-concept}
-\label{sec:uitwerking-van-de-proof-of-concept}
-% TODO
-TODO % uitwerking van code met genomen keuzes en toelichting
 
 \section{Resultaten}
 \label{sec:resultaten}

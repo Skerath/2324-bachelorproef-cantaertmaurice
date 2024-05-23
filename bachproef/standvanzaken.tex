@@ -85,7 +85,7 @@ Om het gebruik hiervan mogelijk te maken worden deep learning algoritmes zoals c
 Een tweede voorbeeld is het toepassen van computer visie in de transportsector.
 Met behulp van computer visie-algoritmen zoals kleurenruimte transformatie, Canny-randdetectie en Hough-lijntransformatie wordt het mogelijk voor zelfrijdende auto's om op een goedkopere wijze berekeningen te maken~\autocite{Gajjar2023}.
 Door middel van deze algoritmen verdwijnt de noodzaak om te ondersteunen op duurdere systemen, met name Lichtdetectie- en afstandmetingssensoren (LiDAR) die gebruikt worden om een virtuele driedimensionele map te maken van de direct omgeving.
-Beide systemen kennen een vorm van objectherkenning om objecten zoals verkeersborden of voertuigen in de omgeving te detecteren, een visualisatie van het LiDAR-systeem in zelfrijdende auto's is terug te vinden in~\ref{fig:visualisatie-lidar}.
+Beide systemen kennen een vorm van objectherkenning om objecten zoals verkeersborden of voertuigen in de omgeving te detecteren, een visualisatie van het LiDAR-systeem in zelfrijdende auto's is terug te vinden op afbeelding~\ref{fig:visualisatie-lidar}.
 De implementatie hiervan kent echter de moeilijkheid van data-analyse in donkere momenten zoals na zonsondergang, waardoor de kwaliteit van binnenkomende data afzwakt door het lage licht.
 Een mogelijke oplossing hierbij is het toevoegen van infrarood lampen gecombineerd met een infraroodcamera.
 Ook hierbij wordt het mogelijk om via CNN-algoritmes te bepalen wanneer overgestapt moet worden op een alternatief systeem.
@@ -123,7 +123,7 @@ Beeldfragmenten ondergaan hiervoor verschillende processen, waaronder het voorge
 
 \subsubsection{Pixel binning}
 Zoals eerder aangehaald kiezen moderne smartphones ervoor om pixels te groeperen in superpixels waarop vervolgens aan pixel binning gedaan wordt.
-Het effect hiervan is het verzachten van observeerbare ruis, zoals zichtbaar in~\ref{fig:pixel-binning}.
+Het effect hiervan is het verzachten van observeerbare ruis, zoals zichtbaar op afbeelding~\ref{fig:pixel-binning}.
 Beelden die genomen zijn in donkere plekken kunnen daarmee een hogere waarneembare beeldkwaliteit krijgen.
 Een bijkomend effect van dit proces is de kleinere voetafdruk van de verwerkte beelden doordat er een kleiner aantal pixels overblijven.
 In het geval van smartphones wordt vaak gekozen om te binnen richting 12 megapixels, wat tussen de schermresoluties 4K Ultra HD (ongeveer 8 megapixels) en 8K Ultra HD (ongeveer 33 megapixels) ligt.
@@ -158,7 +158,7 @@ Voor situaties waarin schaal- en rotatie-invariantie belangrijk zijn kan het bet
     \caption{Visualisatie van het verschil in Gaussianen~\autocite{Lowe2004}}
     \label{fig:difference-of-gaussian}
 \end{figure}
-Het eerste deel van dit algoritme bestaat uit het berekenen van de minima en de maxima uit het verschil in Gaussianen (DoG) met verschillende standaardafwijkingen, zoals gevisualiseerd in~\ref{fig:difference-of-gaussian}.
+Het eerste deel van dit algoritme bestaat uit het berekenen van de minima en de maxima uit het verschil in Gaussianen (DoG) met verschillende standaardafwijkingen, zoals gevisualiseerd op afbeelding~\ref{fig:difference-of-gaussian}.
 Daarna worden uitschieters weggefilterd door middel van een wiskundige Hessische matrix.
 Een normalisatie van het aantal kenmerken kan vervolgens behaald worden door een minimum contrast van de verschillende standaardafwijkingen te hanteren.
 Het toepassen van ori\"entatietoewijzing verzekert hierbij de eigenschap van rotatie-invariantie.
@@ -293,7 +293,7 @@ Dit alles gebeurt in een tekstgebaseerde interactieomgeving, waarbij gebruikers 
 De voorgenoemde generatieve AI-toepassing ChatGPT maakt daarbij gebruik van versie 3.5 van het model om verzoeken van gebruikers te vervullen.
 In het rapport haalt OpenAI aan dat versie 4 van haar GPT-model een score behaalt die in de top tien percent van de testnemers valt bij het afnemen van een gesimuleerde balie-examen.
 Versie 3.5 daarentegen scoort bij de laagste tien percent, wat een opmerkzame evolutie is.
-Het rapport geeft verschillende vergelijkbare resultaten weer, een daarvan is zichtbaar in~\ref{fig:gpt3.5-versus-4} waarbij beide modellen enkele academische en professionele examens afleggen.
+Het rapport geeft verschillende vergelijkbare resultaten weer, een daarvan is zichtbaar op afbeelding~\ref{fig:gpt3.5-versus-4} waarbij beide modellen enkele academische en professionele examens afleggen.
 \begin{figure}
     \includegraphics[width=1\linewidth]{images/gpt35-vs-4-exam-results}
     \caption{Vergelijking tussen GPT 3.5 en GPT 4 bij het afleggen van verschillende academische en professionele examens. Bijkomende computer visie mogelijkheden helpen GPT-4 om betere resultaten te halen~\autocite{OpenAI2023}}.

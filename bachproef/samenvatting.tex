@@ -2,45 +2,47 @@
 %% Samenvatting
 %%=============================================================================
 
-% TODO: De "abstract" of samenvatting is een kernachtige (~ 1 blz. voor een
+% De "abstract" of samenvatting is een kernachtige (~ 1 blz. voor een
 % thesis) synthese van het document.
 %
 % Een goede abstract biedt een kernachtig antwoord op volgende vragen:
 %
-% 1. Waarover gaat de bachelorproef?
-% 2. Waarom heb je er over geschreven?
-% 3. Hoe heb je het onderzoek uitgevoerd?
-% 4. Wat waren de resultaten? Wat blijkt uit je onderzoek?
-% 5. Wat betekenen je resultaten? Wat is de relevantie voor het werkveld?
-%
-% Daarom bestaat een abstract uit volgende componenten:
-%
-% - inleiding + kaderen thema
-% - probleemstelling
-% - (centrale) onderzoeksvraag
-% - onderzoeksdoelstelling
-% - methodologie
-% - resultaten (beperk tot de belangrijkste, relevant voor de onderzoeksvraag)
-% - conclusies, aanbevelingen, beperkingen
 %
 % LET OP! Een samenvatting is GEEN voorwoord!
 
 %%---------- Nederlandse samenvatting -----------------------------------------
 %
-% TODO: Als je je bachelorproef in het Engels schrijft, moet je eerst een
+% Als je je bachelorproef in het Engels schrijft, moet je eerst een
 % Nederlandse samenvatting invoegen. Haal daarvoor onderstaande code uit
 % commentaar.
 % Wie zijn bachelorproef in het Nederlands schrijft, kan dit negeren, de inhoud
 % wordt niet in het document ingevoegd.
 
 \IfLanguageName{english}{%
-\selectlanguage{dutch}
-\chapter*{Samenvatting}
-\selectlanguage{english}
+    \selectlanguage{dutch}
+    \chapter*{Samenvatting}
+    \selectlanguage{english}
 }{}
 
 %%---------- Samenvatting -----------------------------------------------------
-% De samenvatting in de hoofdtaal van het document
 
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
-TODO
+Grote taalmodellen binnen de kunstmatige intelligentie, en in het verlengde hiervan multimodale taalmodellen, brengen dag-na-dag steeds meer mogelijkheden ter tafel.
+Technologische giganten zoals Google en Apple zien het potentieel ervan en bieden daarmee steeds meer functionaliteiten die versterkt zijn door deze taalmodellen.
+Deze bachelorproef onderzoekt of deze recente innovaties een oplossing kan bieden in de sportsector, en met name de personal training. \\
+
+Sportparticipatie binnen Vlaanderen scoort hoog met een gemiddelde van een op vier Vlamingen die (bijna) dagelijks een sport beoefent, echter kan hetzelfde niet gezegd worden over de verhouding beschikbare trainers.
+Clubs blijven kampen met een trainerstekort, ook komt het naar voren dat gemiddeld 26 procent van jonge trainers afhaken door de werkdruk.
+Hiermee ontstaat de vraag of de recente innovaties binnen artificiële intelligentie een oplossing kan bieden voor dit knelpunt:
+Is het mogelijk om generatieve AI in te zetten om een deel van de verantwoordelijkheid van personal trainers over te nemen? \\
+
+Deze bachelorproef richt zich erop te onderzoeken of een nieuw platform opgezet kan worden met behulp van bestaande taalmodellen en datasets.
+Het platform hoort enerzijds de werkdruk te verminderen en anderzijds een positieve meerwaarde te bieden aan de behoeften van klanten.
+Om dit te bereiken komt een literatuurstudie aan bod dat de huidige stand van zaken rond objectherkenning en generatieve AI in kaart brengt.
+Alvorens een proof-of-concept uit te werken zal er zich eerst een korte requirements-analyse plaats vinden.
+Op basis van de resultaten uit deze analyse kan er een selectie gemaakt worden van de gebruikte technologieën. \\
+
+De proof-of-concept bewijst de mogelijke voordelen van kunstmatige intelligentie in de sportsector.
+Vooropgestelde vereisten zoals het genereren van suggesties wordt overtroffen door constructieve en gestructureerde suggesties in Markdown formaat waar de coach verder op kan inspelen.
+Ondanks de benodigde maatregelen om mogelijke foutieve inschattingen kunnen enkele foutieve metingen plaatsvinden.
+Toch kan het implementeren van generatieve AI een meerwaarde bieden, zeker met het mogelijke vooruitzicht om biometrische data toe te passen om suggesties gepersonaliseerder te maken.

@@ -4,12 +4,15 @@
 %%=============================================================================
 %% Selectie van bronnen
 %%=============================================================================
+
+
 \section{Selectie van bronnen}
 \label{sec:selectie-van-bronnen}
 Om deze literatuurstudie en deze bachelorproef an sich als volwaardig en kwalitatief te kunnen aanschouwen volgt eerst een kleine uitleg rond de keuze voor ondersteunende bronnen.
 De selectiecriteria bouwt hierbij verder op de CRAAP-test, opgesteld door~\textcite{Blakeslee2004}.
 
 %---------- Uitleg CRAAP-test ----------------------------------------------------------
+
 \subsection{De CRAAP-test}
 \label{subsec:de-craap-test}
 De CRAAP-test bestaat uit volgende criteria, zoals gezien in de syllabus IT-component van het opleidingsonderdeel Research Methods~\autocite{Bert2023}:
@@ -24,6 +27,7 @@ De CRAAP-test bestaat uit volgende criteria, zoals gezien in de syllabus IT-comp
 \end{itemize}
 
 %---------- Zoekstrategieen ------------------------------------------------------------
+
 \subsection{Gebruikte zoekstrategiëen}
 \label{subsec:zoekstrategieen}
 Zoekmachines en publicatieplatformen zoals Google Scholar en ResearchGate maken het mogelijk om allerlei publicaties te vinden rond het gepaste onderwerp.
@@ -34,6 +38,7 @@ Een uitzondering wordt gemaakt voor onderzoeken over lang bestaande onderwerpen 
 Bronnen dienen eveneens relevant te zijn aan deze paper, daarvoor wordt gekozen voor bronnen waarvan het onderwerp overeenstemt met artifici\"ele intelligentie.
 
 %---------- Selectiecriteria -----------------------------------------------------------
+
 \subsection{Selectiecriteria}
 \label{subsec:selectiecriteria}
 Na het filteren van irrelevante en verouderde bronnen komt het beoordelen van de autoriteit en het doel van de bron aan bod.
@@ -43,6 +48,7 @@ Een wetenschappelijke tijdschrift kan als betrouwbaar aanschouwd worden als publ
 Tevens worden ook bronnen die reproduceerbaar zijn als geldige, betrouwbare aanschouwd.
 
 %---------- Bronnen buiten literatuurstudie---------------------------------------------
+
 \subsection{Bronnen buiten de literatuurstudie}
 \label{subsec:bronnen-buiten-de-literatuurstudie}
 Bij het opstellen van de shortlist met gebruikte technologie\"en en het uitwerken van de proof-of-concept zal er voornamelijk naar technische bronnen verwezen worden, dit in tegenstelling tot de academische bronnen die in deze literatuurstudie aangehaald worden.
@@ -52,6 +58,8 @@ Een omgeving is vertrouwd als het gaat om een bewezen ecosysteem met actieve ont
 %%=============================================================================
 %% Klassieke objectherkenning
 %%=============================================================================
+
+
 \section{Klassieke objectherkenning}\label{sec:ls-object-detectie}
 Omdat objectdetectie de kern van de proof-of-concept zal vormen, is het van essentieel belang om eerst een grondig begrip te defini\"eren van wat deze techniek precies inhoudt.
 In dit hoofdstuk zal eerst computer visie aan bod komen, een van de gebieden van hedendaagse artifici\"ele intelligentie, waarbinnen objectherkenning zich plaats vindt.
@@ -61,6 +69,7 @@ Vervolgens worden enkele traditionele objectdetectie algoritmen besproken die de
 Tot slot komen enkele uitdagingen en limitaties van klassieke algoritmen aan bod, waar het volgende hoofdstuk een mogelijk antwoord op kan bieden.
 
 %---------- Computervisie --------------------------------------------------------------
+
 \subsection{Computer visie}\label{subsec:de-kern-van-objectdetectie}
 Computer visie is een van de vele vakgebieden binnen de kunstmatige intelligentie en richt zich op het interpreteren van multimedia~\autocite{Moin2023}.
 Met de komst van dit vakgebied ontstaat een grote waaier aan mogelijkheden voor computers om bij te staan bij complexere taken zoals gezichts- en emotieherkenning, sc\`eneanalyse en objectherkenning.
@@ -84,12 +93,15 @@ De implementatie hiervan kent echter de moeilijkheid van data-analyse in donkere
 Een mogelijke oplossing hierbij is het toevoegen van infrarood lampen gecombineerd met een infraroodcamera.
 Ook hierbij wordt het mogelijk om via CNN-algoritmes te bepalen wanneer overgestapt moet worden op een alternatief systeem.
 \begin{figure}
-    \includegraphics[scale=0.35]{images/visualisatie-lidar}
-    \caption{Visualisatie van een LiDAR-systeem met objectherkenning in auto's~\autocite{Badoni2021}}
-    \label{fig:visualisatie-lidar}
+    \begin{center}
+        \includegraphics[scale=0.35]{images/visualisatie-lidar}
+        \caption{Visualisatie van een LiDAR-systeem met objectherkenning in auto's~\autocite{Badoni2021}}
+        \label{fig:visualisatie-lidar}
+    \end{center}
 \end{figure}
 
 %---------- Data & datakwaliteit -------------------------------------------------------
+
 \subsection{Beeldfragmenten in datavorm}\label{subsec:beeldfragmenten-als-data}
 Concreet worden beelden digitaal opgeslagen in tweedimensionale tabellen van pixels, waarbij elke pixel kleurdata bevat.
 De resolutie, of scherpheid, van een beeldfragment wordt vaak hierin uitgedrukt.
@@ -104,12 +116,15 @@ Het is hierbij belangrijk om op te merken dat het aantal megapixels niet de enig
 Deze meeteenheid bepaalt niet alleen de totale grootte van de data dat een beeldfragment bevat, maar ook ongewenste data zoals ruis of andere artefacten.
 Om het voorgenoemde fenomeen te mitigeren wordt in vele gevallen aan pixel binning gedaan, een proces waarbij pixels gegroepeerd worden tot zogenaamde superpixels~\autocite{Jin2012}.
 \begin{figure}
-    \includegraphics[width=1\linewidth]{images/pixel-binning}
-    \caption{Visualisatie van pixel binning~\autocite{Jin2012}}
-    \label{fig:pixel-binning}
+    \begin{center}
+        \includegraphics[width=1\linewidth]{images/pixel-binning}
+        \caption{Visualisatie van pixel binning~\autocite{Jin2012}}
+        \label{fig:pixel-binning}
+    \end{center}
 \end{figure}
 
 %---------- Verwerken van data ---------------------------------------------------------
+
 \subsection{Het verwerken van data uit multimedia}\label{subsec:het-verwerken-van-data}
 Om de nauwkeurigheid en snelheid van objectherkenningsalgoritmen zo veel mogelijk te bevorderen worden eerst enkele stappen uitgevoerd ter voorbereiding.
 Deze algoritmen kennen immers een langere verwerkingstijd bij grotere bestanden.
@@ -131,6 +146,7 @@ Beelden kunnen daarnaast ook geschaald of gedraaid worden voor geometrische corr
 Vervolgens kunnen beelden opgedeeld worden naar gelang de kleur, textuur of randen.
 
 %---------- Toepassen van klassieke algoritmen------------------------------------------
+
 \subsection{Klassieke objectherkenningsalgoritmen}
 \label{subsec:klassieke-objectherkenningsalgoritmen}
 Na het verwerken van beeldfragmenten komt verdere segmentatie aan bod door middel van klassieke objectherkenningsalgoritmen, wat in vakliteratuur vaak als \textit{feature extraction} vernoemd wordt.
@@ -166,6 +182,7 @@ In dit algoritme wordt bewust niet gekozen voor DoG en wordt enkel gebruik gemaa
 Daarnaast maakt het SURF-algoritme gebruik van een eenvoudigere Haar-waveletberekening met de x- en y-richtingen van elk gebied binnen een afbeelding.
 
 %---------- Uitdagingen & beperkingen --------------------------------------------------
+
 \subsection{Uitdagingen en beperkingen}
 \label{subsec:uitdagingen-en-beperkingen}
 Hoewel er vele mogelijkheden ontstaan door het gebruik van de voorgenoemde voorbeelden van klassieke algoritmen, kent de technologie ook enkele limitaties.
@@ -176,12 +193,15 @@ Machine learning kan hierop inspelen door bijkomende attributen toe te wijzen aa
 %%=============================================================================
 %% Machine learning
 %%=============================================================================
+
+
 \section{Machine learning}\label{sec:datasets}
 Het vorige hoofdstuk definieerde de werking van objectherkenning en diens situering binnen de artifici\"ele intelligentiesector samen met enkele voorbeelden van klassieke algoritmen.
 Deze algoritmen kennen enkele beperkingen waar deep learning een antwoord op kan bieden.
 De komst van machine learning (ML) kent buiten objectherkenning vele andere toepassingen zoals het ontstaan van grote taalmodellen, wat later aan bod zal komen.
 
 %---------- Hoe werkt machine learning -------------------------------------------------
+
 \subsection{Hoe machine learning en deep learning werkt}
 \label{subsec:hoe-deep-learning-werkt}
 Net zoals objectherkenning een subset van computer visie is kan deep learning (DL) gezien worden als een subset van machine learning.
@@ -193,6 +213,7 @@ Daardoor ontstaat de mogelijkheid om onder andere uitkomstvoorspellingen te make
 In context van deze paper gaat het daarbij concreet over het classificeren van sportgerelateerde objecten en omgevingen op basis van eerder verwerkte datasets.
 
 %---------- Deep learning in plaats van machine learning -------------------------------
+
 \subsection{Deep learning}
 \label{subsec:deep-learning-algoritmen}
 Een complexere manier van dataverwerking kan gebeuren aan de hand van DL-algoritmen, een subset van machine learning dat gebruik maakt van neurale netwerken om informatie te verwerken~\autocite{Bozic2024}.
@@ -228,16 +249,19 @@ Hoewel DL-technieken vele verbeteringen aanbiedt ten opzichte van machine learni
 \paragraph{Hogere rekenkracht}
 DL-algoritmen maken gebruik van aanzienlijk grotere hoeveelheden data ten opzichte van ML-technieken.
 Dit vergt sterkere computers met meer rekenkracht en opslag.
+
 \paragraph{Afhankelijkheid van data}
 Net zoals machine learning-algoritmen kennen DL-technieken een afhankelijkheid van de gebruikte data.
 De resultaten van deze technieken zijn afhankelijk van zowel de kwaliteit als de kwantiteit van deze datasets.
 Bovendien vereist dit data die gelabeld is, wat kostelijk of in sommige domeinen zelfs onhaalbaar te verkrijgen is~\autocite{Olaoye2024a}.
+
 \paragraph{Complexiteit}
 In bepaalde situaties zijn de gebruikte algoritmen complex te interpreteren, deels door de complexiteit van de gebruikte data.
 Het is daardoor moeilijker om de beslissingen en resultaten van deze technieken te traceren.
 Dit vereist het hertrainen van het algoritme om fouten recht te zetten.
 
 %---------- Deep learning toepassen in objectherkenning---------------------------------
+
 \subsection{Moderne objectherkenningsalgoritmen}
 \label{subsec:deep-learning-in-objectherkenning}
 Deep learning bouwt verder op klassieke objectdetectiealgoritmen om nauwkeurigheid te bevorderen en de uitdagingen zoals besproken in~\nameref{subsec:uitdagingen-en-beperkingen} te omzeilen.
@@ -261,6 +285,8 @@ Ze zijn effectief in het onthouden van informatie doorheen verschillende stappen
 %%=============================================================================
 %% Generatieve AI
 %%=============================================================================
+
+
 \section{De werking van grote taalmodellen}
 \label{sec:ls-artificiele-intelligentie}
 Met een kennis over de manier waarop datasets gebruikt worden in machine learning kan tot slot het concept van generatieve AI verklaard worden.
@@ -276,10 +302,12 @@ De voorgenoemde generatieve AI-toepassing ChatGPT maakt daarbij gebruik van vers
 In het rapport haalt OpenAI aan dat versie 4 van haar GPT-model een score behaalt die in de top tien percent van de testnemers valt bij het afnemen van een gesimuleerde balie-examen.
 Versie 3.5 daarentegen scoort bij de laagste tien percent, wat een opmerkzame evolutie is.
 Het rapport geeft verschillende vergelijkbare resultaten weer, een daarvan is zichtbaar op afbeelding~\ref{fig:gpt3.5-versus-4} waarbij beide modellen enkele academische en professionele examens afleggen.
-\begin{figure}
-    \includegraphics[scale=0.5]{images/gpt35-vs-4-exam-results}
-    \caption{Vergelijking tussen GPT 3.5 en GPT 4 bij het afleggen van verschillende academische en professionele examens. Bijkomende computer visie mogelijkheden helpen GPT-4 om betere resultaten te halen~\autocite{OpenAI2023}}.
-    \label{fig:gpt3.5-versus-4}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.35]{images/gpt35-vs-4-exam-results}
+        \caption{Vergelijking tussen GPT 3.5 en GPT 4 bij het afleggen van verschillende academische en professionele examens. Bijkomende computer visie mogelijkheden helpen GPT-4 om betere resultaten te halen~\autocite{OpenAI2023}}.
+        \label{fig:gpt3.5-versus-4}
+    \end{center}
 \end{figure}
 
 \subsection{Versterkingsleren via menselijke feedback}

@@ -1,5 +1,28 @@
-# Bachelorproef toegepaste informatica
+# Bachelorproef Toegepaste Informatica (examenkans 1) 2023-2024
 
+Scriptie voorgedragen tot het bekomen van de graad van Professionele bachelor in de toegepaste informatica.
+HOGENT / University College Ghent: Campus Aalst
+
+## Info
+
+* Promotor: Martine Van Audenrode
+* Co-promotor: Jordi Van Bossuyt
+* Student: Maurice Cantaert
+* Student number: 202181905
+
+## Proof-of-concept uitwerking
+De uitwerking van de proof-of-concept kan [HIER](https://github.com/Skerath/2324-bachelorproef-cantaertmaurice/tree/master/proof-of-concept) teruggevonden worden.
+
+
+
+
+
+
+
+
+
+-----------------------------
+# Originele README inhoud
 Deze repository bevat LaTeX sjablonen voor gebruik bij het opmaken van je bachelorproef toegepaste informatica:
 
 - [Het onderzoeksvoorstel](./voorstel/)

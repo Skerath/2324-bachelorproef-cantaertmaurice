@@ -4,13 +4,42 @@
 
 \chapter{Conclusie}
 \label{ch:conclusie}
-TODO conclusie + vooruitzichten
+De stand van zaken geeft een actueel beeld op de huidige situatie binnen de artificiële intelligentie.
+Hiervoor lag de focus op generatieve AI, computer visie en hoe deze gecombineerd zouden kunnen worden om een bijdrage te kunnen bieden in het werkleven.
+Deze bachelorproef oogde erop om een oplossing op maat te bedenken voor personal trainers in de sportsector met als doel de werkdruk te verminderen en de algehele efficiëntie te bevorderen.
 
-% TODO: Trek een duidelijke conclusie, in de vorm van een antwoord op de
-% onderzoeksvra(a)g(en). Wat was jouw bijdrage aan het onderzoeksdomein en
-% hoe biedt dit meerwaarde aan het vakgebied/doelgroep? 
-% Reflecteer kritisch over het resultaat. In Engelse teksten wordt deze sectie
-% ``Discussion'' genoemd. Had je deze uitkomst verwacht? Zijn er zaken die nog
-% niet duidelijk zijn?
-% Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
-%onderzoek?
+\section{Antwoord op de onderzoeksvragen}
+\label{sec:antwoord-op-de-onderzoeksvragen}
+Aan de hand van de literatuurstudie kwam naar boven dat bestaande platformen zoals Google Vertex AI en OpenAI GPT gebruikt kunnen worden om aan nauwkeurige objectherkenning te kunnen doen.
+De eerste testen hadden daarbij een gunstig resultaat met het detecteren van dumbbells en hun gewicht.
+Dit alles werd gerealiseerd zonder zelf een dataset te trainen, in plaats daarvan werd gebruik gemaakt van bestaande datasets binnen het Gemini model.\\
+
+Daarna werd onderzocht of het Gemini platform ook gebruikt kon worden om suggesties te genereren voor gebruikers.
+De verwachtingen hierbij werden overtroffen: Gemini biedt een kant-en-klare functie om suggesties te genereren in allerlei talen op een constructieve, gestructureerde wijze in het Markdown formaat.
+Dit formaat kan gebruikt worden om lijsten, tabellen en dergelijke visueel weer te geven aan gebruikers zonder bijkomend ontwerp van applicaties.
+Op deze wijze is het mogelijk om de gegenereerde suggesties van Gemini verder in te delen in allerlei Markdown formaten zonder enige aanpassing van de Android-applicatie.\\
+
+Tot slot werd via de proof-of-concept het concept van een man-in-the-middle uitgewerkt.
+Personal trainers hebben met dit concept de mogelijkheid om suggesties aan te passen aan de behoeften van de gebruikers.
+Suggesties kunnen aangepast worden in allerlei manieren, zij het de focus verleggen van bepaalde oefeningen van de schouders naar de borstkas, of zij het het richten op hypertrofie in plaats van krachttraining.\\
+
+Een bijkomend voordeel van dit systeem is het bijhouden van een historiek van de gebruikers.
+Cliënten en coaches hoeven daarbij niet zelf nog een dossier op te stellen met de gebruikte materialen, de frequentie van workouts en de beoefende activiteiten.
+Ook kan de vooruitgang gemeten worden door het bijhouden van de gebruikte gewichten.
+Het eindresultaat biedt daarmee meer dan het oorspronkelijk trachtte op te lossen.
+
+\section{Reflectie}
+\label{sec:reflectie}
+De nauwkeurigheid van generatieve AI-modellen blijven een discussiepunt in de artificiële intelligentiesector, ook in deze bachelorproef is dat enigszins op te merken.
+Hoewel resultaten vaak nauwkeurig zijn zijn er occasioneel ook foutieve inschattingen.
+Hierop kan echter ingespeeld worden, wat gedemonstreerd werd bij de eerste testen rond het inschatting van de gebruikte gewichten.
+Het taalmodel kreeg de toestemming om onbekende waarden in te schatten, dit op voorwaarde dat er bijgehouden wordt welke waarden ingeschat werden.
+Opmerkelijk hierbij is dat het taalmodel vaker ging specifiëren dat een waarde ingeschat werd ook al had deze het voorheen wel correct ingeschat.
+Dit komt wellicht door de \textit{temperature}-instelling van het model, waarmee het model eerder kiest voor voorspelbaardere antwoorden.
+
+\section{Vooruitzichten}
+\label{sec:vooruitzichten}
+Tijdens het opzetten van de Langchain4j implementatie kwamen de volgende onderzoeksvragen naar boven:
+Hoe kunnen vooraf gedefinieerde verzoeken aan AI-modellen dynamischer opgesteld worden?
+Kan een integratie met biometrische tracking in smartwatch en smartring wearables hier een meerwaarde in bieden om de verzoeken specifieker op het prestatievermogen van de sporter te richten?
+Tot slot, kan deze informatie opgeslagen en verwerkt worden door een taalmodel om de personal trainer een interpreteerbaarder en nauwkeuriger overzicht te geven op de vooruitgang van zijn klanten?

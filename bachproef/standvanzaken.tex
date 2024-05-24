@@ -1,12 +1,6 @@
 \chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}
 \label{ch:stand-van-zaken}
 
-% Tip: Begin elk hoofdstuk met een paragraaf inleiding die beschrijft hoe
-% dit hoofdstuk past binnen het geheel van de bachelorproef. Geef in het
-% bijzonder aan wat de link is met het vorige en volgende hoofdstuk.
-
-% Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
-
 %%=============================================================================
 %% Selectie van bronnen
 %%=============================================================================
@@ -90,7 +84,7 @@ De implementatie hiervan kent echter de moeilijkheid van data-analyse in donkere
 Een mogelijke oplossing hierbij is het toevoegen van infrarood lampen gecombineerd met een infraroodcamera.
 Ook hierbij wordt het mogelijk om via CNN-algoritmes te bepalen wanneer overgestapt moet worden op een alternatief systeem.
 \begin{figure}
-    \includegraphics[width=1\linewidth]{images/visualisatie-lidar}
+    \includegraphics[scale=0.35]{images/visualisatie-lidar}
     \caption{Visualisatie van een LiDAR-systeem met objectherkenning in auto's~\autocite{Badoni2021}}
     \label{fig:visualisatie-lidar}
 \end{figure}
@@ -197,20 +191,6 @@ Hiermee ontstaat de mogelijkheid om uitkomstvoorspellingen te maken op basis van
 Het algoritme groepeert deze data in subgroepen en classificeert vervolgens elke subgroep.
 Daardoor ontstaat de mogelijkheid om onder andere uitkomstvoorspellingen te maken van toekomstige data.
 In context van deze paper gaat het daarbij concreet over het classificeren van sportgerelateerde objecten en omgevingen op basis van eerder verwerkte datasets.
-Hierop volgen enkele ML-algoritmen:
-
-% TODO algoritmes bespreken
-\subsubsection{Ondersteunende vectormachines}
-% Supporting vector machines
-// TODO: Ondersteunende vectormachines (SVM) worden gebruikt voor classificatietaken zoals objectherkenning.
-
-\subsubsection{Beslisbomen}
-% Decision trees
-// TODO: Beslisbomen kunnen objecten identificeren door middel van een hi\"erarische reeks beslissingen op basis van beschrijvingskenmerken.
-
-\subsubsection{K-nabije buren}
-% K-Nearest Neighbors
-// TODO: K-nabije buren (KNN) wordt gebruikt om objecten te identificeren door kenmerken te vergelijken met kenmerken van gelijkaardige objecten in de trainingsdata.
 
 %---------- Deep learning in plaats van machine learning -------------------------------
 \subsection{Deep learning}
@@ -262,17 +242,19 @@ Dit vereist het hertrainen van het algoritme om fouten recht te zetten.
 \label{subsec:deep-learning-in-objectherkenning}
 Deep learning bouwt verder op klassieke objectdetectiealgoritmen om nauwkeurigheid te bevorderen en de uitdagingen zoals besproken in~\nameref{subsec:uitdagingen-en-beperkingen} te omzeilen.
 Door het concept van deep learning ontstaan vele nieuwe algoritmen voor het detecteren van objecten:
-% https://www.researchgate.net/publication/378435794_The_Role_of_Deep_Learning_in_Computer_Vision TODO ?
 
-% TODO algoritmes bespreken
 \subsubsection{Convolutionele neurale netwerken)}
 % Convolutional Neural Networks
-// TODO: Convolutionele neurale netwerken (CNN) hebben het vermogen om automatisch kenmerken te leren uit afbeeldingen aan de hand van convolutielagen.
+Convolutionele neurale netwerken (CNN) hebben het vermogen om automatisch kenmerken te leren uit afbeeldingen aan de hand van convolutielagen~\autocite{Nourmohammadi2024}.
+Ze zijn geoptimaliseerd om te werken met ruimtelijke structuren en hebben geen geheugen van voorgaande invoeren.
+Ondersteunende vectormachines (SVM) kunnen daarbij gebruikt worden voor classificatietaken zoals objectherkenning.
+Beslisbomen kunnen objecten identificeren door middel van een hi\"erarische reeks beslissingen op basis van beschrijvingskenmerken.
+Tot slot kunnen K-nabije buren (KNN) objecten identificeren door kenmerken te vergelijken met kenmerken van gelijkaardige objecten in de trainingsdata.
 
 \subsubsection{Terugkerende neurale netwerken}
 % Recurrent Neural Networks
-// TODO: Terugkerende neurale netwerken (RNN) worden gebruikt voor objectdetectie waar context van belang is, zoals het detecteren van objecten in sequenties van afbeeldingen.
-
+Terugkerende neurale netwerken (RNN) daarentegen worden eerder gebruikt voor doeleinden waar context van belang is.
+Ze zijn effectief in het onthouden van informatie doorheen verschillende stappen in een sequentie en zijn daarmee nuttig voor spraakherkenning en machinevertaling.
 % TODO:
 %  populaire datasets, zoals COCO (Common Objects in Context), Pascal VOC (Visual Object Classes), en ImageNet, worden vaak gebruikt voor het trainen en evalueren van objectherkenningsalgoritmen.
 
@@ -295,7 +277,7 @@ In het rapport haalt OpenAI aan dat versie 4 van haar GPT-model een score behaal
 Versie 3.5 daarentegen scoort bij de laagste tien percent, wat een opmerkzame evolutie is.
 Het rapport geeft verschillende vergelijkbare resultaten weer, een daarvan is zichtbaar op afbeelding~\ref{fig:gpt3.5-versus-4} waarbij beide modellen enkele academische en professionele examens afleggen.
 \begin{figure}
-    \includegraphics[width=1\linewidth]{images/gpt35-vs-4-exam-results}
+    \includegraphics[scale=0.5]{images/gpt35-vs-4-exam-results}
     \caption{Vergelijking tussen GPT 3.5 en GPT 4 bij het afleggen van verschillende academische en professionele examens. Bijkomende computer visie mogelijkheden helpen GPT-4 om betere resultaten te halen~\autocite{OpenAI2023}}.
     \label{fig:gpt3.5-versus-4}
 \end{figure}
@@ -315,4 +297,10 @@ LLM's hebben door middel van deep learning de mogelijkheid om natuurlijke taal t
 Deze AI-modellen richten zich specifiek op het verwerken en genereren van tekstuele data.
 
 \subsubsection{Tokens binnen een verzoek aan een taalmodel}
-TODO % todo uitleggen wat zijn tokens
+\textcite{Cope2023} beschrijven tokens in context van grote taalmodellen als volgt:
+``De elementaire eenheid van analyse in de LLM is het token.
+Soms is dit een woord, maar in het geval van woorden met samengestelde betekenissen, kan een token minder zijn dan een woord.
+Gereduceerd tot binaire notatie, abstraheert de machine tokens in een identieke, en voor de doeleinden van zijn analyse, betekenisloze vorm.
+Ze variëren alleen in het gekwantificeerde gewicht van hun nabijheid tot andere tokens(vectoren) in geschreven tekstcorpora.''
+Hiermee ontstaat de stelling dat tokens de maateenheid voor verzoeken aan taalmodellen vormen.
+Dit kan doorgetrokken worden voor multimedia zoals afbeeldingen en geluidsfragmenten, door de grotere inhoud aan data bestaan deze logischerwijs uit grotere hoeveelheden tokens.

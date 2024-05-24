@@ -134,6 +134,11 @@
 % If you included tables and/or source code listings, uncomment the appropriate
 % lines.
 %\listoftables
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Lijst van Codefragmenten}
+\renewcommand\listoflistingscaption{Lijst van Codefragmenten}
 \listoflistings
 
 % Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
@@ -172,9 +177,22 @@ Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat 
 \section*{Samenvatting}
 
 % Kopieer en plak hier de samenvatting (abstract) van je onderzoeksvoorstel.
+Vandaag de dag kent sport een prominente rol bij vele Vlamingen, dat kunnen we duidelijk aflezen uit de gepubliceerde statistieken van~\textcite{StatistiekVlaanderen2023}.
+Hoewel sporten centraal staat voor gemiddeld één op de vijf Vlamingen, kampt de sportsector met een sterk trainerstekort.
+Om deze reden heeft overheidsinstantie~\textcite{SportVlaanderen2023} reeds enkele campagnes gelanceerd om dit knelpunt op te lossen.
+Deze bachelorproef richt er zich op om een bijkomende oplossing te bieden voor fitnessclubs.
+Het uiteindelijke doel is om een proof-of-concept op zelfstandige basis te ontwikkelen waardoor leden in de startende fase minder beroep hoeven te doen op trainers.
+Hiermee horen sporters simpelweg hun uitrusting in te kunnen scannen door middel van een foto, en zouden ze een gepersonaliseerd trainingsschema voorgesteld krijgen.
+Maar hoe wordt specifieke apparatuur juist herkend op een nauwkeurige en behulpzame manier?
+Welke methodes kunnen gebruikt worden om het gepaste trainingsschema bij de juiste soort apparatuur voor de gebruiker voor te stellen?
+En hoe leggen we de link tussen het trainingsschema en de trainer om een steunmiddel aan te bieden voor zowel de sporter als de trainer?
+Om dit voorstel te realiseren wordt allereerst een literatuurstudie uitgevoerd om de huidige stand van zaken rond het detecteren van objecten (in dit geval fitness apparatuur) in kaart te brengen.
+De hoofdvraag hierbij is het onderzoeken van de gepaste manier om deze vorm van objectdetectie op een rendabele manier tot stand te krijgen.
+Hiermee ontstaat de mogelijkheid om een proof-of-concept uit te werken, gebruikmakend van een machine learning dataset, om gebruikservaringen af te toetsen.
+Verwacht wordt dat deze tool een duidelijke hulp kan bieden voor software-ontwikkelaars binnen fitnessketens om functionaliteiten te ontwikkelen voor beginnende sporters.
 
 % Verwijzing naar het bestand met de inhoud van het onderzoeksvoorstel
-%\input{../voorstel/voorstel-inhoud} TODO
+\input{../voorstel/voorstel-inhoud}
 
 %%---------- Andere bijlagen --------------------------------------------------
 % TODO: Voeg hier eventuele andere bijlagen toe. Bv. als je deze BP voor de

@@ -48,8 +48,9 @@ Een alternatief hiervoor is het lokaal draaien van machine learning.
 Mogelijke opties hiervoor zijn PyTorch en TensorFlow.
 Hoewel deze tools ongetwijfeld sneller zullen draaien op servers in de cloud, is het ook mogelijk om hier gebruik van te maken op een lokale computer.
 Een moderne videokaart (hetzij de workstation Quadro-lijn of de consumenten-gerichte GeForce-lijn) van NVidia, of zelfs moderne videokaarten van AMD via het ROCm platform.~\autocite{AMD2024}
-De nauwkeurigheid en snelheid zal lager liggen dan datasets gegenereerd door middel van cloudservices, maar aan een fractie van de kost.
+De nauwkeurigheid en snelheid zal lager liggen dan datasets gegenereerd door middel van cloudservices, maar aan een lagere kost.
 Het vergelijken van een cloudoplossing met een lokale machine tijdens de proof-of-concept fase van deze thesis kan hierbij interessant zijn.
+Echter zal de focus liggen op het gebruik van een bestaand model waarbij personal trainers niet zelf datasets hoeven te trainen.
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}
@@ -60,39 +61,38 @@ Het vergelijken van een cloudoplossing met een lokale machine tijdens de proof-o
 \label{subsec:literature-study}
 In de eerste fase vindt zich een voorafgaande literatuurstudie over het onderwerp plaats. % 3 weken
 Het praktische doel hiervan is om een verdere inzicht te krijgen op de werking van machine learning en haar rol bij object detectie op foto's.
-De nadruk ligt hierbij op de evolutie van deze werking en de verschillen tussen lokale machine learning applicaties en die van cloudproviders zoals Amazon en Google.
-Tijdens deze fase komen de gelijkenissen en verschillen tussen de twee varianten aan bod om tijdens de derde fase te kunnen vergelijken aan de hand van een proof-of-concept.
+De nadruk ligt hierbij op de evolutie van deze werking en de bijkomende voordelen die deep learning technieken mogelijks bij kan brengen.
+Bovendien komt de werking van generatieve artificiële intelligentie aan bod, wat verder bouwt op deep learning.
 
-\subsection{Dataverzameling}
+\subsection{Requirements-analyze}
 \label{subsec:dataverzameling}
 Vervolgens vindt er zich een requirements-analyse plaats om af te toetsen waar de focus moet liggen bij objectdetectie. % 3 weken
 Gebruikers die een app gebruikmakend van deze tool wensen te gebruiken tijdens het sporten horen eender welke gerelateerde apparatuur in te kunnen scannen.
-Om dit te realiseren moet de dataset getraind worden op gepaste en gevarieerde fitnessapparatuur in verschillende fitnessclubs.
-Hiervoor wordt data in de vorm van foto's en beschrijvingen verzameld, gepaard met de gebruiksmogelijkheden en eventuele advies van trainers.
-Dit wordt vervolgens gegoten in bruikbare datasets in de derde fase.
-Ook zal hiermee de mogelijkheid ontstaan voor gebruikers om een gepersonaliseerd fitnessschema aan te bieden, deels vooropgesteld door trainers.
+Om dit te realiseren moet gebruik gemaakt worden van een gepast multimodaal taalmodel zoals Gemini 1.5 Pro of ChatGPT 4o.
+Hetzelfde taalmodel hoort ook de mogelijkheid te bieden om suggesties te genereren op basis van de ingescande afbeeldingen.
+Bovendien horen personal trainers hier op in te kunnen spelen door deze suggesties bij te sturen.
+Ten slotte werden enkele test afbeeldingen verzameld om tijdens de proof-of-concept fase te testen.
+
+\subsection{Selectie van tools}
+\label{subsec:selectie-van-tools}
+Tijdens het opstellen van de shortlist komt het onderzoek naar de te gebruiken technologieën aan bod.
+Hierbij moet een beslissing komen over de te gebruiken raamwerken voor de mobiele applicatie, de achterliggende service en de te gebruiken multimodale taalmodel.
+Ook moet de meerwaarde van bouwsystemen zoals Gradle en Maven onderzocht worden op vlak van reproduceerbaarheid en automatisatie.
+Daarnaast volgt een korte analyse over het fitnessapparaat dat gebruikt zal worden in het uittesten van de proof-of-concept.
 
 \subsection{Proof-of-concept}
 \label{subsec:poc}
 Gedurende de derde fase wordt een proof-of-concept applicatie gebouwd voor Android-apparaten. % 4 weken
 Hiervoor worden er eerst datasets gegenereerd voor de objectdetectie functionaliteit.
-Deze datasets zullen enerzijds gebruik kunnen maken van de machine learning capaciteiten van Google Cloud (Vertex AI) of anderzijds gegenereerd worden op een lokale computer gebruikmakend van het TensorFlow framework.
-Hiermee kunnen we het verschil in kwaliteit testen om vervolgens de waarde van de platformen af te toetsen tegenover de kostprijs.
-De proof-of-concept toetst de mogelijke antwoorden die tijdens de literatuurstudie aan bod kwamen op de requirements af.
-
-\subsection{Rapport met aanbevelingen}
-\label{subsec:result-of-poc}
-Na het opzetten van de proof-of-concept komen enkele gebruikerstests aan bod. % 3 weken
-Hierbij worden het gebruikspatroon, de tijdsduur en foutenpercentage van objectdetectie vastgelegd.
-Een analyse van deze cijfers zal de bruikbaarheid van het gebruiken van objectdetectie en genereren van gepersonaliseerde trainingsschema's aantonen.
-Daaropvolgend wordt een rapport met aanbevelingen opgesteld voor ontwikkelaars die soortgelijke functies willen implementeren.
-Belangrijk hierbij is dat ontwikkelaars dit rapport kunnen gebruiken om te kunnen kiezen tussen een lokaal gegenereerde dataset of gebruikmakend van clouddiensten zoals Google Cloud.
+Deze datasets zullen gebruik kunnen maken van de machine learning capaciteiten van Google Cloud (Vertex AI).
+Hiermee kunnen we testen of het gebruik van voorafgetrainde datasets een mogelijke oplossing bieden voor het concept.
+De proof-of-concept toetst de mogelijke antwoorden die tijdens de requirements-analyse aan bod kwamen op de resultaten uit de proof-of-concept af.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaten en conclusie}
 \label{sec:verwacht-resultaten-en-conclusie}
-Er wordt verwacht dat de resultaten uit de proof-of-concept zal leiden tot een bruikbare tool die de drempel tot het starten van sport verlagen.
-Deze tool zal concreet de mogelijkheid bieden om fitness apparatuur in te scannen en detecteren door middel van machine learning.
-Hiermee kunnen ontwikkelaars die werken voor fitnessketens snel aan de slag voor gepersonaliseerde applicaties.
+Er wordt verwacht dat de resultaten uit de proof-of-concept zal leiden tot een bruikbare tool die de drempel tot het starten van sport verlaagt en personal trainers erbij helpt de werkdruk te verminderen.
+Deze tool zal concreet de mogelijkheid bieden om fitness apparatuur in te scannen en detecteren door middel van bestaande deep learning technieken aangeboden door Google Gemini.
+Hiermee kunnen zelfstandige personal trainers snel aan de slag met door AI versterkte applicaties om bij te staan in het werkleven.
 De hypothese stelt dat de drempel om te starten in een fitnessclub zal verlaagd worden en dat coaches meer kunnen focussen op langetermijnschema's.
-Aan de hand van het aanbevelingsrapport kunnen ontwikkelaars ervoor kiezen om gebruik te maken van Google Cloud voor nauwkeurigere oplossingen of voor een lokale machine voor een lagere kostprijs.
+Aan de hand van de resultaten ontstaat er een zicht op de huidige beperkingen en mogelijkheden alsook de gebieden waarop uitgebreid kan worden in de toekomst.

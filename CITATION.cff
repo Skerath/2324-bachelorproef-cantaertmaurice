@@ -1,0 +1,22 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Cantaert"
+  given-names: "Maurice"
+  orcid: "https://orcid.org/0009-0002-8188-2174"
+title: "Generative AI-assisted fitness scheme Proof-of-Concept"
+version: 1.0
+date-released: 2024-05-24
+url: "https://github.com/Skerath/2324-bachelorproef-cantaertmaurice"
+preferred-citation:
+  thesis-type: "Bachelor's thesis"
+  type: generic
+  authors:
+  - family-names: "Cantaert"
+    given-names: "Maurice"
+    orcid: "https://orcid.org/0009-0002-8188-2174"
+  affiliation: "University College Ghent"
+  abstract: "Large language models within artificial intelligence, and by extension here-of multimodal language models, are bringing more and more possibilities to the table day after day. Technological giants such as Google and Apple see its potential and thus offer more and more functionalities enhanced by these language models. This bachelor's thesis explores whether these recent innovations can offer a solution in the sports sector, and in particular personal training. Sports participation within Flanders, Belgium scores high with an average of one in four Flemish people practicing a sport (almost) daily, however, the same cannot be said about the ratio of available trainers. Clubs continue to struggle with a trainer shortage, it also emerges that on average 26 percent of young trainers drop out due to the workload. This raises the question of whether recent innovations within artificial intelligence can provide a solution to this bottleneck: Is it possible to use generative AI to take over some of the responsibility of personal trainers? This bachelor's thesis focuses on investigating whether a new platform can be set up using existing language models and datasets. The platform should on the one hand reduce the workload and on the other hand add positive value to the needs of customers. To achieve this, a literature review is presented that maps the current state of object recognition and generative AI. Before working out a proof-of-concept, a brief requirements analysis will take place. Based on the results of this analysis, a selection of technologies can be made. The proof-of-concept proves the potential benefits of artificial intelligence in the sports sector. Prerequisite requirements such as suggestion generation are exceeded by constructive and structured suggestions in Markdown format that the coach can act upon further. Despite the necessary measures to avoid possible misjudgments, some erroneous measurements may occur. Still, implementing generative AI can add value, especially with the possible prospect of applying biometric data to make suggestions more personalized."
+  title: "Het suggereren van sportschema’s doormiddel van objectherkenning en generatieve AI."
+  month: 5
+  year: 2024

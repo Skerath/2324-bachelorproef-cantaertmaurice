@@ -5,6 +5,11 @@ authors:
   given-names: "Maurice"
   orcid: "https://orcid.org/0009-0002-8188-2174"
 title: "Generative AI-assisted fitness scheme Proof-of-Concept"
+identifiers:
+  - type: url
+    value: >-
+      https://thesis.hogent.be/2023-2024/1567_202181905_PBA-TIN2_scriptie.pdf
+    description: Publication URL by University College Ghent
 version: 1.0
 date-released: 2024-05-24
 url: "https://github.com/Skerath/2324-bachelorproef-cantaertmaurice"
